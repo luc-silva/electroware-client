@@ -9,7 +9,7 @@ export const Wishlist = ({
     user,
     showToast,
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
 }) => {
     let [collections, setCollections] = useState([]);
@@ -38,7 +38,7 @@ export const Wishlist = ({
                 <div className={styles["products__container"]}>
                     {(collections.length > 0 &&
                         collections.map(
-                            (item: IWishlistCollection, index: React.Key) => {
+                            (item: WishlistCollection, index: React.Key) => {
                                 return (
                                     <CollectionContainer
                                         data={item}

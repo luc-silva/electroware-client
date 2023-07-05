@@ -22,7 +22,7 @@ export const ReviewCard = ({
     updateReviews,
 }: {
     reviewId: string;
-    user: IUserSession;
+    user: UserSession;
     updateReviews: Function;
 }) => {
     let [cardInfo, setCardInfo] = useState(reviewsInitialState);

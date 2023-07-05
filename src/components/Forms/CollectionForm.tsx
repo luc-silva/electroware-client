@@ -10,7 +10,7 @@ export const CollectionForm = ({
     showToast,
     updateCollections
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
     updateCollections:Function
 }) => {

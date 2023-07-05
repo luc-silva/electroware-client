@@ -10,7 +10,7 @@ export const CategoriesPanel = () => {
         CategoryService.getCategories().then((data) => {
             setCategories(data);
         });
-    });
+    }, []);
     return (
         <section className={styles["category-panel"]}>
             <div>

@@ -9,7 +9,7 @@ export const Settings = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     let navigate = useNavigate();

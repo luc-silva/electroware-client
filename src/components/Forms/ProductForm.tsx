@@ -25,8 +25,8 @@ export const ProductForm = ({
     handleSubmit,
     submitBtnText,
 }: {
-    user: IUserSession;
-    form?: IProductForm;
+    user: UserSession;
+    form?: ProductForm;
     method: "POST" | "PUT";
     setForm: Function;
     handleSubmit: FormEventHandler<HTMLFormElement>;

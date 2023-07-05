@@ -1,18 +1,18 @@
+import ProductService from "../services/ProductService";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./CreateOffer.module.css";
 
-import ProductService from "../services/ProductService";
-import { ImageBox } from "../components/Misc/ImageBox";
 import { ProductForm } from "../components/Forms/ProductForm";
 import { createrOfferFormInitialValue } from "../constants/initialStates";
 import { ImageInput } from "../components/Inputs/ImageInput";
+
+import styles from "./CreateOffer.module.css";
 
 export const CreateOffer = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     const navigate = useNavigate();

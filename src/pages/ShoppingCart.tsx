@@ -11,7 +11,7 @@ export const ShoppingCart = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     let navigate = useNavigate();
@@ -42,7 +42,7 @@ export const ShoppingCart = ({
                 {(items.length === 0 && <p>Carrinho de compras vazio.</p>) || (
                     <div className={styles["shopping-cart__container"]}>
                         {items.map(
-                            ({ _id }: ICartItem, index: any) => {
+                            ({ _id }: CartItem, index: any) => {
                                 return (
                                     <ProductCardSmall
                                         updateCart={updateCart}

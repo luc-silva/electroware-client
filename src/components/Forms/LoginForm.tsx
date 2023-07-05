@@ -17,7 +17,7 @@ export const LoginForm = ({
     let [form, setForm] = useState(loginFormInitialValue);
     let navigate = useNavigate();
 
-    function setCurrentUser(data: IUserSession) {
+    function setCurrentUser(data: UserSession) {
         setUser(() => {
             return { ...data, logged: true };
         });

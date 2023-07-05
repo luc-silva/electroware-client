@@ -1,7 +1,8 @@
 import { Link, } from "react-router-dom";
 
-import styles from "./Registration.module.css";
 import { RegistrationForm } from "../components/Forms/RegistrationForm";
+
+import styles from "./Registration.module.css";
 
 export const Registration = ({ showToast }: { showToast: Function }) => {
 

@@ -32,10 +32,10 @@ export const ProductCard = ({ id }: { id: string }) => {
             <div className={styles["card-image"]}>
                 <ImageBox
                     isLoading={cardStatus.loading}
-                    imgSrc={createImage(productData.image.data)}
+                    imgSrc={createImage(productData.image.data.data)}
                 />
             </div>
-            <CardInfo product={productData.product as IProductDetails} isLoading={cardStatus.loading} />
+            <CardInfo product={productData.product as ProductDetails} isLoading={cardStatus.loading} />
         </Link>
     );
 };

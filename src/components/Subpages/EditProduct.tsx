@@ -13,7 +13,7 @@ export const EditProduct = ({
     user,
     showToast,
 }: {
-    user: IUserSession;
+    user:  UserSession;
     showToast: Function;
 }) => {
     const navigate = useNavigate();

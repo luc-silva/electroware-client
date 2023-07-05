@@ -28,7 +28,7 @@ export const UserProductCard = ({ id }: { id: string }) => {
                 <div className={styles["product__picture"]}>
                     <ImageBox
                         isLoading={isLoading}
-                        imgSrc={createImage(productDetails.image.data)}
+                        imgSrc={createImage(productDetails.image.data.data)}
                     />
                 </div>
                 <div className={styles["product__main"]}>

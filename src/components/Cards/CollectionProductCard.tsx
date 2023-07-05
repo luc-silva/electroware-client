@@ -9,7 +9,7 @@ export const CollectionProductCard = ({
     updateCollection,
     showToast
 }: {
-    data: IWishlistItem;
+    data: WishlistItem;
     userToken: string;
     updateCollection: Function;
     showToast:Function

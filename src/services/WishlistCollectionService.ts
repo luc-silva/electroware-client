@@ -1,7 +1,7 @@
 import axios from "axios";
 import Service from "./Service";
 
-class WishlistCollectionService extends Service implements IService {
+class WishlistCollectionService extends Service {
     readonly baseUrl = "http://localhost:6060/api/collection/";
 
     public async getCollectionProducts(collectionId: string) {
@@ -26,7 +26,7 @@ class WishlistCollectionService extends Service implements IService {
                 return data;
             });
     }
-    public async updateCollection(token: string, collectionId: string, updatedData:IWishlistCollection) {
+    public async updateCollection(token: string, collectionId: string, updatedData:WishlistCollection) {
         return await axios
             .put(this.baseUrl + collectionId,updatedData, this.createHeader(token))
             .then(({ data }) => {

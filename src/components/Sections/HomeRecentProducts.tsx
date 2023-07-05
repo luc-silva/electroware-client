@@ -18,7 +18,7 @@ export const HomeRecentProducts = () => {
                 <ul className={styles["products-container"]}>
                     {recentProducts.length > 0
                         ? recentProducts.map(
-                              ({ _id }: IProductDetails, index: React.Key) => {
+                              ({ _id }: ProductDetails, index: React.Key) => {
                                   return <ProductCard id={_id} key={index} />;
                               }
                           )

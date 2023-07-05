@@ -15,7 +15,7 @@ export const Checkout = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     let [items, setItems] = useState([]);
@@ -31,7 +31,7 @@ export const Checkout = ({
 
     function getTotalValue() {
         let total = 0;
-        items.forEach(({ price, quantity }: ICartItem) => {
+        items.forEach(({ price, quantity }: CartItem) => {
             total += price * quantity;
         });
         return total;

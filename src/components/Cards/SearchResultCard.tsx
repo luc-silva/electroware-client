@@ -42,7 +42,7 @@ export const SearchResultItem = ({ productId }: { productId: string }) => {
                 <div className={styles["product-image"]}>
                     <ImageBox
                         isLoading={isLoading}
-                        imgSrc={createImage(productData.image.data)}
+                        imgSrc={createImage(productData.image.data.data)}
                     />
                 </div>
                 <div className={styles["product-details"]}>

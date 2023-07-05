@@ -1,10 +1,11 @@
-import styles from "./SearchResults.module.css";
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { SearchResultItem } from "../components/Cards/SearchResultCard";
 import ProductService from "../services/ProductService";
-import CategoryService from "../services/CategoryService";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { SearchResultItem } from "../components/Cards/SearchResultCard";
 import { CategoriesPanel } from "../components/Misc/CategoriesPanel";
+
+import styles from "./SearchResults.module.css";
 
 export const SearchResults = () => {
     let { search } = useParams();
@@ -39,9 +40,11 @@ export const SearchResults = () => {
                     {searchResults.length === 0 ? (
                         <strong>Nenhum produto encontrado.</strong>
                     ) : (
-                        searchResults.map((id: string, index: React.Key) => (
-                            <SearchResultItem productId={id} key={index} />
-                        ))
+                        searchResults.map(
+                            ({ _id }: { _id: string }, index: React.Key) => (
+                                <SearchResultItem productId={_id} key={index} />
+                            )
+                        )
                     )}
                 </div>
             </section>

@@ -18,7 +18,7 @@ export const ProductCardSmall = ({
 }: {
     instanceID: string;
     userToken: string;
-    user: IUserSession;
+    user: UserSession;
     updateCart: Function;
 }) => {
     let [instanceData, setInstanceData] = useState(cardInitialState);

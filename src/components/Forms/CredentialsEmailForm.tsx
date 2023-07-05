@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import { PasswordInput } from "../Inputs/PasswordInput";
 import UserService from "../../services/UserService";
 import styles from "./CredentialsEmailForm.module.css";
 import { EmailInput } from "../Inputs/EmailInput";
@@ -9,7 +8,7 @@ export const CredentialsEmailForm = ({
     user,
     showToast,
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
 }) => {
     let [emailForm, setEmailForm] = useState({

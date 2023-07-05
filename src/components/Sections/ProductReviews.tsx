@@ -9,8 +9,8 @@ export const ProductReviews = ({
     user,
     product,
 }: {
-    user: IUserSession;
-    product: IProductDetails;
+    user: UserSession;
+    product: ProductDetails;
 }) => {
     let [data, setData] = useState(productRatingInitialState);
     function updateProductScore() {

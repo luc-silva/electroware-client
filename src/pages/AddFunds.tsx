@@ -7,7 +7,7 @@ export const AddFunds = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     let navigate = useNavigate();

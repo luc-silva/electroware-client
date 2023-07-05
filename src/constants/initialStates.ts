@@ -26,7 +26,7 @@ export const productRatingInitialState = {
     average: {
         _id: "",
         score: "0",
-        total_reviews:0
+        total_reviews: 0,
     },
     scoreMetrics: [
         {
@@ -61,7 +61,7 @@ export const productCardInitialState = {
         price: 0,
         name: "",
     },
-    image: { data: null as null | string },
+    image: { data: { data: null as null | string } },
 };
 export const profileSettingsFormInitalState = {
     name: {
@@ -92,7 +92,7 @@ export const productInitialState = {
         owner: "",
         _id: "",
     },
-    image: { data: null as null | string },
+    image: {data:{ data: null as null | string }},
 };
 
 export const createrOfferFormInitialValue = {
@@ -118,7 +118,7 @@ export const registrationFormInitialValues = {
     password: "",
 };
 export const productPageInitialState = {
-    image: { data: "" },
+    image: { data: { data: "" } },
     product: {
         _id: "",
         category: "",

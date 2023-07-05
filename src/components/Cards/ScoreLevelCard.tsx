@@ -7,16 +7,24 @@ export const ScoreLevelCard = ({
     data,
 }: {
     index: number;
-    data: IProductScoreMetrics;
+    data: ProductScoreMetrics;
 }) => {
     let [level, setLevel] = useState(0);
     useEffect(() => {
         data.scoreMetrics.forEach((item) => {
             if (index === item._id) {
-                setLevel((item.quant * 100) / data.scoreMetrics.length);
+                let scores = data.scoreMetrics.reduce(
+                    (a: number, b: Score) => a + b.quant,
+                    0
+                );
+                if (scores === item.quant) {
+                    setLevel(100);
+                } else {
+                    setLevel((item.quant * 100) / data.scoreMetrics.length);
+                }
             }
         });
-    }, [data.scoreMetrics]);
+    }, [data.scoreMetrics, index]);
     return (
         <div className={styles["score__card"]}>
             <div className={styles["score"]}>

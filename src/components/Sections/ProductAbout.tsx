@@ -19,8 +19,8 @@ export const ProductAbout = ({
     showToast,
     toggleCollectionModal,
 }: {
-    productDetails: IProductData;
-    user: IUserSession;
+    productDetails: ProductData;
+    user: UserSession;
     status: boolean;
     showToast: Function;
     toggleCollectionModal: Function;
@@ -52,7 +52,7 @@ export const ProductAbout = ({
             <div className={styles["product-image"]}>
                 <ImageBox
                     isLoading={status}
-                    imgSrc={createImage(productDetails.image.data)}
+                    imgSrc={createImage(productDetails.image.data.data)}
                 />
             </div>
             <div className={styles["product-details"]}>

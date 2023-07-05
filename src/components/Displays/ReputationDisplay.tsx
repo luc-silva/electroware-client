@@ -2,7 +2,7 @@ import { getAverage } from "../../utils/operations";
 import { StarsContainer } from "../Containers/StarsContainer";
 import styles from "./ReputationDisplay.module.css";
 
-export const ReputationDisplay = ({ reviews }: { reviews: IReview[] }) => {
+export const ReputationDisplay = ({ reviews }: { reviews: Review[] }) => {
     return (
         <div className={styles["user-profile__details__reputation"]}>
             <p>Reputação</p>

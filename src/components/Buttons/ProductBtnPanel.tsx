@@ -12,8 +12,8 @@ export const ProductBtnPanel = ({
     product,
     showToast
 }: {
-    product: IProductDetails;
-    user: IUserSession;
+    product: ProductDetails;
+    user: UserSession;
     showToast:Function
 }) => {
     let [quantity, setQuantity] = useState(1);

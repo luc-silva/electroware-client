@@ -1,5 +1,3 @@
-import styles from "./UserCommitment.module.css";
-
 export const UserCommitment = () => {
     return (
         <>

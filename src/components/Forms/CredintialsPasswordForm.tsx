@@ -8,7 +8,7 @@ export const CredentialsPasswordForm = ({
     user,
     showToast,
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
 }) => {
     let [passwordForm, setPasswordForm] = useState({

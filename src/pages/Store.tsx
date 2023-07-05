@@ -10,7 +10,7 @@ export const Store = ({
     user,
     setUser,
 }: {
-    user: IUserSession;
+    user: UserSession;
     setUser: Function;
 }) => {
     return (

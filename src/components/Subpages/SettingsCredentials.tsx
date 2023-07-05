@@ -1,16 +1,13 @@
-import { ChangeEvent, useState } from "react";
-import { PasswordInput } from "../Inputs/PasswordInput";
-import { SubmitBtn } from "../Buttons/SubmitBtn";
-import styles from "./SettingsCredentials.module.css";
 import { CredentialsPasswordForm } from "../Forms/CredintialsPasswordForm";
 import { CredentialsEmailForm } from "../Forms/CredentialsEmailForm";
-import { useNavigate } from "react-router-dom";
+
+import styles from "./SettingsCredentials.module.css";
 
 export const SettingsCredentials = ({
     showToast,
     user,
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
 }) => {
     return (

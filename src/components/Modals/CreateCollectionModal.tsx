@@ -21,7 +21,7 @@ export const CreateCollectionModal = ({
 }: {
     isActive: boolean;
     product: string;
-    user: IUserSession;
+    user: UserSession;
     toggleModal: Function;
     showToast: Function;
 }) => {

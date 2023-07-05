@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-import { Bookmarks, CaretDown, CaretUp, ShoppingCart } from "phosphor-react";
-import styles from "./UserPanel.module.css";
+import { CaretDown, CaretUp } from "phosphor-react";
 import { PageIcons } from "./PageIcons";
+import styles from "./UserPanel.module.css";
 
 export const UserPanel = ({
     user,
     handleInfoMenu,
     isMenuActive,
 }: {
-    user: IUserSession;
+    user: UserSession;
     handleInfoMenu: Function;
     isMenuActive: boolean;
 }) => {

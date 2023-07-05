@@ -6,7 +6,7 @@ export const PromoBox = ({
     form,
     setForm,
 }: {
-    form: IProductForm;
+    form: ProductForm;
     setForm: Function;
 }) => {
     function toggleSale() {

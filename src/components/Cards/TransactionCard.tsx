@@ -4,7 +4,7 @@ import styles from "./TransactionCard.module.css";
 export const TransactionCard = ({
     transaction,
 }: {
-    transaction: ITransaction;
+    transaction: Transaction;
 }) => {
     return (
         <div className={styles["container__item"]}>

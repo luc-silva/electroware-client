@@ -2,7 +2,7 @@ import { StarsContainer } from "../Containers/StarsContainer";
 import { ScoreLevels } from "../Misc/ScoreLevels";
 import styles from "./ScoreDisplay.module.css";
 
-export const ScoreDisplay = ({ data }: { data: IProductScoreMetrics }) => {
+export const ScoreDisplay = ({ data }: { data: ProductScoreMetrics }) => {
 
     return (
         <div className={styles["score-display"]}>

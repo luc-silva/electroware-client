@@ -1,21 +1,19 @@
-//important dependencies
 import ProductService from "../services/ProductService";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { productPageInitialState } from "../constants/initialStates";
 
-import { ReviewsContainer } from "../components/Misc/ReviewsContainer";
 import { ProductAbout } from "../components/Sections/ProductAbout";
+import { ProductReviews } from "../components/Sections/ProductReviews";
 
 import styles from "./Product.module.css";
-import { ProductReviews } from "../components/Sections/ProductReviews";
 
 export const Product = ({
     user,
     showToast,
     toggleCollectionModal,
 }: {
-    user: IUserSession;
+    user: UserSession;
     showToast: Function;
     toggleCollectionModal: Function;
 }) => {

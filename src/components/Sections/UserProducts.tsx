@@ -2,7 +2,7 @@ import { UserProductCard } from "../Cards/UserProductCard";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import styles from "./UserProducts.module.css";
 
-export const UserProducts = ({ products }: { products: IProductDetails[] }) => {
+export const UserProducts = ({ products }: { products: ProductDetails[] }) => {
     return (
         <section className={styles["user-profile__products"]}>
             <div className={styles["user-profile__products__title"]}>

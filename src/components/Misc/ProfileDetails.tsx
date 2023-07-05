@@ -6,8 +6,8 @@ export const ProfileDetails = ({
     user,
     reviews,
 }: {
-    user: IUserDetails;
-    reviews: IReview[];
+    user: User;
+    reviews: Review[];
 }) => {
     return (
         <div className={styles["user-profile__details"]}>

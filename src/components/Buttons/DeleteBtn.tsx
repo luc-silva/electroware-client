@@ -1,4 +1,4 @@
-import { IconWeight, Trash } from "phosphor-react";
+import {   Trash } from "phosphor-react";
 
 export const DeletebBtn = ({
     onClick,
