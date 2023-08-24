@@ -32,7 +32,7 @@ export const ProductBtnPanel = ({
                 navigate("/shopping-cart");
             }
         ).catch(({response}) => {
-            showToast(response.data,"warning")
+            showToast(response.data.message,"warning")
         });
     }
 
