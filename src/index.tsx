@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Electroware from './Electroware';
+import ReactDOM from "react-dom/client";
+import Electroware from "./Electroware";
 
-import './index.css';
+import "./index.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const html = document.getElementById("root");
 
-root.render(
-    <Electroware />
-);
+if (html) {
+    const root = ReactDOM.createRoot(html);
+    root.render(<Electroware />);
+}
