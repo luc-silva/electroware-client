@@ -9,10 +9,11 @@
     overflow: hidden;
 }
 .active-promos img {
+    height: 340px;
     object-fit: cover;
     object-position: center;
 }
-.control-panel{
+.control-panel {
     display: flex;
     align-items: center;
     justify-content: center;
