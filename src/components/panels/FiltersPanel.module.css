@@ -1,0 +1,41 @@
+.filter-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.filter-panel__title {
+    font-size: 1.1rem;
+    color: var(--title-color);
+}
+.filter-panel__filters{
+    margin-left: 0.25rem;
+}
+.filter-panel__filters form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+.input-container label{
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+.submit-input-container input{
+    width: 100%;
+    padding: 0.5rem;
+    color: white;
+    background-color: var(--sub-color-button);
+}
+.submit-input-container input:hover {
+    background-color: var(--sub-color-button-hover);
+}
+.submit-input-container input:focus {
+    background-color: var(--sub-color-button-pressed);
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+@media (min-width: 1025px) {
+}

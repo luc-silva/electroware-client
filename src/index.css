@@ -67,7 +67,7 @@ a {
 }
 .electroware{
     position: relative;
-}
+} 
 :root {
     --main-color: #f3bd1c;
     --sub-color:#69beff;
@@ -77,12 +77,18 @@ a {
     --submit-btn-hover: #f9cc46;
     --submit-btn-disabled: #d2d2d2;
 
+    --sub-color-button: #69beff;
+    --sub-color-button-hover:#99d1fc;
+    --sub-color-button-pressed:#34a6fd;
+
     --main-color-faded: #fdf4d7;
     --background-color: #ffffff;
     --background-color-faded: #f0f0f0;
 
     --title-color: #2e2e2e;
     --text-color: #3d3d3d;
+
+    --text-color-hover: #242424;
 
     --title-color-lighter:#393939;
     --text-color-lighter:#5f5f5f;

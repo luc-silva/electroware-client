@@ -1,0 +1,16 @@
+.category-panel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.category-panel__title{
+    font-size: 1.1rem;
+    color: var(--title-color);
+}
+.category-panel__categories{
+    margin-left: 0.25rem;
+}
+@media (min-width: 769px) and (max-width: 1024px){ 
+}
+@media (min-width: 1025px) { 
+}

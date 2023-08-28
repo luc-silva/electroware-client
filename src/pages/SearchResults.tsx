@@ -2,10 +2,10 @@ import ProductService from "../services/ProductService";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { SearchResultItem } from "../components/Cards/SearchResultCard";
-import { CategoriesPanel } from "../components/Misc/CategoriesPanel";
+import { SearchResultItem } from "../components/Cards/SearchResultCard"; 
 
 import styles from "./SearchResults.module.css";
+import { SearchSidePanel } from "../components/panels/SearchSidePanel";
 
 export const SearchResults = () => {
     let { search } = useParams();
@@ -21,15 +21,9 @@ export const SearchResults = () => {
 
     return (
         <main role={"main"} className={styles["search-results"]}>
-            <aside className={styles["search-results__panel"]}>
-                {/* <section className={styles["filter-container"]} >
-                    <h3>Filtros</h3>
-                    <p>Ainda em Implementação</p>
-                </section> */}
-                <div className={styles["categories-container"]}>
-                    <CategoriesPanel />
-                </div>
-            </aside>
+            <div className={styles["search-results__panel"]}>
+                <SearchSidePanel />
+            </div>
 
             <section className={styles["search-results__main"]}>
                 <div className={styles["search-results__main__title"]}>

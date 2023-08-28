@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import CategoryService from "../../services/CategoryService";
+import { useEffect, useState } from "react";
+import { SearchCategoryCard } from "../Cards/SearchCategoryCard";
+
 import styles from "./CategoriesPanel.module.css";
 
 export const CategoriesPanel = () => {
@@ -13,20 +14,13 @@ export const CategoriesPanel = () => {
     }, []);
     return (
         <section className={styles["category-panel"]}>
-            <div>
+            <div className={styles["category-panel__title"]}>
                 <h3>Categorias</h3>
             </div>
-            <ul>
-                {categories.map(
-                    (
-                        { name, _id }: { name: string; _id: string },
-                        index: React.Key
-                    ) => (
-                        <li key={index}>
-                            <Link to={`/category/${_id}`}>{name}</Link>
-                        </li>
-                    )
-                )}
+            <ul className={styles["category-panel__categories"]}>
+                {categories.map((item: Category) => (
+                    <SearchCategoryCard item={item} key={item._id} />
+                ))}
             </ul>
         </section>
     );

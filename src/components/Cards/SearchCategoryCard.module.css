@@ -1,0 +1,9 @@
+.search-category-card {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 0.15rem;
+    color: var(--text-color);
+}
+.search-category-card p:hover {
+    color: var(--text-color-hover);
+}
