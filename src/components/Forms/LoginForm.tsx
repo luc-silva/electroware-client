@@ -67,7 +67,7 @@ export const LoginForm = ({
 
                 /> 
             </div>
-            <div className={styles["input__container"]}>
+            <div className={styles["submit-input__container"]}>
                 <SubmitBtn textValue="Entrar" />
             </div>
         </form>

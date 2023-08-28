@@ -1,15 +1,17 @@
+import UserService from "../../services/UserService";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserService from "../../services/UserService";
 import { registrationFormInitialValues } from "../../constants/initialStates";
 
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 
 import { LocationInput } from "../Inputs/LocationInput";
 import { NameInput } from "../Inputs/NameInput";
-import styles from "./RegistrationForm.module.css";
 import { EmailInput } from "../Inputs/EmailInput";
 import { PasswordInput } from "../Inputs/PasswordInput";
+
+import styles from "./RegistrationForm.module.css";
+
 
 export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
     let [form, setForm] = useState(registrationFormInitialValues);
@@ -91,7 +93,7 @@ export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
                     required
                 />
             </div>
-            <div className={styles["input__container"]}>
+            <div className={styles["submit-input__container"]}>
                 <SubmitBtn textValue="Crie uma conta" />
             </div>
         </form>

@@ -23,6 +23,7 @@ export const Login = ({
                 </div>
                 <div  className={styles["login__main__links"]}>
                     <Link to="/registration">Crie uma conta</Link>
+                    <Link to="/privacy">Políticas de Privacidade</Link>
                 </div>
             </section>
         </main>

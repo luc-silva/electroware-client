@@ -10,23 +10,25 @@
     gap: 0.5rem;
 }
 .input__container input {
-    padding: 1rem;
-    border: none;
-    border-bottom: 1px solid var(--text-color);
-    outline: none;
+    padding: 0.5rem;
     width: 100%;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--background-color-faded);
 }
 .input__container input:focus {
-    border: none;
-    outline: var(--main-color) solid 1px;
-    color: var(--main-color);
+    border-bottom: 1px solid transparent;
+    color: var(--text-color);
+    background-color: var(--background-color-faded);
 }
 .input__container input::placeholder {
     color: var(--text-color);
 }
 .input__container input:focus::placeholder {
-    color: var(--main-color);
+    color: var(--background-color-faded);
 }  
+.submit-input__container{
+
+}
 
 @media (min-width: 769px) and (max-width: 1024px) {
  
