@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import UserService from "../../services/UserService";
 import styles from "./CredentialsEmailForm.module.css";
-import { EmailInput } from "../Inputs/EmailInput";
+import { TextInput } from "inputify";
 
 export const CredentialsEmailForm = ({
     user,
@@ -40,11 +40,14 @@ export const CredentialsEmailForm = ({
             >
                 <div className={styles["creditials-password-form__main"]}>
                     <div className={styles["input-container"]}>
-                        <EmailInput
-                            inputState={emailForm.email}
+                        <TextInput
+                            inputType="email"
+                            stateValue={emailForm.email}
                             onChange={handleEmailChange}
+                            maxLength={50}
                             inputName="email"
-                            inputPlaceholder="Novo email"
+                            placeholder
+                            placeholderText="Novo email"
                             required
                         />
                     </div>

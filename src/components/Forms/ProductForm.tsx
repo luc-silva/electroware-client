@@ -7,13 +7,11 @@ import {
 import CategoryService from "../../services/CategoryService";
 
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import { SelectInput } from "../Inputs/SelectInput";
-import { TextareaInput } from "../Inputs/TextareaInput";
-import { TextInput } from "../Inputs/TextInput";
-import { NumberInput } from "../Inputs/NumberInput";
 import { createrOfferFormInitialValue } from "../../constants/initialStates";
 
 import styles from "./ProductForm.module.css";
+import { NumberInput, TextInput, TextareaInput } from "inputify";
+import { SelectInput } from "../Inputs/SelectInput";
 
 
 
@@ -53,20 +51,20 @@ export const ProductForm = ({
     return (
         <form action={method} onSubmit={handleSubmit}>
             <div className={styles["input-container"]}>
-                <TextInput
-                    inputState={form.name}
-                    inputName="name"
-                    labelText="Produto"
-                    maxLength={30}
-                    onChange={handleChange}
-                    required
-                    label
-                />
+                    <TextInput
+                        stateValue={form.name}
+                        inputName="name"
+                        label
+                        labelText="Produto"
+                        maxLength={30}
+                        required
+                        onChange={handleChange}
+                    /> 
             </div>
             <div className={styles["larger-input-container"]}>
                 <div className={styles["input-container"]}>
                     <NumberInput
-                        inputState={form.price}
+                        stateValue={form.price}
                         inputName="price"
                         labelText="Preço"
                         minValue={1}
@@ -74,12 +72,11 @@ export const ProductForm = ({
                         required
                         label
                         onChange={handleChange}
-                        stepAny
                     />
                 </div>
                 <div className={styles["input-container"]}>
                     <NumberInput
-                        inputState={form.quantity}
+                        stateValue={form.quantity}
                         inputName="quantity"
                         labelText="Unidades"
                         maxValue={300}
@@ -93,7 +90,7 @@ export const ProductForm = ({
             <div className={styles["larger-input-container"]}>
                 <div className={styles["input-container"]}>
                     <TextInput
-                        inputState={form.brand}
+                        stateValue={form.brand}
                         inputName="brand"
                         labelText="Marca"
                         maxLength={15}
@@ -114,9 +111,10 @@ export const ProductForm = ({
             </div>
             <div className={styles["input-container"]}>
                 <TextareaInput
-                    initialValue={form.description}
+                    stateValue={form.description}
                     inputName="description"
-                    inputText="Descrição"
+                    label
+                    labelText="Descrição"
                     maxLength={200}
                     onChange={handleChange}
                 />

@@ -3,7 +3,7 @@ import ReviewService from "../../services/ReviewService";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 
 import styles from "./ReviewForm.module.css";
-import { TextareaInput } from "../Inputs/TextareaInput";
+import { TextareaInput } from "inputify";
 
 export const ReviewForm = ({
     user,
@@ -50,10 +50,11 @@ export const ReviewForm = ({
                 onSubmit={handleReviewSubmit}
             >
                 <TextareaInput
-                    initialValue={reviewForm.text}
+                    stateValue={reviewForm.text}
                     inputName="text"
                     maxLength={200}
-                    inputText="Análise:"
+                    label
+                    labelText="Análise:"
                     onChange={handleChange}
 
                 />

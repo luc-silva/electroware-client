@@ -5,9 +5,14 @@
     width: 100%;
 }
 .input__container {
-    width: 100%;
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+} 
+.input__container label{
+    font-size: 0.8rem;
+    color: var(--text-color);
 }
 .input__container input {
     padding: 0.5rem;
@@ -25,14 +30,11 @@
 }
 .input__container input:focus::placeholder {
     color: var(--background-color-faded);
-}  
-.submit-input__container{
-
+}
+.submit-input__container {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
- 
 }
 @media (min-width: 1025px) {
- 
 }

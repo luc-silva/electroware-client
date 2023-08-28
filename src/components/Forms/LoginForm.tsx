@@ -3,8 +3,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginFormInitialValue } from "../../constants/initialStates";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import { EmailInput } from "../Inputs/EmailInput";
-import { PasswordInput } from "../Inputs/PasswordInput";
+import { PasswordInput, TextInput } from "inputify";
 
 import styles from "./LoginForm.module.css";
 export const LoginForm = ({
@@ -48,24 +47,26 @@ export const LoginForm = ({
             className={styles["login__form"]}
         >
             <div className={styles["input__container"]}>
-                <EmailInput 
-                    inputState={form.email}
-                    onChange={handleChange}
+                <TextInput
                     inputName="email"
-                    inputPlaceholder="Email"
+                    onChange={handleChange}
+                    maxLength={50}
+                    stateValue={form.email}
                     required
-                    label
+                    placeholder
+                    placeholderText="Email"
                 />
             </div>
             <div className={styles["input__container"]}>
-                <PasswordInput 
-                inputState={form.password}
-                inputPlaceholder="Senha"
-                maxLength={50}
-                onChange={handleChange}
-                required
-
-                /> 
+                <PasswordInput
+                    inputName="password"
+                    stateValue={form.password}
+                    maxLength={50}
+                    onChange={handleChange}
+                    required
+                    placeholder
+                    placeholderText="Senha"
+                />
             </div>
             <div className={styles["submit-input__container"]}>
                 <SubmitBtn textValue="Entrar" />

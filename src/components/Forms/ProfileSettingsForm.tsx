@@ -1,17 +1,15 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { profileSettingsFormInitalState } from "../../constants/initialStates";
+import { AxiosResponse } from "axios";
+import UserService from "../../services/UserService";
 
 //components & utils
-import UserService from "../../services/UserService";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import { UserImageInput } from "../Inputs/UserImageInput";
-import { LocationInput } from "../Inputs/LocationInput";
-import { NameInput } from "../Inputs/NameInput";
 
 //style
 import styles from "./ProfileSettingsForm.module.css";
-import { TextareaInput } from "../Inputs/TextareaInput";
-import { AxiosResponse } from "axios";
+import { TextInput, TextareaInput } from "inputify";
 
 export const ProfileSettingsForm = ({ user, showToast }: { user: UserSession, showToast:Function }) => {
     let [form, setForm] = useState(profileSettingsFormInitalState);
@@ -67,24 +65,47 @@ export const ProfileSettingsForm = ({ user, showToast }: { user: UserSession, sh
             <div className={styles["form__main"]}>
                 <div className={styles["input__container"]}>
                     <TextareaInput
-                        initialValue={form.description}
+                        stateValue={form.description}
                         inputName="description"
-                        inputText="Descrição do perfil"
+                        label
+                        labelText="Descrição do perfil"
                         maxLength={200}
                         onChange={handleChange}
                     />
                 </div>
                 <div className={styles["input__larger-container"]}>
-                    <NameInput
-                        firstNameState={form.name.first}
-                        lastNameState={form.name.last}
+                    <TextInput
+                        stateValue={form.name.first}
+                        inputName="first"
+                        label
+                        labelText="Nome"
+                        maxLength={15}
+                        onChange={handleChange}
+                    />
+                    <TextInput
+                        stateValue={form.name.last}
+                        inputName="last"
+                        label
+                        labelText="Sobrenome"
+                        maxLength={15}
                         onChange={handleChange}
                     />
                 </div>
                 <div className={styles["input__larger-container"]}>
-                    <LocationInput
-                        locationCountry={form.location.country}
-                        locationState={form.location.state}
+                    <TextInput
+                        stateValue={form.location.country}
+                        inputName="country"
+                        label
+                        labelText="País"
+                        maxLength={40}
+                        onChange={handleChange}
+                    />
+                    <TextInput
+                        stateValue={form.location.state}
+                        inputName="state"
+                        label
+                        labelText="Estado"
+                        maxLength={40}
                         onChange={handleChange}
                     />
                 </div>

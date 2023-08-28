@@ -26,6 +26,7 @@
     background-color: white;
 }
 .registration__form__container {
+    overflow: scroll;
     width: 100%;
 }
 .registration__links{

@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import { PasswordInput } from "../Inputs/PasswordInput";
 import styles from "./CredentialsPasswordForm.module.css";
 import UserService from "../../services/UserService";
+import { PasswordInput } from "inputify";
 
 export const CredentialsPasswordForm = ({
     user,
@@ -42,20 +42,23 @@ export const CredentialsPasswordForm = ({
                 <div className={styles["creditials-password-form__main"]}>
                     <div className={styles["input-container"]}>
                         <PasswordInput
-                            inputState={passwordForm.password}
-                            inputPlaceholder="Senha Antiga"
+                            stateValue={passwordForm.password}
+                            inputName="password"
                             onChange={handlePasswordChange}
                             maxLength={30}
+                            placeholder
+                            placeholderText="Senha Antiga"
                             required
                         />
                     </div>
                     <div className={styles["input-container"]}>
                         <PasswordInput
-                            inputState={passwordForm.new_password}
-                            inputPlaceholder="Senha Nova"
+                            stateValue={passwordForm.new_password}
                             inputName="new_password"
                             onChange={handlePasswordChange}
                             maxLength={30}
+                            placeholder
+                            placeholderText="Senha Nova"
                             required
                         />
                     </div>

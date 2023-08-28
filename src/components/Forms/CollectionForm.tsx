@@ -1,9 +1,9 @@
-import { ChangeEvent, FormEvent, FormEventHandler, useState } from "react";
-import { TextInput } from "../Inputs/TextInput";
+import { ChangeEvent, FormEvent,  useState } from "react";
 import styles from "./CollectionForm.module.css";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import WishlistCollectionService from "../../services/WishlistCollectionService";
 import { Check } from "phosphor-react";
+import { TextInput } from "inputify";
 
 export const CollectionForm = ({
     user,
@@ -50,12 +50,13 @@ export const CollectionForm = ({
             <div className={styles["form__container"]}>
                 <div className={styles["input-container"]}>
                     <TextInput
-                        inputState={form.name}
+                        stateValue={form.name}
                         inputName="name"
                         labelText="Criar Lista:"
-                        inputPlaceholder="Favoritos de 2023"
                         onChange={handleInputChange}
-                        minLenght={8}
+                        placeholder
+                        placeholderText="Favoritos de 2023"
+                        minLength={8}
                         maxLength={20}
                         label
                         required

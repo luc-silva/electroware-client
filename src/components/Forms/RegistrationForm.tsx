@@ -5,13 +5,8 @@ import { registrationFormInitialValues } from "../../constants/initialStates";
 
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 
-import { LocationInput } from "../Inputs/LocationInput";
-import { NameInput } from "../Inputs/NameInput";
-import { EmailInput } from "../Inputs/EmailInput";
-import { PasswordInput } from "../Inputs/PasswordInput";
-
 import styles from "./RegistrationForm.module.css";
-
+import { PasswordInput, TextInput } from "inputify";
 
 export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
     let [form, setForm] = useState(registrationFormInitialValues);
@@ -54,43 +49,84 @@ export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
             className={styles["registration__form"]}
         >
             <div className={styles["input__container"]}>
-                <NameInput
-                    labels={false}
-                    placeholders
-                    firstNameState={form.first}
-                    lastNameState={form.last}
+                <TextInput
+                    inputName="first"
+                    maxLength={15}
                     onChange={handleChange}
-                />
-            </div>
-
-            <div className={styles["input__container"]}>
-                <LocationInput
-                    labels={false}
-                    placeholders
-                    locationCountry={form.country}
-                    locationState={form.state}
-                    onChange={handleChange}
-                />
-            </div>
-
-            <div className={styles["input__container"]}>
-                <EmailInput
-                    inputState={form.email}
-                    onChange={handleChange}
-                    inputPlaceholder="Email"
-                    label={false}
-                    labelText="Email"
+                    inputType="text"
+                    stateValue={form.first}
+                    placeholder
+                    placeholderText="John"
                     required
+                    label
+                    labelText="Nome"
+                />
+                <TextInput
+                    inputName="last"
+                    maxLength={15}
+                    onChange={handleChange}
+                    inputType="text"
+                    stateValue={form.last}
+                    required
+                    placeholder
+                    placeholderText="Doe"
+                    label
+                    labelText="Sobrenome:"
+                />
+            </div>
+
+            <div className={styles["input__container"]}>
+                <TextInput
+                    inputName="state"
+                    maxLength={40}
+                    onChange={handleChange}
+                    inputType="text"
+                    stateValue={form.first}
+                    required
+                    placeholder
+                    placeholderText="São Paulo"
+                    label
+                    labelText="Estado:"
+                />
+                <TextInput
+                    inputName="country"
+                    maxLength={40}
+                    onChange={handleChange}
+                    inputType="text"
+                    stateValue={form.last}
+                    required
+                    placeholder
+                    placeholderText="Brasil"
+                    label
+                    labelText="País:"
+                />
+            </div>
+
+            <div className={styles["input__container"]}>
+                <TextInput
+                    inputType="email"
+                    inputName="email"
+                    stateValue={form.email}
+                    onChange={handleChange}
+                    maxLength={50}
+                    required
+                    placeholder
+                    placeholderText="j.doe@user.com"
+                    label
+                    labelText="Email:"
                 />
             </div>
             <div className={styles["input__container"]}>
                 <PasswordInput
-                    inputPlaceholder="Senha"
-                    inputState={form.password}
-                    maxLength={40}
-                    onChange={handleChange}
                     inputName="password"
+                    onChange={handleChange}
+                    maxLength={40}
+                    stateValue={form.password}
                     required
+                    placeholder
+                    placeholderText="senha"
+                    label
+                    labelText="Senha:"
                 />
             </div>
             <div className={styles["submit-input__container"]}>
