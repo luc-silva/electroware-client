@@ -140,6 +140,7 @@ function Electroware() {
                         element={
                             <Product
                                 user={user}
+                                setUser={setUser}
                                 showToast={showToast}
                                 toggleCollectionModal={showCollectionModal}
                             />

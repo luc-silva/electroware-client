@@ -8,7 +8,7 @@ export const Login = ({
     showToast,
 }: {
     user: UserSession;
-    setUser: Function;
+    setUser: React.Dispatch<UserSession>;
     showToast: Function;
 }) => {
     return (
@@ -19,7 +19,7 @@ export const Login = ({
             </div>
             <section className={styles["login__main"]}>
                 <div className={styles["form__container"]}>
-                    <LoginForm setUser={setUser} showToast={showToast} />
+                    <LoginForm setUser={setUser} user={user} showToast={showToast} />
                 </div>
                 <div  className={styles["login__main__links"]}>
                     <Link to="/registration">Crie uma conta</Link>

@@ -4,4 +4,5 @@ interface UserSession {
     token: string;
     funds: number;
     logged: boolean;
+    viewedProducts: string[]
 }

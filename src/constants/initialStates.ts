@@ -75,13 +75,14 @@ export const profileSettingsFormInitalState = {
     description: "",
 };
 export const imageInitialValue = null as null | string;
-export const userSessionInitialState = {
+export const userSessionInitialState:UserSession = {
     id: "",
     funds: 0,
     username: "",
     token: "",
     logged: false,
-    description: "",
+    //description: "",
+    viewedProducts: []
 };
 export const productInitialState = {
     product: {
