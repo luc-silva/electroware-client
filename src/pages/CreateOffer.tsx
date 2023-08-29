@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 import { ProductForm } from "../components/Forms/ProductForm";
 import { createrOfferFormInitialValue } from "../constants/initialStates";
-import { ImageInput } from "../components/Inputs/ImageInput";
 
 import styles from "./CreateOffer.module.css";
+import { ImageBox } from "../components/Misc/ImageBox";
 
 export const CreateOffer = ({
     user,
@@ -26,7 +26,6 @@ export const CreateOffer = ({
 
     let [productImage, setProductImage] = useState("");
     let [productBlob, setProductBlob] = useState(blobInitialState);
-    
 
     function setImage(event: ChangeEvent<HTMLInputElement>) {
         let files = event.target.files;
@@ -60,9 +59,18 @@ export const CreateOffer = ({
                 <h2>Crie o seu anúncio</h2>
             </section>
             <section className={styles["create-offer__main"]}>
-                <div className={styles["create-offer__image-container"]}>
-                    <ImageInput imageSrc={productImage} onChange={setImage} />
-                </div>
+                <section className={styles["create-offer__image"]}>
+                    <div className={styles["create-offer__image-container"]}>
+                        <ImageBox isLoading={false} imgSrc={productImage}  />
+                    </div>
+                    <div className={styles["input-container"]}>
+                        <input
+                            type="file"
+                            name="productImage"
+                            onChange={setImage}
+                        />
+                    </div>
+                </section>
                 <div className={styles["create-offer__form-container"]}>
                     <ProductForm
                         user={user}

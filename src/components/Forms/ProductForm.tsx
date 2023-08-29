@@ -49,7 +49,7 @@ export const ProductForm = ({
     }
 
     return (
-        <form action={method} onSubmit={handleSubmit}>
+        <form action={method} onSubmit={handleSubmit} className={styles["product-form"]}>
             <div className={styles["input-container"]}>
                     <TextInput
                         stateValue={form.name}

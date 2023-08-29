@@ -1,4 +1,9 @@
-
+.product-form{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 1rem;
+}
 .larger-input-container {
     display: flex;
     flex-direction: row;
