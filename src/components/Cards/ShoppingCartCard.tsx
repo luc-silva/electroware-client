@@ -11,13 +11,11 @@ import styles from "./ShoppingCartCard.module.css";
 
 //rename to ShoppingCartCard
 export const ProductCardSmall = ({
-    userToken,
     instanceID,
     user,
     updateCart,
 }: {
     instanceID: string;
-    userToken: string;
     user: UserSession;
     updateCart: Function;
 }) => {
@@ -25,12 +23,12 @@ export const ProductCardSmall = ({
     let [loading, toggleLoading] = useState(true);
 
     useEffect(() => {
-        ShoppingCartService.getSingleInstance(instanceID, userToken)
+        ShoppingCartService.getSingleInstance(instanceID, user.token)
             .then(setInstanceData)
             .then(() => {
                 toggleLoading(false);
             });
-    }, [instanceID, userToken]);
+    }, [instanceID, user]);
 
     async function removeItem() {
         await ShoppingCartService.deleteCartInstance(
@@ -43,20 +41,18 @@ export const ProductCardSmall = ({
 
     return (
         <div className={styles["container__item"]}>
-            <Link to={`/product/${instanceData.product._id}`}>
-                <div className={styles["container__picture"]}>
-                    <ImageBox
-                        isLoading={loading}
-                        imgSrc={createImage(
-                            instanceData.productImage.data.data
-                        )}
-                    />
-                </div>
-            </Link>
+            <div className={styles["container__picture"]}>
+                <ImageBox
+                    isLoading={loading}
+                    imgSrc={createImage(instanceData.productImage.data.data)}
+                />
+            </div>
             <div className={styles["container__details"]}>
                 <div className={styles["details__main"]}>
-                    <p>{instanceData.product.name}</p>
-                    <div  className={styles["details__pricing"]}>
+                    <div className={styles["details__title"]}>
+                        <p>{instanceData.product.name}</p>
+                    </div>
+                    <div className={styles["details__pricing"]}>
                         <strong>{`R$ ${
                             instanceData.quantity * instanceData.price
                         } `}</strong>
@@ -66,7 +62,7 @@ export const ProductCardSmall = ({
                 <div className={styles["container__footer"]}>
                     <p>{`Vendendor: ${instanceData.seller.name.first} ${instanceData.seller.name.last}`}</p>
                     <Trash
-                        size={20}
+                        size={25}
                         color={`var(--text-color)`}
                         onClick={removeItem}
                     />

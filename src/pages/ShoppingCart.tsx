@@ -4,19 +4,28 @@ import { getTotalValue } from "../utils/operations";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ProductCardSmall } from "../components/Cards/ShoppingCartCard";
 import styles from "./ShoppingCart.module.css";
+import { ShoppingCartItemsDisplay } from "../components/Displays/ShoppingCartItemsDisplay";
 
 export const ShoppingCart = ({
     user,
     setUser,
 }: {
     user: UserSession;
-    setUser: Function;
+    setUser: React.Dispatch<UserSession>;
 }) => {
+    let [items, setItems] = useState([] as CartItem[]);
     let navigate = useNavigate();
-    let [items, setItems] = useState([]);
 
+    function handleCheckout() {
+        navigate("/checkout");
+    }
+
+    async function updateCart() {
+        ShoppingCartService.getCartInstances(user.token).then((data) => {
+            setItems(data);
+        });
+    }
     useEffect(() => {
         if (!user.logged) {
             navigate("/login");
@@ -24,14 +33,6 @@ export const ShoppingCart = ({
         updateCart();
     }, []);
 
-    function handleCheckout() {
-        navigate("/checkout");
-    }
-    async function updateCart() {
-        ShoppingCartService.getCartInstances(user.token).then((data) => {
-            setItems(data);
-        });
-    }
 
     return (
         <main role={"main"} className={styles["shopping-cart"]}>
@@ -39,23 +40,9 @@ export const ShoppingCart = ({
                 <div className={styles["shopping-cart__main__title"]}>
                     <h2>Carrinho de Compras</h2>
                 </div>
-                {(items.length === 0 && <p>Carrinho de compras vazio.</p>) || (
-                    <div className={styles["shopping-cart__container"]}>
-                        {items.map(
-                            ({ _id }: CartItem, index: any) => {
-                                return (
-                                    <ProductCardSmall
-                                        updateCart={updateCart}
-                                        instanceID={_id}
-                                        userToken={user.token}
-                                        user={user}
-                                        key={index}
-                                    />
-                                );
-                            }
-                        )}
-                    </div>
-                )}
+                <div className={styles["shopping-cart__container"]}>
+                       <ShoppingCartItemsDisplay user={user} items={items} update={updateCart} />
+                </div>
             </section>
             <aside className={styles["shopping-cart__panel"]}>
                 <div className={styles["shopping-cart__panel__display"]}>
