@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserService from "../services/UserService";
 import styles from "./AddFunds.module.css";
+import { FundsCard } from "../components/Cards/FundsCard";
+import { CustomFundsCard } from "../components/Cards/CustomFundsCard";
 
 export const AddFunds = ({
     user,
@@ -11,6 +13,8 @@ export const AddFunds = ({
     setUser: Function;
 }) => {
     let navigate = useNavigate();
+
+    const options = [50, 100, 250, 500, 1000, 10000];
     useEffect(() => {
         if (!user.logged) {
             navigate("/login");
@@ -28,17 +32,6 @@ export const AddFunds = ({
         );
     }
 
-    async function addAmount(event: React.MouseEvent) {
-        let target = event.target;
-
-        if (target instanceof HTMLButtonElement) {
-            let amount = Number(target.value);
-            await UserService.addFunds(amount, user.token).then(() => {
-                updateAccountDetails();
-            });
-        }
-    }
-
     return (
         <main role={"main"} className={styles["add-funds"]}>
             <section className={styles["add-funds__main"]}>
@@ -46,45 +39,31 @@ export const AddFunds = ({
                     <h2>Adicione Fundos a sua carteira electroware!</h2>
                 </div>
                 <div className={styles["add-funds__card-container"]}>
-                    <div className={styles["add-funds__card"]}>
-                        <div>
-                            <p>Adicione</p>
-                            <strong>1000 R$</strong>
-                        </div>
-                        <div className={styles["add-funds__btn-panel"]}>
-                            <button onClick={addAmount} value={1000}>
-                                Clique Aqui
-                            </button>
-                        </div>
-                    </div>
-                    <div className={styles["add-funds__card"]}>
-                        <div>
-                            <p>Adicione</p>
-                            <strong>10000 R$</strong>
-                        </div>
-                        <div className={styles["add-funds__btn-panel"]}>
-                            <button onClick={addAmount} value={10000}>
-                                Clique Aqui
-                            </button>
-                        </div>
-                    </div>
-                    <div className={styles["add-funds__card"]}>
-                        <div>
-                            <p>Adicione</p>
-                            <strong>100000 R$</strong>
-                        </div>
-                        <div className={styles["add-funds__btn-panel"]}>
-                            <button onClick={addAmount} value={100000}>
-                                Clique Aqui
-                            </button>
-                        </div>
-                    </div>
+                    {options.map((item) => {
+                        return (
+                            <FundsCard
+                                amount={item}
+                                updateAccountDetails={updateAccountDetails}
+                                user={user}
+                            />
+                        );
+                    })}
+                    <CustomFundsCard
+                        updateAccountDetails={updateAccountDetails}
+                        user={user}
+                    />
                 </div>
             </section>
             <section className={styles["add-funds__current-fund"]}>
-                <div>
+                <div className={styles["current-fund__title"]}>
+                    <h3>Sua carteira Electroware</h3>
+                </div>
+                <div className={styles["current-fund__wallet"]}>
                     <p>Seu Saldo:</p>
-                    <strong>{`${user.funds} R$`}</strong>
+                    <strong>{`R$ ${user.funds}`}</strong>
+                </div>
+                <div className={styles["current-fund__links"]}>
+                    <Link to={"/config/transactions"}>Ver Transações</Link>
                 </div>
             </section>
         </main>
