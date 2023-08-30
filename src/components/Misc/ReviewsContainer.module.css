@@ -1,13 +1,15 @@
 .reviews__container{
     display: flex;
     flex-direction: column;
+    min-height: 70vh;
     gap: 1rem;
 }
 .reviews__container > p {
+    margin-top: 2rem;
     color: var(--text-color);
     font-size: 1.5rem;
     text-align: center;
 }
 .reviews__form{
     display: flex;
-}
+} 

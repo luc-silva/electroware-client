@@ -10,14 +10,18 @@ import styles from "./ProductBtnPanel.module.css";
 export const ProductBtnPanel = ({
     user,
     product,
-    showToast
+    showToast,
 }: {
     product: ProductDetails;
     user: UserSession;
-    showToast:Function
+    showToast: Function;
 }) => {
     let [quantity, setQuantity] = useState(1);
     let navigate = useNavigate();
+
+    function redirect() {
+        navigate("/login");
+    }
 
     async function addToShoppingCart() {
         let data = {
@@ -27,13 +31,13 @@ export const ProductBtnPanel = ({
             quantity: quantity,
         };
 
-        await ShoppingCartService.createCartInstance(data, user.token).then(
-            () => {
+        await ShoppingCartService.createCartInstance(data, user.token)
+            .then(() => {
                 navigate("/shopping-cart");
-            }
-        ).catch(({response}) => {
-            showToast(response.data.message,"warning")
-        });
+            })
+            .catch(({ response }) => {
+                showToast(response.data.message, "warning");
+            });
     }
 
     async function removeProduct() {
@@ -68,7 +72,9 @@ export const ProductBtnPanel = ({
                         />
                     </div>
                 ))) || (
-                <Link to={"/login"}>Entre em sua conta para comprar</Link>
+                <button className={styles["login-button"]} onClick={redirect}>
+                    Entre em sua conta para comprar
+                </button>
             )}
         </div>
     );

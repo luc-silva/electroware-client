@@ -12,6 +12,7 @@
 .score-display__average {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .score-display__stars-container {
     width: 100%;
