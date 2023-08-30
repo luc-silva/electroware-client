@@ -55,7 +55,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
+.review-panel button{
+    cursor: pointer;
+    background-color: transparent;
+}
 .loading-line {
     width: 100%;
     animation-name: loading-animation;
