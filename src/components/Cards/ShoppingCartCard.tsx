@@ -4,7 +4,7 @@ import { createImage } from "../../utils/operations";
 import { cardInitialState } from "../../constants/initialStates";
 
 import { Trash } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImageBox } from "../Misc/ImageBox";
 
 import styles from "./ShoppingCartCard.module.css";
@@ -21,14 +21,7 @@ export const ProductCardSmall = ({
 }) => {
     let [instanceData, setInstanceData] = useState(cardInitialState);
     let [loading, toggleLoading] = useState(true);
-
-    useEffect(() => {
-        ShoppingCartService.getSingleInstance(instanceID, user.token)
-            .then(setInstanceData)
-            .then(() => {
-                toggleLoading(false);
-            });
-    }, [instanceID, user]);
+    const navigate = useNavigate();
 
     async function removeItem() {
         await ShoppingCartService.deleteCartInstance(
@@ -39,8 +32,20 @@ export const ProductCardSmall = ({
         });
     }
 
+    function goToProductPage() {
+        navigate(`/product/${instanceData.product._id}`);
+    }
+
+    useEffect(() => {
+        ShoppingCartService.getSingleInstance(instanceID, user.token)
+            .then(setInstanceData)
+            .then(() => {
+                toggleLoading(false);
+            });
+    }, [instanceID, user]);
+
     return (
-        <div className={styles["container__item"]}>
+        <div className={styles["container__item"]} onClick={goToProductPage}>
             <div className={styles["container__picture"]}>
                 <ImageBox
                     isLoading={loading}
