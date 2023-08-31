@@ -11,14 +11,20 @@ import { UserImageInput } from "../Inputs/UserImageInput";
 import styles from "./ProfileSettingsForm.module.css";
 import { TextInput, TextareaInput } from "inputify";
 
-export const ProfileSettingsForm = ({ user, showToast }: { user: UserSession, showToast:Function }) => {
+export const ProfileSettingsForm = ({
+    user,
+    showToast,
+}: {
+    user: UserSession;
+    showToast: Function;
+}) => {
     let [form, setForm] = useState(profileSettingsFormInitalState);
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         await UserService.updateAccountDetails(user.id, user.token, form).then(
-            ({data}:AxiosResponse) => {
-                showToast(data.message,"info");
+            ({ data }: AxiosResponse) => {
+                showToast(data.message, "info");
             }
         );
     }
@@ -63,52 +69,63 @@ export const ProfileSettingsForm = ({ user, showToast }: { user: UserSession, sh
                 </div>
             </div>
             <div className={styles["form__main"]}>
-                <div className={styles["input__container"]}>
-                    <TextareaInput
-                        stateValue={form.description}
-                        inputName="description"
-                        label
-                        labelText="Descrição do perfil"
-                        maxLength={200}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className={styles["input__larger-container"]}>
-                    <TextInput
-                        stateValue={form.name.first}
-                        inputName="first"
-                        label
-                        labelText="Nome"
-                        maxLength={15}
-                        onChange={handleChange}
-                    />
-                    <TextInput
-                        stateValue={form.name.last}
-                        inputName="last"
-                        label
-                        labelText="Sobrenome"
-                        maxLength={15}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className={styles["input__larger-container"]}>
-                    <TextInput
-                        stateValue={form.location.country}
-                        inputName="country"
-                        label
-                        labelText="País"
-                        maxLength={40}
-                        onChange={handleChange}
-                    />
-                    <TextInput
-                        stateValue={form.location.state}
-                        inputName="state"
-                        label
-                        labelText="Estado"
-                        maxLength={40}
-                        onChange={handleChange}
-                    />
-                </div>
+                <section className={styles["form__main__basic-info"]}>
+                    <div className={styles["form__main__basic-info__title"]}>
+                        <h3>Dados Básicos</h3>
+                    </div>
+                    <div className={styles["form__main__basic-info__inputs"]}>
+                        <div className={styles["input-container"]}>
+                            <TextareaInput
+                                stateValue={form.description}
+                                inputName="description"
+                                label
+                                labelText="Descrição do perfil"
+                                maxLength={200}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className={styles["input-container"]}>
+                            <TextInput
+                                stateValue={form.name.first}
+                                inputName="first"
+                                label
+                                labelText="Nome"
+                                maxLength={15}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className={styles["input-container"]}>
+                            <TextInput
+                                stateValue={form.name.last}
+                                inputName="last"
+                                label
+                                labelText="Sobrenome"
+                                maxLength={15}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className={styles["input-container"]}>
+                            <TextInput
+                                stateValue={form.location.country}
+                                inputName="country"
+                                label
+                                labelText="País"
+                                maxLength={40}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className={styles["input-container"]}>
+                            <TextInput
+                                stateValue={form.location.state}
+                                inputName="state"
+                                label
+                                labelText="Estado"
+                                maxLength={40}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+                </section>
 
                 <div className={styles["form__main__submit"]}>
                     <SubmitBtn textValue="Salvar" />
