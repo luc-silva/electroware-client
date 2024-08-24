@@ -33,19 +33,10 @@ import { SettingsUserProducts } from "./components/Subpages/SettingsUserProducts
 import { EditProduct } from "./components/Subpages/EditProduct";
 import { SettingsCredentials } from "./components/Subpages/SettingsCredentials";
 import { ScrollToTop } from "./components/Misc/ScrollToTop";
-import { UserProvider } from "./context/UserContext";
-import { ToastProvider } from "./context/ToastContext";
 import { ContextWrapper } from "./ContextWrapper";
 
 function Electroware() {
     //refatorar
-
-    const [isCollectionModalActive, toggleCollectionModal] = useState(false);
-    const [product, setProduct] = useState("");
-    function showCollectionModal(activate: boolean = true, productId: string) {
-        setProduct(productId);
-        toggleCollectionModal(activate);
-    }
 
     return (
         <div className="electroware">
@@ -56,11 +47,7 @@ function Electroware() {
 
                     {/* modals/toasts */}
                     <InfoToast />
-                    <CreateCollectionModal
-                        toggleModal={toggleCollectionModal}
-                        isActive={isCollectionModalActive}
-                        product={product}
-                    />
+                    <CreateCollectionModal />
 
                     {/* heading/menus */}
                     <Header />
@@ -78,14 +65,7 @@ function Electroware() {
 
                         {/* need params */}
                         <Route path="/user/:id" element={<UserProfile />} />
-                        <Route
-                            path="/product/:id"
-                            element={
-                                <Product
-                                    toggleCollectionModal={showCollectionModal}
-                                />
-                            }
-                        />
+                        <Route path="/product/:id" element={<Product />} />
                         <Route
                             path="/search/:search"
                             element={<SearchResults />}

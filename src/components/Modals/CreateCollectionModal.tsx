@@ -13,32 +13,28 @@ import styles from "./CreateCollectionModal.module.css";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
+import { ModalContext } from "../../context/ModalContext";
+import { useModals } from "../../hooks/useModals";
 
-export const CreateCollectionModal = ({
-    isActive,
-    product,
-    toggleModal,
-}: {
-    isActive: boolean;
-    product: string;
-    toggleModal: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+export const CreateCollectionModal = () => {
     let [selectedCollectionId, setSelectedCollectionId] = useState("");
     let [collections, SetCollections] = useState([]);
     const { user } = useContext(UserContext);
     const { setToastMessage } = useToast();
+    const { productId, active } = useContext(ModalContext);
+    const { showCollectionModal } = useModals();
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
-        if (product) {
+        if (productId) {
             let data = {
-                product,
+                product: productId,
                 group: selectedCollectionId,
             };
             await WishlistService.createWishlistInstance(data, user.token)
                 .then(({ message }) => {
                     setToastMessage(message);
-                    toggleModal(false);
+                    showCollectionModal(productId);
                 })
                 .catch(({ response }) => {
                     setToastMessage(response.data, "warning");
@@ -57,20 +53,20 @@ export const CreateCollectionModal = ({
         if (user.id) {
             getUserCollections();
         }
-    }, [user.id, isActive]);
-    if (!isActive) return null;
+    }, [user.id, active.collectionModal]);
+    if (!active.collectionModal) return null;
     return (
         <div
             className={styles["create-collection"]}
             onClick={(event: React.MouseEvent) => {
-                toggleModal(false);
+                showCollectionModal(productId);
             }}
         >
             <div
                 className={styles["create-collection__wrapper"]}
                 onClick={stopEventPropagation}
             >
-                <CloseBtn onClick={() => toggleModal(false)} />
+                <CloseBtn onClick={() => showCollectionModal(productId)} />
                 <div className={styles["create-collection__title"]}>
                     <h2>Suas listas de desejos</h2>
                     <p>Adicione esse produto à uma lista personalizada.</p>

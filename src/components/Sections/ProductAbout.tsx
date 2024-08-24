@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { createImage } from "../../utils/operations";
 import { ProductBtnPanel } from "../Buttons/ProductBtnPanel";
@@ -11,23 +11,24 @@ import UserService from "../../services/UserService";
 
 import styles from "./ProductAbout.module.css";
 import { useToast } from "../../hooks/useToast";
+import { ModalContext } from "../../context/ModalContext";
+import { useModals } from "../../hooks/useModals";
 
 export const ProductAbout = ({
     productDetails,
     user,
     status,
-    toggleCollectionModal,
 }: {
     productDetails: ProductData;
     user: UserSession;
     status: boolean;
-    toggleCollectionModal: Function;
 }) => {
     let [owner, setOwner] = useState({ first: "", last: "" });
     let [category, setCategory] = useState("");
+    const { showCollectionModal } = useModals();
 
     async function handleWishlist() {
-        toggleCollectionModal(true, productDetails.product._id);
+        showCollectionModal(productDetails.product._id);
     }
 
     useEffect(() => {

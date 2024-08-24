@@ -11,11 +11,7 @@ import { RecentViewedProducts } from "../components/Displays/RecentViewedProduct
 import { UserContext } from "../context/UserContext";
 import { useToast } from "../hooks/useToast";
 
-export const Product = ({
-    toggleCollectionModal,
-}: {
-    toggleCollectionModal: (activate: boolean, productId: string) => void;
-}) => {
+export const Product = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
@@ -59,7 +55,6 @@ export const Product = ({
                     user={user}
                     productDetails={productDetails}
                     status={infoStatus}
-                    toggleCollectionModal={toggleCollectionModal}
                 />
             </div>
             <div className={styles["product__reviews__section"]}>
