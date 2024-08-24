@@ -1,5 +1,5 @@
 import ShoppingCartService from "../../services/ShoppingCartService";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { createImage } from "../../utils/operations";
 import { cardInitialState } from "../../constants/initialStates";
 
@@ -8,25 +8,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { ImageBox } from "../Misc/ImageBox";
 
 import styles from "./ShoppingCartCard.module.css";
+import { UserContext } from "../../context/UserContext";
 
 //rename to ShoppingCartCard
 export const ProductCardSmall = ({
     instanceID,
-    user,
     updateCart,
 }: {
     instanceID: string;
-    user: UserSession;
     updateCart: Function;
 }) => {
     let [instanceData, setInstanceData] = useState(cardInitialState);
     let [loading, toggleLoading] = useState(true);
     const navigate = useNavigate();
 
+    const { user } = useContext(UserContext);
+    const userToken = useMemo(() => user.token, [user]);
+
     async function removeItem() {
         await ShoppingCartService.deleteCartInstance(
             instanceID,
-            user.token
+            userToken
         ).then(() => {
             updateCart();
         });

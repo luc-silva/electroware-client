@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserService from "../../services/UserService";
 
 import { SettingsProductCard } from "../Cards/SettingsProductCard";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import styles from "./SettingsUserProducts.module.css";
+import { UserContext } from "../../context/UserContext";
 
 export const SettingsUserProducts = ({
-    user,
     showToast,
 }: {
-    user: UserSession;
     showToast: Function;
 }) => {
+    const { user } = useContext(UserContext);
+
     let [products, setProducts] = useState([]);
     async function updateProducts() {
         await UserService.getUserProducts(user.id).then(setProducts);
@@ -32,7 +33,7 @@ export const SettingsUserProducts = ({
                     products.map(({ _id }: { _id: string }) => (
                         <SettingsProductCard
                             id={_id}
-                            user={user}
+                            userToken={user.token}
                             showToast={showToast}
                             update={updateProducts}
                         />

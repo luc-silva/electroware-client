@@ -7,20 +7,20 @@ import { useNavigate } from "react-router-dom";
 
 export const SettingsProductCard = ({
     id,
-    user,
+    userToken,
     showToast,
     update,
 }: {
     id: string;
-    user: UserSession;
+    userToken: string;
     showToast: Function;
     update: Function;
 }) => {
     const navigate = useNavigate();
 
     async function deleteProduct() {
-        await ProductService.removeProduct(id, user.token).then(({ data }) => {
-            showToast(data.message,"info");
+        await ProductService.removeProduct(id, userToken).then(({ data }) => {
+            showToast(data.message, "info");
             update();
         });
     }

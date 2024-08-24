@@ -6,18 +6,18 @@ import { HMenuNavigation } from "./HMenuNavigation";
 import { HMenuUserDetails } from "./HMenuUserDetails";
 import { PageIcons } from "./PageIcons";
 import { SearchForm } from "../Forms/SearchForm";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export const HMenu = ({
-    user,
-    setUser,
     isMenuActive,
     toggleHMenu,
 }: {
-    user: UserSession;
-    setUser: Function;
     isMenuActive: boolean;
     toggleHMenu: Function;
 }) => {
+    const { setUser, user } = useContext(UserContext);
+
     function closeMenu() {
         toggleHMenu();
     }
@@ -36,7 +36,7 @@ export const HMenu = ({
             {(user.logged && (
                 <>
                     <div className={styles["hmenu__search"]}>
-                        <SearchForm closeModal={closeMenu}/>
+                        <SearchForm closeModal={closeMenu} />
                     </div>
                     <div className={styles["hmenu__icons"]}>
                         <PageIcons onClick={closeMenu} />

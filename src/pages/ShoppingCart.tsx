@@ -1,19 +1,15 @@
 import ShoppingCartService from "../services/ShoppingCartService";
 import { getTotalValue } from "../utils/operations";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./ShoppingCart.module.css";
 import { ShoppingCartItemsDisplay } from "../components/Displays/ShoppingCartItemsDisplay";
+import { UserContext } from "../context/UserContext";
 
-export const ShoppingCart = ({
-    user,
-    setUser,
-}: {
-    user: UserSession;
-    setUser: React.Dispatch<UserSession>;
-}) => {
+export const ShoppingCart = () => {
+    const { user } = useContext(UserContext);
     let [items, setItems] = useState([] as CartItem[]);
     let navigate = useNavigate();
 
@@ -33,7 +29,6 @@ export const ShoppingCart = ({
         updateCart();
     }, []);
 
-
     return (
         <main role={"main"} className={styles["shopping-cart"]}>
             <section className={styles["shopping-cart__main"]}>
@@ -41,7 +36,10 @@ export const ShoppingCart = ({
                     <h2>Carrinho de Compras</h2>
                 </div>
                 <div className={styles["shopping-cart__container"]}>
-                       <ShoppingCartItemsDisplay user={user} items={items} update={updateCart} />
+                    <ShoppingCartItemsDisplay
+                        items={items}
+                        update={updateCart}
+                    />
                 </div>
             </section>
             <aside className={styles["shopping-cart__panel"]}>

@@ -1,9 +1,4 @@
-import {
-    ChangeEvent,
-    FormEventHandler,
-    useEffect,
-    useState,
-} from "react";
+import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
 import CategoryService from "../../services/CategoryService";
 
 import { SubmitBtn } from "../Buttons/SubmitBtn";
@@ -12,8 +7,6 @@ import { createrOfferFormInitialValue } from "../../constants/initialStates";
 import styles from "./ProductForm.module.css";
 import { NumberInput, TextInput, TextareaInput } from "inputify";
 import { SelectInput } from "../Inputs/SelectInput";
-
-
 
 export const ProductForm = ({
     user,
@@ -26,7 +19,7 @@ export const ProductForm = ({
     user: UserSession;
     form?: ProductForm;
     method: "POST" | "PUT";
-    setForm: Function;
+    setForm: React.Dispatch<React.SetStateAction<ProductForm>>;
     handleSubmit: FormEventHandler<HTMLFormElement>;
     submitBtnText: string;
 }) => {
@@ -49,17 +42,21 @@ export const ProductForm = ({
     }
 
     return (
-        <form action={method} onSubmit={handleSubmit} className={styles["product-form"]}>
+        <form
+            action={method}
+            onSubmit={handleSubmit}
+            className={styles["product-form"]}
+        >
             <div className={styles["input-container"]}>
-                    <TextInput
-                        stateValue={form.name}
-                        inputName="name"
-                        label
-                        labelText="Produto"
-                        maxLength={30}
-                        required
-                        onChange={handleChange}
-                    /> 
+                <TextInput
+                    stateValue={form.name}
+                    inputName="name"
+                    label
+                    labelText="Produto"
+                    maxLength={30}
+                    required
+                    onChange={handleChange}
+                />
             </div>
             <div className={styles["larger-input-container"]}>
                 <div className={styles["input-container"]}>

@@ -1,5 +1,5 @@
 import ProductService from "../../services/ProductService";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createrOfferFormInitialValue } from "../../constants/initialStates";
 import { UserImageInput } from "../Inputs/UserImageInput";
@@ -8,15 +8,12 @@ import { ProductForm } from "../Forms/ProductForm";
 
 import styles from "./EditProduct.module.css";
 import { PromoBox } from "../Misc/PromoBox";
+import { UserContext } from "../../context/UserContext";
 
-export const EditProduct = ({
-    user,
-    showToast,
-}: {
-    user:  UserSession;
-    showToast: Function;
-}) => {
+export const EditProduct = ({ showToast }: { showToast: Function }) => {
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+
     let { id } = useParams();
 
     let [form, setForm] = useState(createrOfferFormInitialValue);
@@ -53,7 +50,7 @@ export const EditProduct = ({
                 />
             </div>
             <div className={styles["edit-product__promo_container"]}>
-                <PromoBox form={form} setForm={setForm}/>
+                <PromoBox form={form} setForm={setForm} />
             </div>
             <div className={styles["edit-product__form-container"]}>
                 <ProductForm

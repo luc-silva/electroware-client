@@ -3,6 +3,9 @@ import UserService from "../../services/UserService";
 import styles from "./CustomFundsCard.module.css";
 import { NumberInput } from "inputify";
 
+
+//refatorar
+
 export const CustomFundsCard = ({
     user,
     updateAccountDetails,

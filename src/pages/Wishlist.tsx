@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ProductCard } from "../components/Cards/ProductCard";
 import UserService from "../services/UserService";
 import styles from "./Wishlist.module.css";
 import { CollectionContainer } from "../components/Containers/CollectionContainer";
+import { UserContext } from "../context/UserContext";
 
-export const Wishlist = ({
-    user,
-    showToast,
-}: {
-    user: UserSession;
-    showToast: Function;
-}) => {
+export const Wishlist = ({ showToast }: { showToast: Function }) => {
+    const { user } = useContext(UserContext);
+
     let [collections, setCollections] = useState([]);
     let { id } = useParams();
     const navigate = useNavigate();

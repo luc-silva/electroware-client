@@ -6,17 +6,13 @@ import styles from "./Header.module.css";
 import { HMenuBtn } from "./Buttons/HMenuBtn";
 
 export const Header = ({
-    user,
-    setUser,
     handleInfoMenu,
     isMenuActive,
-    toggleHMenu
+    toggleHMenu,
 }: {
-    user: UserSession;
-    setUser: Function;
-    handleInfoMenu: Function;
+    handleInfoMenu: () => void;
     isMenuActive: boolean;
-    toggleHMenu:Function
+    toggleHMenu: Function;
 }) => {
     return (
         <header className={styles["header"]}>
@@ -26,11 +22,14 @@ export const Header = ({
             <div className={styles["header__form"]}>
                 <SearchForm />
             </div>
-            <div  className={styles["header__hmenu"]}>
-                <HMenuBtn toggleHMenu={toggleHMenu}/>
+            <div className={styles["header__hmenu"]}>
+                <HMenuBtn toggleHMenu={toggleHMenu} />
             </div>
             <div className={styles["header__panel"]}>
-                <UserPanel user={user} isMenuActive={isMenuActive} handleInfoMenu={handleInfoMenu}/>
+                <UserPanel
+                    isMenuActive={isMenuActive}
+                    handleInfoMenu={handleInfoMenu}
+                />
             </div>
         </header>
     );

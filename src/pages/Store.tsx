@@ -6,13 +6,7 @@ import { Truck, Cube, Gauge, Wallet } from "phosphor-react";
 import styles from "./Store.module.css";
 import { DiscountedProductsDisplay } from "../components/Displays/DiscountedProductsDisplay";
 
-export const Store = ({
-    user,
-    setUser,
-}: {
-    user: UserSession;
-    setUser: Function;
-}) => {
+export const Store = () => {
     return (
         <main role={"main"} className={styles["index"]}>
             <HomeBanner />

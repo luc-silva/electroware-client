@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { profileSettingsFormInitalState } from "../../constants/initialStates";
 import { AxiosResponse } from "axios";
 import UserService from "../../services/UserService";
@@ -10,15 +10,11 @@ import { UserImageInput } from "../Inputs/UserImageInput";
 //style
 import styles from "./ProfileSettingsForm.module.css";
 import { TextInput, TextareaInput } from "inputify";
+import { UserContext } from "../../context/UserContext";
 
-export const ProfileSettingsForm = ({
-    user,
-    showToast,
-}: {
-    user: UserSession;
-    showToast: Function;
-}) => {
+export const ProfileSettingsForm = ({ showToast }: { showToast: Function }) => {
     let [form, setForm] = useState(profileSettingsFormInitalState);
+    const {user} = useContext(UserContext);
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
