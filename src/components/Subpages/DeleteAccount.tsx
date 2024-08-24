@@ -3,11 +3,16 @@ import UserService from "../../services/UserService";
 import { PrivacyCard } from "../Cards/PrivacyCard";
 
 import styles from "./DeleteAccount.module.css";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
-export const DeleteAccount = ({ user }: { user: UserSession }) => {
+export const DeleteAccount = () => {
+    const { user } = useContext(UserContext);
+
     async function handleDeleteAccountBtn() {
         await UserService.deleteAccount(user.id, user.token);
     }
+
     return (
         <section className={styles["delete-account"]}>
             <div className={styles["delete-account__title"]}>

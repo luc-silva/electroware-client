@@ -1,20 +1,16 @@
 import UserService from "../../services/UserService";
-import { ChangeEvent, Dispatch, FormEvent, useState } from "react";
+import { ChangeEvent, Dispatch, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginFormInitialValue } from "../../constants/initialStates";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import { PasswordInput, TextInput } from "inputify";
 
 import styles from "./LoginForm.module.css";
-export const LoginForm = ({
-    setUser,
-    user,
-    showToast,
-}: {
-    showToast: Function;
-    user: UserSession;
-    setUser: React.Dispatch<UserSession>;
-}) => {
+import { UserContext } from "../../context/UserContext";
+
+
+export const LoginForm = ({ showToast }: { showToast: Function }) => {
+    const { user, setUser } = useContext(UserContext);
     let [form, setForm] = useState(loginFormInitialValue);
     let navigate = useNavigate();
 

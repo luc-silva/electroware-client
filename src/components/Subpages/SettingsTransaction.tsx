@@ -1,16 +1,20 @@
 import UserService from "../../services/UserService";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TransactionCard } from "../Cards/TransactionCard";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import styles from "./SettingsTransaction.module.css";
+import { UserContext } from "../../context/UserContext";
 
-export const SettingsTransaction = ({ user }: { user: UserSession }) => {
+export const SettingsTransaction = () => {
     let [userTransactions, setUserTransactions] = useState([]);
+    const { user } = useContext(UserContext);
+
     useEffect(() => {
         UserService.getUserTransactions(user.id, user.token).then((data) => {
             setUserTransactions(data);
         });
     }, [user.id, user.token]);
+
     return (
         <section className={styles["transactions"]} id="transactions">
             <div className={styles["transactions__title"]}>

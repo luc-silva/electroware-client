@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { CloseBtn } from "../Buttons/CloseBtn";
 import { CollectionForm } from "../Forms/CollectionForm";
 
@@ -11,9 +11,9 @@ import { ActionBtn } from "../Buttons/ActionBtn";
 
 import styles from "./CreateCollectionModal.module.css";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
+import { UserContext } from "../../context/UserContext";
 
 export const CreateCollectionModal = ({
-    user,
     isActive,
     product,
     toggleModal,
@@ -21,12 +21,12 @@ export const CreateCollectionModal = ({
 }: {
     isActive: boolean;
     product: string;
-    user: UserSession;
     toggleModal: Function;
     showToast: Function;
 }) => {
     let [selectedCollectionId, setSelectedCollectionId] = useState("");
     let [collections, SetCollections] = useState([]);
+    const { user } = useContext(UserContext);
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();

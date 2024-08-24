@@ -1,6 +1,8 @@
 import UserService from "../../services/UserService";
 import styles from "./FundsCard.module.css";
 
+//refatorar
+
 export const FundsCard = ({
     amount,
     user,

@@ -7,19 +7,16 @@ import { SubmitBtn } from "../components/Buttons/SubmitBtn";
 
 //misc
 import { Info, Warning } from "phosphor-react";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Checkout.module.css";
+import { UserContext } from "../context/UserContext";
 
-export const Checkout = ({
-    user,
-    setUser,
-}: {
-    user: UserSession;
-    setUser: Function;
-}) => {
+export const Checkout = () => {
     let [items, setItems] = useState([]);
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+
     useEffect(() => {
         if (!user.logged) {
             navigate("/login");

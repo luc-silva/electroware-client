@@ -8,7 +8,6 @@ import { BookmarkBtn } from "../Buttons/BookmarkBtn";
 
 import CategoryService from "../../services/CategoryService";
 import UserService from "../../services/UserService";
-import WishlistService from "../../services/WishlistService";
 
 import styles from "./ProductAbout.module.css";
 

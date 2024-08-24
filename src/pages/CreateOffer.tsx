@@ -1,5 +1,5 @@
 import ProductService from "../services/ProductService";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ProductForm } from "../components/Forms/ProductForm";
@@ -7,14 +7,11 @@ import { createrOfferFormInitialValue } from "../constants/initialStates";
 
 import styles from "./CreateOffer.module.css";
 import { ImageBox } from "../components/Misc/ImageBox";
+import { UserContext } from "../context/UserContext";
 
-export const CreateOffer = ({
-    user,
-    setUser,
-}: {
-    user: UserSession;
-    setUser: Function;
-}) => {
+export const CreateOffer = () => {
+    const { user } = useContext(UserContext);
+
     const navigate = useNavigate();
     useEffect(() => {
         if (!user.logged) {
@@ -61,7 +58,7 @@ export const CreateOffer = ({
             <section className={styles["create-offer__main"]}>
                 <section className={styles["create-offer__image"]}>
                     <div className={styles["create-offer__image-container"]}>
-                        <ImageBox isLoading={false} imgSrc={productImage}  />
+                        <ImageBox isLoading={false} imgSrc={productImage} />
                     </div>
                     <div className={styles["input-container"]}>
                         <input

@@ -1,18 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserService from "../services/UserService";
 import styles from "./AddFunds.module.css";
 import { FundsCard } from "../components/Cards/FundsCard";
 import { CustomFundsCard } from "../components/Cards/CustomFundsCard";
+import { UserContext } from "../context/UserContext";
 
-export const AddFunds = ({
-    user,
-    setUser,
-}: {
-    user: UserSession;
-    setUser: Function;
-}) => {
+export const AddFunds = () => {
     let navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
 
     const options = [50, 100, 250, 500, 1000, 10000];
     useEffect(() => {
@@ -40,6 +36,7 @@ export const AddFunds = ({
                 </div>
                 <div className={styles["add-funds__card-container"]}>
                     {options.map((item) => {
+                        //refatorar
                         return (
                             <FundsCard
                                 amount={item}

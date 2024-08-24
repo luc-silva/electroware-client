@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 import { CaretDown, CaretUp } from "phosphor-react";
 import { PageIcons } from "./PageIcons";
 import styles from "./UserPanel.module.css";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export const UserPanel = ({
-    user,
     handleInfoMenu,
     isMenuActive,
 }: {
-    user: UserSession;
     handleInfoMenu: Function;
     isMenuActive: boolean;
 }) => {
+    const { user } = useContext(UserContext);
+
     const showModal = () => {
         handleInfoMenu();
     };
+
     return (
         <>
             {(user.logged && (

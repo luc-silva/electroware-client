@@ -5,19 +5,15 @@ import { ReviewsContainer } from "../Misc/ReviewsContainer";
 import { productRatingInitialState } from "../../constants/initialStates";
 import { ScoreDisplay } from "../Displays/ScoreDisplay";
 
-export const ProductReviews = ({
-    user,
-    product,
-}: {
-    user: UserSession;
-    product: ProductDetails;
-}) => {
+export const ProductReviews = ({ product }: { product: ProductDetails }) => {
     let [data, setData] = useState(productRatingInitialState);
+    
     function updateProductScore() {
         ProductService.getProductScore(product._id).then((data) => {
             setData(data);
         });
     }
+
     useEffect(() => {
         if (product._id) {
             updateProductScore();
@@ -36,7 +32,6 @@ export const ProductReviews = ({
             </div>
             <div className={styles["ratings__reviews"]}>
                 <ReviewsContainer
-                    user={user}
                     product={product}
                     updateScore={updateProductScore}
                 />

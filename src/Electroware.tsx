@@ -36,14 +36,15 @@ import { SettingsUserProducts } from "./components/Subpages/SettingsUserProducts
 import { EditProduct } from "./components/Subpages/EditProduct";
 import { SettingsCredentials } from "./components/Subpages/SettingsCredentials";
 import { ScrollToTop } from "./components/Misc/ScrollToTop";
+import { UserProvider } from "./context/UserContext";
 
 function Electroware() {
-    let [user, setUser] = useState(userSessionInitialState);
     let [infoMenuActive, toggleInfoMenu] = useState(false);
     function handleInfoMenu() {
         toggleInfoMenu(!infoMenuActive);
     }
 
+    //refatorar
     let [isHMenuActive, toggleHMenu] = useState(false);
     function toggleHamburguerMenu() {
         toggleHMenu(!isHMenuActive);
@@ -62,166 +63,134 @@ function Electroware() {
     }
 
     let [isCollectionModalActive, toggleCollectionModal] = useState(false);
-    let [product, setProduct] = useState("")
-    function showCollectionModal(activate:boolean = true, productId:string){
-        setProduct(productId)
-        toggleCollectionModal(activate)
+    let [product, setProduct] = useState("");
+    function showCollectionModal(activate: boolean = true, productId: string) {
+        setProduct(productId);
+        toggleCollectionModal(activate);
     }
 
     return (
         <div className="electroware">
-            <Router>
-                {/* misc */}
-                <ScrollToTop />
-
-                {/* modals/toasts */}
-                <InfoToast
-                    isActive={isToastActive}
-                    toggle={toggleToast}
-                    message={toastMessage}
-                    type={toastType}
-                />
-                <CreateCollectionModal
-                    user={user}
-                    toggleModal={toggleCollectionModal}
-                    isActive={isCollectionModalActive}
-                    showToast={showToast}
-                    product={product}
-                />
-
-                {/* heading/menus */}
-                <Header
-                    user={user}
-                    setUser={setUser}
-                    handleInfoMenu={handleInfoMenu}
-                    isMenuActive={infoMenuActive}
-                    toggleHMenu={toggleHamburguerMenu}
-                />
-                <ProfileMenu
-                    isActive={infoMenuActive}
-                    toggleMenu={toggleInfoMenu}
-                    user={user}
-                    setUser={setUser}
-                />
-                <HMenu
-                    setUser={setUser}
-                    user={user}
-                    toggleHMenu={toggleHMenu}
-                    isMenuActive={isHMenuActive}
-                />
-
-                {/* pages */}
-                <Routes>
-                    <Route
-                        path="/"
-                        element={<Store user={user} setUser={setUser} />}
-                    />
-                    <Route
-                        path="/login"
-                        element={
-                            <Login
-                                user={user}
-                                setUser={setUser}
-                                showToast={showToast}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/registration"
-                        element={<Registration showToast={showToast} />}
-                    />
-                    <Route path="/privacy" element={<PrivacyPolicy />} />
-                    <Route path="/faq" element={<Faq />} />
-
-                    {/* need params */}
-                    <Route path="/user/:id" element={<UserProfile />} />
-                    <Route
-                        path="/product/:id"
-                        element={
-                            <Product
-                                user={user}
-                                setUser={setUser}
-                                showToast={showToast}
-                                toggleCollectionModal={showCollectionModal}
-                            />
-                        }
-                    />
-                    <Route path="/search/:search" element={<SearchResults />} />
-                    <Route path="/category/:id" element={<Category />} />
-
-                    {/* protected */}
-                    <Route
-                        path="/shopping-cart"
-                        element={<ShoppingCart user={user} setUser={setUser} />}
-                    />
-                    <Route
-                        path="/wishlist"
-                        element={<Wishlist user={user} showToast={showToast}/>}
-                    />
-                    <Route
-                        path="/checkout"
-                        element={<Checkout user={user} setUser={setUser} />}
-                    />
-                    <Route
-                        path="/create-offer"
-                        element={<CreateOffer user={user} setUser={setUser} />}
-                    />
-                    <Route
-                        path="/add-funds"
-                        element={<AddFunds user={user} setUser={setUser} />}
-                    />
-                    <Route
-                        path="/settings"
-                        element={<Settings user={user} setUser={setUser} />}
-                    >
-                        <Route
-                            path=""
-                            element={
-                                <EditProfile
-                                    user={user}
-                                    showToast={showToast}
-                                />
-                            }
-                        />
-                        <Route
-                            path="products/"
-                            element={
-                                <SettingsUserProducts
-                                    user={user}
-                                    showToast={showToast}
-                                />
-                            }
-                        />
-
-                        <Route
-                            path="products/:id"
-                            element={
-                                <EditProduct
-                                    user={user}
-                                    showToast={showToast}
-                                />
-                            }
-                        />
-                        <Route
-                            path="delete-account"
-                            element={<DeleteAccount user={user} />}
-                        />
-                        <Route
-                            path="transactions"
-                            element={<SettingsTransaction user={user} />}
-                        />
-                        <Route
-                            path="credentials"
-                            element={<SettingsCredentials user={user} showToast={showToast} />}
-                        />
-                    </Route>
-
+            <UserProvider>
+                <Router>
                     {/* misc */}
-                    <Route path="/*" element={<NotFound />} />
-                    <Route path="/not-found" element={<NotFound />} />
-                </Routes>
-                <Footer />
-            </Router>
+                    <ScrollToTop />
+
+                    {/* modals/toasts */}
+                    <InfoToast
+                        isActive={isToastActive}
+                        toggle={toggleToast}
+                        message={toastMessage}
+                        type={toastType}
+                    />
+                    <CreateCollectionModal
+                        toggleModal={toggleCollectionModal}
+                        isActive={isCollectionModalActive}
+                        showToast={showToast}
+                        product={product}
+                    />
+
+                    {/* heading/menus */}
+                    <Header
+                        handleInfoMenu={handleInfoMenu}
+                        isMenuActive={infoMenuActive}
+                        toggleHMenu={toggleHamburguerMenu}
+                    />
+                    <ProfileMenu
+                        isActive={infoMenuActive}
+                        toggleMenu={toggleInfoMenu}
+                    />
+                    <HMenu
+                        toggleHMenu={toggleHMenu}
+                        isMenuActive={isHMenuActive}
+                    />
+
+                    {/* pages */}
+                    <Routes>
+                        <Route path="/" element={<Store />} />
+                        <Route
+                            path="/login"
+                            element={<Login showToast={showToast} />}
+                        />
+                        <Route
+                            path="/registration"
+                            element={<Registration showToast={showToast} />}
+                        />
+                        <Route path="/privacy" element={<PrivacyPolicy />} />
+                        <Route path="/faq" element={<Faq />} />
+
+                        {/* need params */}
+                        <Route path="/user/:id" element={<UserProfile />} />
+                        <Route
+                            path="/product/:id"
+                            element={
+                                <Product
+                                    showToast={showToast}
+                                    toggleCollectionModal={showCollectionModal}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/search/:search"
+                            element={<SearchResults />}
+                        />
+                        <Route path="/category/:id" element={<Category />} />
+
+                        {/* protected */}
+                        <Route
+                            path="/shopping-cart"
+                            element={<ShoppingCart />}
+                        />
+                        <Route
+                            path="/wishlist"
+                            element={<Wishlist showToast={showToast} />}
+                        />
+                        <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/create-offer" element={<CreateOffer />} />
+                        <Route path="/add-funds" element={<AddFunds />} />
+                        <Route path="/settings" element={<Settings />}>
+                            <Route
+                                path=""
+                                element={<EditProfile showToast={showToast} />}
+                            />
+                            <Route
+                                path="products/"
+                                element={
+                                    <SettingsUserProducts
+                                        showToast={showToast}
+                                    />
+                                }
+                            />
+
+                            <Route
+                                path="products/:id"
+                                element={<EditProduct showToast={showToast} />}
+                            />
+                            <Route
+                                path="delete-account"
+                                element={<DeleteAccount />}
+                            />
+                            <Route
+                                path="transactions"
+                                element={<SettingsTransaction />}
+                            />
+                            <Route
+                                path="credentials"
+                                element={
+                                    <SettingsCredentials
+                                        showToast={showToast}
+                                    />
+                                }
+                            />
+                        </Route>
+
+                        {/* misc */}
+                        <Route path="/*" element={<NotFound />} />
+                        <Route path="/not-found" element={<NotFound />} />
+                    </Routes>
+                    <Footer />
+                </Router>
+            </UserProvider>
         </div>
     );
 }

@@ -1,16 +1,10 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "../components/Forms/LoginForm";
 import styles from "./Login.module.css";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
-export const Login = ({
-    user,
-    setUser,
-    showToast,
-}: {
-    user: UserSession;
-    setUser: React.Dispatch<UserSession>;
-    showToast: Function;
-}) => {
+export const Login = ({ showToast }: { showToast: Function }) => {
     return (
         <main className={styles["login"]}>
             <div className={styles["login-text"]}>
@@ -19,9 +13,9 @@ export const Login = ({
             </div>
             <section className={styles["login__main"]}>
                 <div className={styles["form__container"]}>
-                    <LoginForm setUser={setUser} user={user} showToast={showToast} />
+                    <LoginForm showToast={showToast} />
                 </div>
-                <div  className={styles["login__main__links"]}>
+                <div className={styles["login__main__links"]}>
                     <Link to="/registration">Crie uma conta</Link>
                     <Link to="/privacy">Políticas de Privacidade</Link>
                 </div>
