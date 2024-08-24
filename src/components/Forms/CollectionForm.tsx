@@ -4,28 +4,28 @@ import { SubmitBtn } from "../Buttons/SubmitBtn";
 import WishlistCollectionService from "../../services/WishlistCollectionService";
 import { Check } from "phosphor-react";
 import { TextInput } from "inputify";
+import { useToast } from "../../hooks/useToast";
 
 export const CollectionForm = ({
     user,
-    showToast,
     updateCollections
 }: {
     user: UserSession;
-    showToast: Function;
     updateCollections:Function
 }) => {
     let [form, setForm] = useState({ name: "", privated: false });
+    const {setToastMessage} = useToast()
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
         WishlistCollectionService.createCollection(user.token, form)
             .then(({ message }) => {
-                showToast(message);
+                setToastMessage(message);
                 updateCollections()
             })
             .catch(({response}) => {
-                showToast(response.data, "warning");
+                setToastMessage(response.data, "warning");
             });
     }
 

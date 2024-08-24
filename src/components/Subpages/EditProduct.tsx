@@ -9,10 +9,12 @@ import { ProductForm } from "../Forms/ProductForm";
 import styles from "./EditProduct.module.css";
 import { PromoBox } from "../Misc/PromoBox";
 import { UserContext } from "../../context/UserContext";
+import { useToast } from "../../hooks/useToast";
 
-export const EditProduct = ({ showToast }: { showToast: Function }) => {
+export const EditProduct = () => {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
+    const { setToastMessage } = useToast();
 
     let { id } = useParams();
 
@@ -23,7 +25,7 @@ export const EditProduct = ({ showToast }: { showToast: Function }) => {
 
         if (id) {
             ProductService.updateProduct(form, user.token, id).then((data) => {
-                showToast(data.message, "info");
+                setToastMessage(data.message, "info");
 
                 navigate(`/product/${id}`);
             });

@@ -9,13 +9,12 @@ import { ProductReviews } from "../components/Sections/ProductReviews";
 import styles from "./Product.module.css";
 import { RecentViewedProducts } from "../components/Displays/RecentViewedProducts";
 import { UserContext } from "../context/UserContext";
+import { useToast } from "../hooks/useToast";
 
 export const Product = ({
-    showToast,
     toggleCollectionModal,
 }: {
-    showToast: Function;
-    toggleCollectionModal: Function;
+    toggleCollectionModal: (activate: boolean, productId: string) => void;
 }) => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
@@ -37,7 +36,7 @@ export const Product = ({
         }
     }, [id, navigate]);
     useEffect(() => {
-        let viewedProducts = [] as string[];
+        let viewedProducts: string[] = [];
 
         if (user.logged) {
             viewedProducts = [...user.viewedProducts];
@@ -60,7 +59,6 @@ export const Product = ({
                     user={user}
                     productDetails={productDetails}
                     status={infoStatus}
-                    showToast={showToast}
                     toggleCollectionModal={toggleCollectionModal}
                 />
             </div>

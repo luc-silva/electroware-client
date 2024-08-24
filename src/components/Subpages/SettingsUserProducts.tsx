@@ -5,12 +5,9 @@ import { SettingsProductCard } from "../Cards/SettingsProductCard";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import styles from "./SettingsUserProducts.module.css";
 import { UserContext } from "../../context/UserContext";
+import { useToast } from "../../hooks/useToast";
 
-export const SettingsUserProducts = ({
-    showToast,
-}: {
-    showToast: Function;
-}) => {
+export const SettingsUserProducts = () => {
     const { user } = useContext(UserContext);
 
     let [products, setProducts] = useState([]);
@@ -34,7 +31,6 @@ export const SettingsUserProducts = ({
                         <SettingsProductCard
                             id={_id}
                             userToken={user.token}
-                            showToast={showToast}
                             update={updateProducts}
                         />
                     ))) || (

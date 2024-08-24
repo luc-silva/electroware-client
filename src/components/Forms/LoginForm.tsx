@@ -7,12 +7,13 @@ import { PasswordInput, TextInput } from "inputify";
 
 import styles from "./LoginForm.module.css";
 import { UserContext } from "../../context/UserContext";
+import { useToast } from "../../hooks/useToast";
 
-
-export const LoginForm = ({ showToast }: { showToast: Function }) => {
+export const LoginForm = () => {
     const { user, setUser } = useContext(UserContext);
     let [form, setForm] = useState(loginFormInitialValue);
     let navigate = useNavigate();
+    const { setToastMessage } = useToast();
 
     function setCurrentUser(data: UserSession) {
         setUser({ ...user, ...data, logged: true });
@@ -33,7 +34,7 @@ export const LoginForm = ({ showToast }: { showToast: Function }) => {
                 navigate("/");
             })
             .catch(({ response }) => {
-                showToast(response.data, "warning");
+                setToastMessage(response.data, "warning");
             });
     }
     return (

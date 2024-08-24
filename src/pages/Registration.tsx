@@ -4,7 +4,7 @@ import { RegistrationForm } from "../components/Forms/RegistrationForm";
 
 import styles from "./Registration.module.css";
 
-export const Registration = ({ showToast }: { showToast: Function }) => {
+export const Registration = () => {
     return (
         <main role={"main"} className={styles["registration"]}>
             <section className={styles["registration__main"]}>
@@ -12,7 +12,7 @@ export const Registration = ({ showToast }: { showToast: Function }) => {
                     <h1>Crie a sua conta</h1>
                 </div>
                 <div className={styles["registration__form__container"]}>
-                    <RegistrationForm showToast={showToast} />
+                    <RegistrationForm  />
                 </div>
                 <div className={styles["registration__links"]}>
                     <Link to="/login">Já cadastrado? Entre aqui </Link>

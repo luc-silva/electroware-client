@@ -5,19 +5,20 @@ import { CollectionProductCard } from "../Cards/CollectionProductCard";
 import { VisibilityBtn } from "../Buttons/VisibilityBtn";
 import { DeletebBtn } from "../Buttons/DeleteBtn";
 import styles from "./CollectionContainer.module.css";
+import { useToast } from "../../hooks/useToast";
 
 export const CollectionContainer = ({
     data,
     user,
-    showToast,
     updateCollections,
 }: {
     data: WishlistCollection;
     user: UserSession;
-    showToast: Function;
     updateCollections: Function;
 }) => {
     let [items, setItems] = useState([]);
+    const { setToastMessage } = useToast();
+
     async function updateCollection() {
         await WishlistCollectionService.getCollectionProducts(data._id).then(
             (data) => {
@@ -32,17 +33,17 @@ export const CollectionContainer = ({
             privated: !data.privated,
         }).then((data) => {
             updateCollections();
-            showToast(data.message);
+            setToastMessage(data.message);
         });
     }
     async function deletecCollection() {
         await WishlistCollectionService.deleteCollection(user.token, data._id)
             .then((data) => {
-            updateCollections();
-            showToast(data.message);
+                updateCollections();
+                setToastMessage(data.message);
             })
             .catch(({ response }) => {
-                showToast(response.data, "warning");
+                setToastMessage(response.data, "warning");
             });
     }
 
@@ -78,7 +79,7 @@ export const CollectionContainer = ({
                                 updateCollection={updateCollection}
                                 userToken={user.token}
                                 key={index}
-                                showToast={showToast}
+                                showToast={setToastMessage}
                             />
                         );
                     })}
