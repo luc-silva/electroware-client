@@ -10,18 +10,17 @@ import CategoryService from "../../services/CategoryService";
 import UserService from "../../services/UserService";
 
 import styles from "./ProductAbout.module.css";
+import { useToast } from "../../hooks/useToast";
 
 export const ProductAbout = ({
     productDetails,
     user,
     status,
-    showToast,
     toggleCollectionModal,
 }: {
     productDetails: ProductData;
     user: UserSession;
     status: boolean;
-    showToast: Function;
     toggleCollectionModal: Function;
 }) => {
     let [owner, setOwner] = useState({ first: "", last: "" });
@@ -120,7 +119,6 @@ export const ProductAbout = ({
                     <ProductBtnPanel
                         user={user}
                         product={productDetails.product}
-                        showToast={showToast}
                     />
                 </div>
             </div>

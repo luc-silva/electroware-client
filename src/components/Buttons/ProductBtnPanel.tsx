@@ -6,18 +6,18 @@ import { QuantityCounter } from "../Misc/QuantityCounter";
 import { ActionBtn } from "./ActionBtn";
 
 import styles from "./ProductBtnPanel.module.css";
+import { useToast } from "../../hooks/useToast";
 
 export const ProductBtnPanel = ({
     user,
     product,
-    showToast,
 }: {
     product: ProductDetails;
     user: UserSession;
-    showToast: Function;
 }) => {
     let [quantity, setQuantity] = useState(1);
     let navigate = useNavigate();
+    const { setToastMessage } = useToast();
 
     function redirect() {
         navigate("/login");
@@ -36,7 +36,7 @@ export const ProductBtnPanel = ({
                 navigate("/shopping-cart");
             })
             .catch(({ response }) => {
-                showToast(response.data.message, "warning");
+                setToastMessage(response.data.message, "warning");
             });
     }
 

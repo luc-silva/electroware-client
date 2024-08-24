@@ -11,16 +11,18 @@ import { UserImageInput } from "../Inputs/UserImageInput";
 import styles from "./ProfileSettingsForm.module.css";
 import { TextInput, TextareaInput } from "inputify";
 import { UserContext } from "../../context/UserContext";
+import { useToast } from "../../hooks/useToast";
 
-export const ProfileSettingsForm = ({ showToast }: { showToast: Function }) => {
+export const ProfileSettingsForm = () => {
     let [form, setForm] = useState(profileSettingsFormInitalState);
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const { setToastMessage } = useToast();
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         await UserService.updateAccountDetails(user.id, user.token, form).then(
             ({ data }: AxiosResponse) => {
-                showToast(data.message, "info");
+                setToastMessage(data.message, "info");
             }
         );
     }

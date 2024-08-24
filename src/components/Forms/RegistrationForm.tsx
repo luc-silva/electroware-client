@@ -7,10 +7,12 @@ import { SubmitBtn } from "../Buttons/SubmitBtn";
 
 import styles from "./RegistrationForm.module.css";
 import { PasswordInput, TextInput } from "inputify";
+import { useToast } from "../../hooks/useToast";
 
-export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
+export const RegistrationForm = () => {
     let [form, setForm] = useState(registrationFormInitialValues);
     const navigate = useNavigate();
+    const { setToastMessage } = useToast();
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         let target = event.target;
@@ -39,7 +41,7 @@ export const RegistrationForm = ({ showToast }: { showToast: Function }) => {
                 navigate("/login");
             })
             .catch(({ response }) => {
-                showToast(response.data, "warning");
+                setToastMessage(response.data, "warning");
             });
     }
     return (

@@ -4,23 +4,23 @@ import { NotePencil, Trash } from "phosphor-react";
 import styles from "./SettingsProductCard.module.css";
 import ProductService from "../../services/ProductService";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../hooks/useToast";
 
 export const SettingsProductCard = ({
     id,
     userToken,
-    showToast,
     update,
 }: {
     id: string;
     userToken: string;
-    showToast: Function;
     update: Function;
 }) => {
     const navigate = useNavigate();
+    const { setToastMessage } = useToast();
 
     async function deleteProduct() {
         await ProductService.removeProduct(id, userToken).then(({ data }) => {
-            showToast(data.message, "info");
+            setToastMessage(data.message, "info");
             update();
         });
     }

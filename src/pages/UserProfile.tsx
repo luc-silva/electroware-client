@@ -17,35 +17,44 @@ import { ImageBox } from "../components/Misc/ImageBox";
 import styles from "./UserProfile.module.css";
 
 export const UserProfile = () => {
-    let { id } = useParams();
-    let [userImage, setUserImage] = useState(imageInitialValue);
-    let [user, setUser] = useState(userProfileInitialValues);
-    let [products, setProducts] = useState([]);
-    let [reviewsScore, setReviewsScore] = useState([]);
+    const { id } = useParams();
+    const [userImage, setUserImage] = useState(imageInitialValue);
+
+    const initialProfileData = {
+        user: userProfileInitialValues,
+        products: [],
+        reviewsScore: [],
+    };
+
+    const [profileData, setProfileData] = useState(initialProfileData);
 
     useEffect(() => {
         if (id) {
             UserService.getUserInfo(id).then((data) => {
-                setUser(data);
+                setProfileData((prev) => ({ ...prev, user: data }));
             });
             UserService.getUserProducts(id).then((data) => {
-                setProducts(data);
+                setProfileData((prev) => ({ ...prev, products: data }));
             });
             UserService.getUserProductsReceivedReviews(id).then((data) => {
-                setReviewsScore(data);
+                setProfileData((prev) => ({
+                    ...prev,
+                    prodreviewsScoreucts: data,
+                }));
             });
         }
     }, [id]);
+
     useEffect(() => {
         if (id) {
             ImageService.getUserImage(id).then((data) => {
                 setUserImage(data.data);
             });
         }
-    }, [user]);
+    }, [profileData]);
 
     return (
-        <main role={"main"} className={styles["user-profile"]}>
+        <main className={styles["user-profile"]}>
             <section className={styles["user-profile__main"]}>
                 <div className={styles["user-profile__info"]}>
                     <div className={styles["user-profile__picture"]}>
@@ -55,9 +64,9 @@ export const UserProfile = () => {
                         />
                     </div>
                 </div>
-                <ProfileDetails user={user} reviews={reviewsScore} />
+                <ProfileDetails data={profileData} />
             </section>
-            <UserProducts products={products} />
+            <UserProducts products={profileData.products} />
         </main>
     );
 };

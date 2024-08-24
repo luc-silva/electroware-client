@@ -5,7 +5,7 @@ import styles from "./Wishlist.module.css";
 import { CollectionContainer } from "../components/Containers/CollectionContainer";
 import { UserContext } from "../context/UserContext";
 
-export const Wishlist = ({ showToast }: { showToast: Function }) => {
+export const Wishlist = () => {
     const { user } = useContext(UserContext);
 
     let [collections, setCollections] = useState([]);
@@ -40,7 +40,6 @@ export const Wishlist = ({ showToast }: { showToast: Function }) => {
                                         data={item}
                                         user={user}
                                         key={index}
-                                        showToast={showToast}
                                         updateCollections={updateCollections}
                                     />
                                 );

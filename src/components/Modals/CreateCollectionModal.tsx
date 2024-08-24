@@ -12,21 +12,21 @@ import { ActionBtn } from "../Buttons/ActionBtn";
 import styles from "./CreateCollectionModal.module.css";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import { UserContext } from "../../context/UserContext";
+import { useToast } from "../../hooks/useToast";
 
 export const CreateCollectionModal = ({
     isActive,
     product,
     toggleModal,
-    showToast,
 }: {
     isActive: boolean;
     product: string;
-    toggleModal: Function;
-    showToast: Function;
+    toggleModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     let [selectedCollectionId, setSelectedCollectionId] = useState("");
     let [collections, SetCollections] = useState([]);
     const { user } = useContext(UserContext);
+    const { setToastMessage } = useToast();
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -37,11 +37,11 @@ export const CreateCollectionModal = ({
             };
             await WishlistService.createWishlistInstance(data, user.token)
                 .then(({ message }) => {
-                    showToast(message);
+                    setToastMessage(message);
                     toggleModal(false);
                 })
                 .catch(({ response }) => {
-                    showToast(response.data, "warning");
+                    setToastMessage(response.data, "warning");
                 });
         }
     }
@@ -79,7 +79,6 @@ export const CreateCollectionModal = ({
                     <div className={styles["create-collection__form"]}>
                         <CollectionForm
                             user={user}
-                            showToast={showToast}
                             updateCollections={getUserCollections}
                         />
                     </div>

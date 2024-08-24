@@ -4,16 +4,16 @@ import { SearchForm } from "./Forms/SearchForm";
 
 import styles from "./Header.module.css";
 import { HMenuBtn } from "./Buttons/HMenuBtn";
+import { ProfileMenu } from "./ProfileMenu";
+import { useState } from "react";
 
-export const Header = ({
-    handleInfoMenu,
-    isMenuActive,
-    toggleHMenu,
-}: {
-    handleInfoMenu: () => void;
-    isMenuActive: boolean;
-    toggleHMenu: Function;
-}) => {
+export const Header = () => {
+    const [infoMenuActive, toggleInfoMenu] = useState(false);
+
+    function handleInfoMenu() {
+        toggleInfoMenu(!infoMenuActive);
+    }
+
     return (
         <header className={styles["header"]}>
             <div className={styles["header__main"]}>
@@ -23,12 +23,23 @@ export const Header = ({
                 <SearchForm />
             </div>
             <div className={styles["header__hmenu"]}>
-                <HMenuBtn toggleHMenu={toggleHMenu} />
+                <HMenuBtn toggleHMenu={() => {}} />
+                {/* 
+                    <HMenu
+                        toggleHMenu={toggleHMenu}
+                        isMenuActive={isHMenuActive}
+                    />
+                */}
             </div>
             <div className={styles["header__panel"]}>
                 <UserPanel
-                    isMenuActive={isMenuActive}
+                    isMenuActive={infoMenuActive}
                     handleInfoMenu={handleInfoMenu}
+                />
+
+                <ProfileMenu
+                    isActive={infoMenuActive}
+                    toggleMenu={handleInfoMenu}
                 />
             </div>
         </header>
