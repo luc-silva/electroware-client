@@ -35,6 +35,7 @@ import { SettingsCredentials } from "./components/Subpages/SettingsCredentials";
 import { ScrollToTop } from "./components/Misc/ScrollToTop";
 import { UserProvider } from "./context/UserContext";
 import { ToastProvider } from "./context/ToastContext";
+import { ContextWrapper } from "./ContextWrapper";
 
 function Electroware() {
     //refatorar
@@ -48,103 +49,90 @@ function Electroware() {
 
     return (
         <div className="electroware">
-            <UserProvider>
-                <ToastProvider>
-                    <Router>
-                        {/* misc */}
-                        <ScrollToTop />
+            <ContextWrapper>
+                <Router>
+                    {/* misc */}
+                    <ScrollToTop />
 
-                        {/* modals/toasts */}
-                        <InfoToast />
-                        <CreateCollectionModal
-                            toggleModal={toggleCollectionModal}
-                            isActive={isCollectionModalActive}
-                            product={product}
+                    {/* modals/toasts */}
+                    <InfoToast />
+                    <CreateCollectionModal
+                        toggleModal={toggleCollectionModal}
+                        isActive={isCollectionModalActive}
+                        product={product}
+                    />
+
+                    {/* heading/menus */}
+                    <Header />
+
+                    {/* pages */}
+                    <Routes>
+                        <Route path="/" element={<Store />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route
+                            path="/registration"
+                            element={<Registration />}
                         />
+                        <Route path="/privacy" element={<PrivacyPolicy />} />
+                        <Route path="/faq" element={<Faq />} />
 
-                        {/* heading/menus */}
-                        <Header />
-
-                        {/* pages */}
-                        <Routes>
-                            <Route path="/" element={<Store />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route
-                                path="/registration"
-                                element={<Registration />}
-                            />
-                            <Route
-                                path="/privacy"
-                                element={<PrivacyPolicy />}
-                            />
-                            <Route path="/faq" element={<Faq />} />
-
-                            {/* need params */}
-                            <Route path="/user/:id" element={<UserProfile />} />
-                            <Route
-                                path="/product/:id"
-                                element={
-                                    <Product
-                                        toggleCollectionModal={
-                                            showCollectionModal
-                                        }
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/search/:search"
-                                element={<SearchResults />}
-                            />
-                            <Route
-                                path="/category/:id"
-                                element={<Category />}
-                            />
-
-                            {/* protected */}
-                            <Route
-                                path="/shopping-cart"
-                                element={<ShoppingCart />}
-                            />
-                            <Route path="/wishlist" element={<Wishlist />} />
-                            <Route path="/checkout" element={<Checkout />} />
-                            <Route
-                                path="/create-offer"
-                                element={<CreateOffer />}
-                            />
-                            <Route path="/add-funds" element={<AddFunds />} />
-                            <Route path="/settings" element={<Settings />}>
-                                <Route path="" element={<EditProfile />} />
-                                <Route
-                                    path="products/"
-                                    element={<SettingsUserProducts />}
+                        {/* need params */}
+                        <Route path="/user/:id" element={<UserProfile />} />
+                        <Route
+                            path="/product/:id"
+                            element={
+                                <Product
+                                    toggleCollectionModal={showCollectionModal}
                                 />
+                            }
+                        />
+                        <Route
+                            path="/search/:search"
+                            element={<SearchResults />}
+                        />
+                        <Route path="/category/:id" element={<Category />} />
 
-                                <Route
-                                    path="products/:id"
-                                    element={<EditProduct />}
-                                />
-                                <Route
-                                    path="delete-account"
-                                    element={<DeleteAccount />}
-                                />
-                                <Route
-                                    path="transactions"
-                                    element={<SettingsTransaction />}
-                                />
-                                <Route
-                                    path="credentials"
-                                    element={<SettingsCredentials />}
-                                />
-                            </Route>
+                        {/* protected */}
+                        <Route
+                            path="/shopping-cart"
+                            element={<ShoppingCart />}
+                        />
+                        <Route path="/wishlist" element={<Wishlist />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/create-offer" element={<CreateOffer />} />
+                        <Route path="/add-funds" element={<AddFunds />} />
+                        <Route path="/settings" element={<Settings />}>
+                            <Route path="" element={<EditProfile />} />
+                            <Route
+                                path="products/"
+                                element={<SettingsUserProducts />}
+                            />
 
-                            {/* misc */}
-                            <Route path="/*" element={<NotFound />} />
-                            <Route path="/not-found" element={<NotFound />} />
-                        </Routes>
-                        <Footer />
-                    </Router>
-                </ToastProvider>
-            </UserProvider>
+                            <Route
+                                path="products/:id"
+                                element={<EditProduct />}
+                            />
+                            <Route
+                                path="delete-account"
+                                element={<DeleteAccount />}
+                            />
+                            <Route
+                                path="transactions"
+                                element={<SettingsTransaction />}
+                            />
+                            <Route
+                                path="credentials"
+                                element={<SettingsCredentials />}
+                            />
+                        </Route>
+
+                        {/* misc */}
+                        <Route path="/*" element={<NotFound />} />
+                        <Route path="/not-found" element={<NotFound />} />
+                    </Routes>
+                    <Footer />
+                </Router>
+            </ContextWrapper>
         </div>
     );
 }
