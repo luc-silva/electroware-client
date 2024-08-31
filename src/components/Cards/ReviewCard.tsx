@@ -25,9 +25,9 @@ export const ReviewCard = ({
     user: UserSession;
     updateReviews: Function;
 }) => {
-    let [cardInfo, setCardInfo] = useState(reviewsInitialState);
-    let [userImage, setUserImage] = useState(imageInitialValue);
-    let [isLoading, toggleLoading] = useState(true);
+    const [cardInfo, setCardInfo] = useState(reviewsInitialState);
+    const [userImage, setUserImage] = useState(imageInitialValue);
+    const [isLoading, toggleLoading] = useState(true);
 
     useEffect(() => {
         if (reviewId) {

@@ -7,7 +7,7 @@ import { CustomFundsCard } from "../components/Cards/CustomFundsCard";
 import { UserContext } from "../context/UserContext";
 
 export const AddFunds = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
     const options = [50, 100, 250, 500, 1000, 10000];

@@ -13,7 +13,7 @@ export const PromoBox = ({
         setForm({ ...form, on_sale: !form.on_sale });
     }
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        let target = event.target;
+        const target = event.target;
         if (target) {
             setForm({ ...form, [target.name]: target.value });
         }

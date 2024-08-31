@@ -6,9 +6,9 @@ import CategoryService from "../services/CategoryService";
 import styles from "./Category.module.css";
 
 export const Category = () => {
-    let { id } = useParams();
-    let [products, setProducts] = useState([]);
-    let [category, setCategory] = useState("");
+    const { id } = useParams();
+    const [products, setProducts] = useState([]);
+    const [category, setCategory] = useState("");
 
     useEffect(() => {
         if (id) {

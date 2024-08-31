@@ -4,7 +4,7 @@ import { ProductCard } from "../Cards/ProductCard";
 import styles from "./DiscountedProductsDisplay.module.css";
 
 export const DiscountedProductsDisplay = () => {
-    let [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     useEffect(() => {
         ProductService.getDiscountedProducts().then((data) => {
             setProducts(data);

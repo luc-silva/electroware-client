@@ -13,10 +13,10 @@ export const CustomFundsCard = ({
     user: UserSession;
     updateAccountDetails: Function;
 }) => {
-    let [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(0);
 
     function handleAmountChange(event: React.ChangeEvent) {
-        let target = event.target;
+        const target = event.target;
         if (target instanceof HTMLInputElement) {
             setAmount(Number(target.value));
         }

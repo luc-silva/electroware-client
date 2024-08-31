@@ -16,9 +16,9 @@ export const EditProduct = () => {
     const { user } = useContext(UserContext);
     const { setToastMessage } = useToast();
 
-    let { id } = useParams();
+    const { id } = useParams();
 
-    let [form, setForm] = useState(createrOfferFormInitialValue);
+    const [form, setForm] = useState(createrOfferFormInitialValue);
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault();

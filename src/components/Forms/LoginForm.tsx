@@ -11,15 +11,15 @@ import { useToast } from "../../hooks/useToast";
 
 export const LoginForm = () => {
     const { user, setUser } = useContext(UserContext);
-    let [form, setForm] = useState(loginFormInitialValue);
-    let navigate = useNavigate();
+    const [form, setForm] = useState(loginFormInitialValue);
+    const navigate = useNavigate();
     const { setToastMessage } = useToast();
 
     function setCurrentUser(data: UserSession) {
         setUser({ ...user, ...data, logged: true });
     }
     function handleChange(event: ChangeEvent<HTMLElement>) {
-        let target = event.target;
+        const target = event.target;
         if (target instanceof HTMLInputElement) {
             setForm({ ...form, [target.name]: target.value });
         }

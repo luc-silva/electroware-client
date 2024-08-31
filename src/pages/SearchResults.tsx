@@ -8,8 +8,8 @@ import styles from "./SearchResults.module.css";
 import { SearchSidePanel } from "../components/panels/SearchSidePanel";
 
 export const SearchResults = () => {
-    let { search } = useParams();
-    let [searchResults, setSearchResults] = useState([]);
+    const { search } = useParams();
+    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
         if (search) {

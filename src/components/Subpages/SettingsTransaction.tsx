@@ -6,7 +6,7 @@ import styles from "./SettingsTransaction.module.css";
 import { UserContext } from "../../context/UserContext";
 
 export const SettingsTransaction = () => {
-    let [userTransactions, setUserTransactions] = useState([]);
+    const [userTransactions, setUserTransactions] = useState([]);
     const { user } = useContext(UserContext);
 
     useEffect(() => {

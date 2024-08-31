@@ -3,7 +3,7 @@ import styles from "./FiltersPanel.module.css";
 import CategoryService from "../../services/CategoryService";
 
 export const FiltersPanel = () => {
-    let [categories, setCategories] = useState([] as Category[]);
+    const [categories, setCategories] = useState([] as Category[]);
     useEffect(() => {
         CategoryService.getCategories().then(setCategories);
     }, []);

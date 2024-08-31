@@ -1,4 +1,4 @@
-import { ChangeEvent,  FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import ReviewService from "../../services/ReviewService";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 
@@ -9,16 +9,16 @@ export const ReviewForm = ({
     user,
     product,
     updateReviews,
-    isActive
+    isActive,
 }: {
     updateReviews: Function;
     user: UserSession;
     product: ProductDetails;
-    isActive:boolean
+    isActive: boolean;
 }) => {
-    let [reviewForm, setReviewForm] = useState({ text: "", score: 1 });
+    const [reviewForm, setReviewForm] = useState({ text: "", score: 1 });
     function handleChange(event: ChangeEvent<HTMLElement>) {
-        let target = event.target;
+        const target = event.target;
         if (
             target instanceof HTMLSelectElement ||
             target instanceof HTMLTextAreaElement
@@ -29,7 +29,7 @@ export const ReviewForm = ({
 
     async function handleReviewSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        let data = {
+        const data = {
             author: user.id,
             authorUsername: user.username,
             product: product._id,
@@ -45,10 +45,7 @@ export const ReviewForm = ({
     if (!user.logged || user.id === product.owner || !isActive) return null;
     return (
         <div className={styles["ratings__form"]}>
-            <form
-                action="POST"
-                onSubmit={handleReviewSubmit}
-            >
+            <form action="POST" onSubmit={handleReviewSubmit}>
                 <TextareaInput
                     stateValue={reviewForm.text}
                     inputName="text"
@@ -56,12 +53,15 @@ export const ReviewForm = ({
                     label
                     labelText="Análise:"
                     onChange={handleChange}
-
                 />
                 <div>
                     <label htmlFor="score">
                         <p>Nota:</p>
-                        <select name="score" value={reviewForm.score} onChange={handleChange}>
+                        <select
+                            name="score"
+                            value={reviewForm.score}
+                            onChange={handleChange}
+                        >
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

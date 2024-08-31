@@ -13,7 +13,7 @@ import styles from "./Checkout.module.css";
 import { UserContext } from "../context/UserContext";
 
 export const Checkout = () => {
-    let [items, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
 
@@ -33,7 +33,7 @@ export const Checkout = () => {
         });
         return total;
     }
-    let [paymentMethod, setPaymentMethod] = useState("Boleto");
+    const [paymentMethod, setPaymentMethod] = useState("Boleto");
     function handleSelect(event: ChangeEvent<HTMLSelectElement>) {
         setPaymentMethod(event.target.value);
     }

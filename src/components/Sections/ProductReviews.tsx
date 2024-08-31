@@ -6,7 +6,7 @@ import { productRatingInitialState } from "../../constants/initialStates";
 import { ScoreDisplay } from "../Displays/ScoreDisplay";
 
 export const ProductReviews = ({ product }: { product: ProductDetails }) => {
-    let [data, setData] = useState(productRatingInitialState);
+    const [data, setData] = useState(productRatingInitialState);
     
     function updateProductScore() {
         ProductService.getProductScore(product._id).then((data) => {

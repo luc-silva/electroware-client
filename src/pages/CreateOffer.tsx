@@ -19,24 +19,24 @@ export const CreateOffer = () => {
         }
     }, []);
 
-    let blobInitialState = null as File | null;
+    const blobInitialState = null as File | null;
 
-    let [productImage, setProductImage] = useState("");
-    let [productBlob, setProductBlob] = useState(blobInitialState);
+    const [productImage, setProductImage] = useState("");
+    const [productBlob, setProductBlob] = useState(blobInitialState);
 
     function setImage(event: ChangeEvent<HTMLInputElement>) {
-        let files = event.target.files;
+        const files = event.target.files;
         if (files && files[0]) {
             setProductBlob(files[0]);
             setProductImage(URL.createObjectURL(files[0]));
         }
     }
 
-    let [form, setForm] = useState(createrOfferFormInitialValue);
+    const [form, setForm] = useState(createrOfferFormInitialValue);
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        let formData = new FormData();
+        const formData = new FormData();
 
         if (productBlob instanceof File) {
             formData.append("imageField", productBlob);

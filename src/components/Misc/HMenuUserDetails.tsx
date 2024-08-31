@@ -6,8 +6,8 @@ import styles from "./HMenuUserDetails.module.css";
 import { ImageBox } from "./ImageBox";
 
 export const HMenuUserDetails = ({ user }: { user: UserSession }) => {
-    let [userImage, setUserImage] = useState(imageInitialValue);
-    let [isLoading, toggleLoading] = useState(true);
+    const [userImage, setUserImage] = useState(imageInitialValue);
+    const [isLoading, toggleLoading] = useState(true);
     useEffect(() => {
         if (user.id) {
             ImageService.getUserImage(user.id)

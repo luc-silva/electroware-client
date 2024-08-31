@@ -16,7 +16,7 @@ export const CollectionContainer = ({
     user: UserSession;
     updateCollections: Function;
 }) => {
-    let [items, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const { setToastMessage } = useToast();
 
     async function updateCollection() {

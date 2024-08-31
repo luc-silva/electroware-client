@@ -11,12 +11,12 @@ export const CredentialsPasswordForm = ({
     user: UserSession;
     showToast: Function;
 }) => {
-    let [passwordForm, setPasswordForm] = useState({
+    const [passwordForm, setPasswordForm] = useState({
         password: "",
         new_password: "",
     });
     function handlePasswordChange(event: ChangeEvent<HTMLInputElement>) {
-        let target = event.target;
+        const target = event.target;
         if (target) {
             setPasswordForm({ ...passwordForm, [target.name]: target.value });
         }

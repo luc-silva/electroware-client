@@ -9,24 +9,23 @@ export const ScoreLevelCard = ({
     index: number;
     data: ProductScoreMetrics;
 }) => {
-    let [level, setLevel] = useState(0);
+    const [level, setLevel] = useState(0);
     useEffect(() => {
-        if(Number(data.average.score) !== 0){
-
+        if (Number(data.average.score) !== 0) {
             data.scoreMetrics.forEach((item) => {
                 if (index === item._id) {
-                    let scores = data.scoreMetrics.reduce(
+                    const scores = data.scoreMetrics.reduce(
                         (a: number, b: Score) => a + b.quant,
                         0
-                        );
-                        if (scores === item.quant) {
-                            setLevel(100); //erro aqui
-                        } else {
-                            setLevel((item.quant * 100) / data.scoreMetrics.length);
-                        }
+                    );
+                    if (scores === item.quant) {
+                        setLevel(100); //erro aqui
+                    } else {
+                        setLevel((item.quant * 100) / data.scoreMetrics.length);
                     }
-                });
-            }
+                }
+            });
+        }
     }, [data.scoreMetrics, index]);
     return (
         <div className={styles["score__card"]}>

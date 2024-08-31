@@ -5,15 +5,15 @@ import styles from "./SearchForm.module.css";
 import { useNavigate } from "react-router-dom";
 
 export const SearchForm = ({ closeModal }: { closeModal?: Function }) => {
-    let [searchInputValue, setSearchInputValue] = useState("");
+    const [searchInputValue, setSearchInputValue] = useState("");
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
-        let target = event.target;
+        const target = event.target;
         if (target) {
             setSearchInputValue(target.value);
         }
     };
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (searchInputValue) {

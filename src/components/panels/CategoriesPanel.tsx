@@ -5,7 +5,7 @@ import { SearchCategoryCard } from "../Cards/SearchCategoryCard";
 import styles from "./CategoriesPanel.module.css";
 
 export const CategoriesPanel = () => {
-    let [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         CategoryService.getCategories().then((data) => {

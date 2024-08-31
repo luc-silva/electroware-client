@@ -9,12 +9,12 @@ import styles from "./HomeBanner.module.css";
 export const HomeBanner = () => {
     const images = [banner1, banner2, banner3];
 
-    let [counter, setCounter] = useState(0);
-    let [currentImage, setCurrentImage] = useState(images[0]);
-    let [seconds, setSeconds] = useState(4000);
+    const [counter, setCounter] = useState(0);
+    const [currentImage, setCurrentImage] = useState(images[0]);
+    const [seconds, setSeconds] = useState(4000);
 
     useEffect(() => {
-        let interval = setInterval(() => {
+        const interval = setInterval(() => {
             setCounter((prev: number) => {
                 if (prev < images.length - 1) {
                     return prev + 1;

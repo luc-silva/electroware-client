@@ -18,8 +18,8 @@ export const ProductCardSmall = ({
     instanceID: string;
     updateCart: Function;
 }) => {
-    let [instanceData, setInstanceData] = useState(cardInitialState);
-    let [loading, toggleLoading] = useState(true);
+    const [instanceData, setInstanceData] = useState(cardInitialState);
+    const [loading, toggleLoading] = useState(true);
     const navigate = useNavigate();
 
     const { user } = useContext(UserContext);

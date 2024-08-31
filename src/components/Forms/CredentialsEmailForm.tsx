@@ -11,11 +11,11 @@ export const CredentialsEmailForm = ({
     user: UserSession;
     showToast: Function;
 }) => {
-    let [emailForm, setEmailForm] = useState({
+    const  [emailForm, setEmailForm] = useState({
         email: "",
     });
     function handleEmailChange(event: ChangeEvent<HTMLInputElement>) {
-        let target = event.target;
+        const  target = event.target;
         if (target) {
             setEmailForm({ ...emailForm, [target.name]: target.value });
         }

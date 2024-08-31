@@ -11,9 +11,9 @@ import { CardPriceDisplay } from "../Displays/CardPriceDisplay";
 import styles from "./SearchResultCard.module.css";
 
 export const SearchResultItem = ({ productId }: { productId: string }) => {
-    let [isLoading, toggleLoading] = useState(true);
-    let [seller, setSeller] = useState({ first: "", last: "" });
-    let [productData, setProductData] = useState(productInitialState);
+    const [isLoading, toggleLoading] = useState(true);
+    const [seller, setSeller] = useState({ first: "", last: "" });
+    const [productData, setProductData] = useState(productInitialState);
 
     useEffect(() => {
         if (productId) {

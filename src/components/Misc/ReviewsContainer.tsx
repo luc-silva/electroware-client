@@ -17,8 +17,8 @@ export const ReviewsContainer = ({
 }) => {
     const { setUser, user } = useContext(UserContext);
     
-    let [reviews, setReviews] = useState([{ _id: "", author: "" }]);
-    let [userHasNotReviewed, toggleUserHasNotReviewed] = useState(false);
+    const [reviews, setReviews] = useState([{ _id: "", author: "" }]);
+    const [userHasNotReviewed, toggleUserHasNotReviewed] = useState(false);
 
     async function updateReviews() {
         ProductService.getProductReviews(product._id)

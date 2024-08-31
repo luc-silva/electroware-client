@@ -4,7 +4,8 @@ import { ProductCard } from "../Cards/ProductCard";
 import styles from "./HomeRecentProducts.module.css"
 
 export const HomeRecentProducts = () => {
-    let [recentProducts, setRecentProducts] = useState([]);
+    const [recentProducts, setRecentProducts] = useState([]);
+    
     useEffect(() => {
         ProductService.getRecentProducts().then((data) => {
             setRecentProducts(data)

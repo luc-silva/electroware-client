@@ -15,8 +15,8 @@ export const ProductBtnPanel = ({
     product: ProductDetails;
     user: UserSession;
 }) => {
-    let [quantity, setQuantity] = useState(1);
-    let navigate = useNavigate();
+    const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
     const { setToastMessage } = useToast();
 
     function redirect() {
@@ -24,7 +24,7 @@ export const ProductBtnPanel = ({
     }
 
     async function addToShoppingCart() {
-        let data = {
+        const data = {
             user: user.id,
             product: product._id,
             price: product.price,

@@ -5,12 +5,11 @@ import { SettingsProductCard } from "../Cards/SettingsProductCard";
 import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog";
 import styles from "./SettingsUserProducts.module.css";
 import { UserContext } from "../../context/UserContext";
-import { useToast } from "../../hooks/useToast";
 
 export const SettingsUserProducts = () => {
     const { user } = useContext(UserContext);
 
-    let [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     async function updateProducts() {
         await UserService.getUserProducts(user.id).then(setProducts);
     }

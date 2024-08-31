@@ -10,8 +10,8 @@ import { UserContext } from "../context/UserContext";
 
 export const ShoppingCart = () => {
     const { user } = useContext(UserContext);
-    let [items, setItems] = useState([] as CartItem[]);
-    let navigate = useNavigate();
+    const [items, setItems] = useState([] as CartItem[]);
+    const navigate = useNavigate();
 
     function handleCheckout() {
         navigate("/checkout");

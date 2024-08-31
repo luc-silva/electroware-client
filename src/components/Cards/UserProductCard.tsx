@@ -10,8 +10,8 @@ import { CardPriceDisplay } from "../Displays/CardPriceDisplay";
 import styles from "./UserProductCard.module.css";
 
 export const UserProductCard = ({ id }: { id: string }) => {
-    let [productDetails, setProductDetails] = useState(productInitialState);
-    let [isLoading, toggleLoading] = useState(true);
+    const [productDetails, setProductDetails] = useState(productInitialState);
+    const [isLoading, toggleLoading] = useState(true);
     useEffect(() => {
         if (id) {
             ProductService.getProductDetails(id)

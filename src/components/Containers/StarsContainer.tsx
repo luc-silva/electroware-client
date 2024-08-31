@@ -8,7 +8,7 @@ export const StarsContainer = ({
     stars: number;
     size: number;
 }) => {
-    let starsArr = [
+    const starsArr = [
         <Star size={size} color="var(--main-color)" key={0} />,
         <Star size={size} color="var(--main-color)" key={1} />,
         <Star size={size} color="var(--main-color)" key={2} />,

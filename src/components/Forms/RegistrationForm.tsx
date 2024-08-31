@@ -10,12 +10,12 @@ import { PasswordInput, TextInput } from "inputify";
 import { useToast } from "../../hooks/useToast";
 
 export const RegistrationForm = () => {
-    let [form, setForm] = useState(registrationFormInitialValues);
+    const [form, setForm] = useState(registrationFormInitialValues);
     const navigate = useNavigate();
     const { setToastMessage } = useToast();
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        let target = event.target;
+        const target = event.target;
         if (target instanceof HTMLInputElement) {
             setForm({ ...form, [target.name]: target.value });
         }
@@ -24,7 +24,7 @@ export const RegistrationForm = () => {
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        let data = {
+        const data = {
             ...form,
             name: {
                 first: form.first,

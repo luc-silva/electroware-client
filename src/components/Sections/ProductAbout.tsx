@@ -23,8 +23,8 @@ export const ProductAbout = ({
     user: UserSession;
     status: boolean;
 }) => {
-    let [owner, setOwner] = useState({ first: "", last: "" });
-    let [category, setCategory] = useState("");
+    const [owner, setOwner] = useState({ first: "", last: "" });
+    const [category, setCategory] = useState("");
     const { showCollectionModal } = useModals();
 
     async function handleWishlist() {

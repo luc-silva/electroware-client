@@ -5,7 +5,7 @@ import { CategoryCard } from "../Cards/CategoryCard";
 import styles from "./CategoriesDisplay.module.css";
 
 export const CategoriesDisplay = () => {
-    let [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         CategoryService.getCategories().then(setCategories);

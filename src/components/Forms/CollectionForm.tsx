@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent,  useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./CollectionForm.module.css";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import WishlistCollectionService from "../../services/WishlistCollectionService";
@@ -8,13 +8,13 @@ import { useToast } from "../../hooks/useToast";
 
 export const CollectionForm = ({
     user,
-    updateCollections
+    updateCollections,
 }: {
     user: UserSession;
-    updateCollections:Function
+    updateCollections: Function;
 }) => {
-    let [form, setForm] = useState({ name: "", privated: false });
-    const {setToastMessage} = useToast()
+    const [form, setForm] = useState({ name: "", privated: false });
+    const { setToastMessage } = useToast();
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -22,21 +22,21 @@ export const CollectionForm = ({
         WishlistCollectionService.createCollection(user.token, form)
             .then(({ message }) => {
                 setToastMessage(message);
-                updateCollections()
+                updateCollections();
             })
-            .catch(({response}) => {
+            .catch(({ response }) => {
                 setToastMessage(response.data, "warning");
             });
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-        let target = event.target;
+        const target = event.target;
         if (target) {
             setForm({ ...form, [target.name]: target.value });
         }
     }
 
-    let [checkboxState, toggleCheckboxState] = useState(true);
+    const [checkboxState, toggleCheckboxState] = useState(true);
     function handleCheckboxClick() {
         toggleCheckboxState(!checkboxState);
         setForm({ ...form, privated: checkboxState });

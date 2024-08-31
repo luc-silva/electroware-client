@@ -14,7 +14,7 @@ import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
 
 export const ProfileSettingsForm = () => {
-    let [form, setForm] = useState(profileSettingsFormInitalState);
+    const [form, setForm] = useState(profileSettingsFormInitalState);
     const { user } = useContext(UserContext);
     const { setToastMessage } = useToast();
 
@@ -33,8 +33,8 @@ export const ProfileSettingsForm = () => {
             event.target instanceof HTMLSelectElement ||
             event.target instanceof HTMLTextAreaElement
         ) {
-            let targetName = event.target.name;
-            let targetValue = event.target.value;
+            const targetName = event.target.name;
+            const targetValue = event.target.value;
             if (targetName === "first" || targetName === "last") {
                 setForm({
                     ...form,

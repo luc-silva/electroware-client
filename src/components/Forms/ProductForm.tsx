@@ -23,7 +23,7 @@ export const ProductForm = ({
     handleSubmit: FormEventHandler<HTMLFormElement>;
     submitBtnText: string;
 }) => {
-    let [categories, setCategories] = useState([{ name: "", _id: "" }]);
+    const [categories, setCategories] = useState([{ name: "", _id: "" }]);
     useEffect(() => {
         CategoryService.getCategories().then((data) => {
             setCategories(data);
@@ -31,7 +31,7 @@ export const ProductForm = ({
     }, []);
 
     function handleChange(event: ChangeEvent<HTMLElement>) {
-        let target = event.target;
+        const target = event.target;
         if (
             target instanceof HTMLInputElement ||
             target instanceof HTMLTextAreaElement ||

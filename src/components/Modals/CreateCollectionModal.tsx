@@ -17,8 +17,10 @@ import { ModalContext } from "../../context/ModalContext";
 import { useModals } from "../../hooks/useModals";
 
 export const CreateCollectionModal = () => {
-    let [selectedCollectionId, setSelectedCollectionId] = useState("");
-    let [collections, SetCollections] = useState([]);
+    const [selectedCollectionId, setSelectedCollectionId] = useState("");
+    const [collections, SetCollections] = useState<
+        { _id: string; name: string }[]
+    >([]);
     const { user } = useContext(UserContext);
     const { setToastMessage } = useToast();
     const { productId, active } = useContext(ModalContext);
@@ -27,7 +29,7 @@ export const CreateCollectionModal = () => {
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         if (productId) {
-            let data = {
+            const data = {
                 product: productId,
                 group: selectedCollectionId,
             };
@@ -54,11 +56,12 @@ export const CreateCollectionModal = () => {
             getUserCollections();
         }
     }, [user.id, active.collectionModal]);
+
     if (!active.collectionModal) return null;
     return (
         <div
             className={styles["create-collection"]}
-            onClick={(event: React.MouseEvent) => {
+            onClick={() => {
                 showCollectionModal(productId);
             }}
         >

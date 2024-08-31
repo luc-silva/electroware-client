@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 
 export const Settings = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const { user } = useContext(UserContext);
 
     //refatorar. criar componente a parte que checa as páginas

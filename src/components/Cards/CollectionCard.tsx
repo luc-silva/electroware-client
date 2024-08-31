@@ -10,7 +10,7 @@ export const CollectionCard = ({
     selectedCollection: string;
     setChosenCollection: Function;
 }) => {
-    let [actualClass, setActualClass] = useState(styles["collection-card"]);
+    const [actualClass, setActualClass] = useState(styles["collection-card"]);
 
     useEffect(() => {
         if (selectedCollection === data._id) {

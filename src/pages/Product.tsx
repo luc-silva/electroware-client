@@ -15,9 +15,9 @@ export const Product = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
-    let { id } = useParams();
-    let [productDetails, setProductDetails] = useState(productPageInitialState);
-    let [infoStatus, toggleInfoStatus] = useState(true);
+    const { id } = useParams();
+    const [productDetails, setProductDetails] = useState(productPageInitialState);
+    const [infoStatus, toggleInfoStatus] = useState(true);
 
     useEffect(() => {
         if (id) {
@@ -36,7 +36,7 @@ export const Product = () => {
 
         if (user.logged) {
             viewedProducts = [...user.viewedProducts];
-            let product = productDetails.product._id;
+            const product = productDetails.product._id;
 
             if (!viewedProducts.includes(product) && product) {
                 if (viewedProducts.length === 5) {

@@ -8,8 +8,8 @@ import { UserContext } from "../context/UserContext";
 export const Wishlist = () => {
     const { user } = useContext(UserContext);
 
-    let [collections, setCollections] = useState([]);
-    let { id } = useParams();
+    const [collections, setCollections] = useState([]);
+    const { id } = useParams();
     const navigate = useNavigate();
 
     async function updateCollections() {

@@ -10,7 +10,7 @@ export const FaqCard = ({
     faqAnswer: string;
     faqQuestion: string;
 }) => {
-    let [isCardActive, toggleCard] = useReducer((checked) => !checked, false);
+    const [isCardActive, toggleCard] = useReducer((checked) => !checked, false);
     function handleCard() {
         toggleCard();
     }

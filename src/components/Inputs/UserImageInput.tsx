@@ -18,8 +18,8 @@ export const UserImageInput = ({
     productId?: string;
     inputType: "userImage" | "productImage";
 }) => {
-    let [image, setImage] = useState(imageInitialValue);
-    let [imageLoading, toggleImageLoading] = useState(true);
+    const [image, setImage] = useState(imageInitialValue);
+    const [imageLoading, toggleImageLoading] = useState(true);
 
     useEffect(() => {
         if (inputType === "productImage" && productId) {
@@ -41,9 +41,9 @@ export const UserImageInput = ({
     }, [inputType, productId, user.id]);
 
     async function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        let formData = new FormData();
+        const formData = new FormData();
 
-        let files = event.target.files;
+        const files = event.target.files;
         if (event.target && files && files[0] instanceof File) {
             formData.append("imageField", files[0]);
             formData.append("imageType", inputType);

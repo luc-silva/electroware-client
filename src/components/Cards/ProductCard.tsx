@@ -12,8 +12,8 @@ import { ImageBox } from "../Misc/ImageBox";
 import styles from "./ProductCard.module.css";
 
 export const ProductCard = ({ id }: { id: string }) => {
-    let [productData, setProductData] = useState(productCardInitialState);
-    let [cardStatus, setCardStatus] = useState({ loading: true, error: false });
+    const [productData, setProductData] = useState(productCardInitialState);
+    const [cardStatus, setCardStatus] = useState({ loading: true, error: false });
     useEffect(() => {
         ProductService.getProductDetails(id)
             .then((data: any) => {
