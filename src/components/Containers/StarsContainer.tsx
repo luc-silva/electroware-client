@@ -3,32 +3,29 @@ import styles from "./StarsContainer.module.css";
 
 export const StarsContainer = ({
     size,
-    stars,
+    score,
 }: {
-    stars: number;
     size: number;
+    score: number;
 }) => {
     const starsArr = [
-        <Star size={size} color="var(--main-color)" key={0} />,
-        <Star size={size} color="var(--main-color)" key={1} />,
-        <Star size={size} color="var(--main-color)" key={2} />,
-        <Star size={size} color="var(--main-color)" key={3} />,
-        <Star size={size} color="var(--main-color)" key={4} />,
+        <Star size={size} color="var(--main-color)" />,
+        <Star size={size} color="var(--main-color)" />,
+        <Star size={size} color="var(--main-color)" />,
+        <Star size={size} color="var(--main-color)" />,
+        <Star size={size} color="var(--main-color)" />,
     ];
+
     return (
         <div className={styles["stars-container"]}>
-            {starsArr.map((element, index) => {
-                return index >= Math.floor(stars) ? (
-                    element
-                ) : (
-                    <Star
-                        size={size}
-                        color="var(--main-color)"
-                        weight="duotone"
-                        key={index}
-                    />
-                );
-            })}
+            {starsArr.map((_, index) => (
+                <Star
+                    size={size}
+                    color="var(--main-color)"
+                    weight={index >= Math.floor(score) ? undefined : "duotone"}
+                    key={index}
+                />
+            ))}
         </div>
     );
 };
