@@ -4,10 +4,8 @@
  * @returns String containing the average product score.
  */
 export function getAverage(reviews: Review[]): number {
-    let total = 0;
-    reviews.forEach((review: Review) => {
-        total += review.score;
-    });
+    const total = reviews.reduce((acc, current) => acc + current.score, 0);
+
     return total === 0 ? 0 : Number((total / reviews.length).toFixed(1));
 }
 
@@ -17,11 +15,10 @@ export function getAverage(reviews: Review[]): number {
  * @returns Total price in number.
  */
 export function getTotalValue(items: CartItem[]) {
-    let total = 0;
-    items.forEach(({ price, quantity }: CartItem) => {
-        total += price * quantity;
-    });
-    return total;
+    return items.reduce(
+        (acc, { price, quantity }) => acc + price * quantity,
+        0
+    );
 }
 
 /**
@@ -30,12 +27,14 @@ export function getTotalValue(items: CartItem[]) {
  * @returns Image path
  */
 export function createImage(bufferArr: any) {
-    let blob = new Blob([new Uint8Array(bufferArr)], {
+    const uintArray = [new Uint8Array(bufferArr)];
+    const blob = new Blob(uintArray, {
         type: "image/jpeg",
     });
-    let srcBlob = URL.createObjectURL(blob);
-    return srcBlob;
+
+    return URL.createObjectURL(blob);
 }
+
 /**
  * Check if user has already made a review in a product by checking its reviews.
  * @param arrayOfReviews Array of review objects.
