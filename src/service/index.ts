@@ -26,7 +26,7 @@ export const getCategory = async (categoryId: string) => {
     });
 };
 export const getCategories = async () => {
-    return await axios.get(categoryUrl).then(({ data }) => data);
+    return await axios.get<Category[]>(categoryUrl).then(({ data }) => data);
 };
 export const getCategoryProducts = async (categoryId: string) => {
     const URL = `${categoryUrl}${categoryId}/products`;
@@ -62,9 +62,11 @@ export const updateProduct = async (
         .then(({ data }) => data);
 };
 export const getRecentProducts = async () => {
-    return await axios.get(productUrl).then(({ data }) => data);
+    return await axios
+        .get<ProductDetails[]>(productUrl)
+        .then(({ data }) => data);
 };
-export const getDiscountedProducts = async () => {
+export const getProductsOnSale = async () => {
     return await axios.get(productUrl + "discount").then(({ data }) => data);
 };
 export const getProductDetails = async (productId: string) => {

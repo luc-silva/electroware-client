@@ -3,7 +3,7 @@ import { Header } from "./components/Misc/Header/Header";
 import { useState } from "react";
 
 //pages
-import { Store } from "./pages/Store/Store";
+import { Store } from "./pages/Store";
 import { Login } from "./pages/Login/Login";
 import { Registration } from "./pages/Registration/Registration";
 import { Product } from "./pages/Product/Product";

@@ -5,12 +5,10 @@ import { getCategories } from "../../../service";
 import { SearchCategoryCard } from "../../Cards/SearchCategoryCard/SearchCategoryCard";
 
 export const CategoriesPanel = () => {
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState<CategoryDetails[]>([]);
 
     useEffect(() => {
-        getCategories().then((data) => {
-            setCategories(data);
-        });
+        getCategories().then(setCategories);
     }, []);
     return (
         <section className={styles["category-panel"]}>

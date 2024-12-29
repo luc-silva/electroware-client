@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
 import { Circle } from "phosphor-react";
-import styles from "./HomeBanner.module.css";
+import styles from "./styles.module.css";
 
-const banner1 = `${process.env.PUBLIC_URL}/images/electroware-banner-1.jpg` 
-const banner2 = `${process.env.PUBLIC_URL}/images/electroware-banner-2.jpg` 
-const banner3 = `${process.env.PUBLIC_URL}/images/electroware-banner-3.jpg` 
+const banner1 = `${process.env.PUBLIC_URL}/images/electroware-banner-1.jpg`;
+const banner2 = `${process.env.PUBLIC_URL}/images/electroware-banner-2.jpg`;
+const banner3 = `${process.env.PUBLIC_URL}/images/electroware-banner-3.jpg`;
 
-export const HomeBanner = () => {
+export const Banner = () => {
     const images = [banner1, banner2, banner3];
 
     const [counter, setCounter] = useState(0);
     const [currentImage, setCurrentImage] = useState(images[0]);
-    const [seconds, setSeconds] = useState(4000);
+    const seconds = 4000;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -46,7 +46,7 @@ export const HomeBanner = () => {
                                 key={index}
                                 onClick={() => {
                                     handleIconClick(index);
-                                    setCounter(index)
+                                    setCounter(index);
                                 }}
                             />
                         );
@@ -57,7 +57,7 @@ export const HomeBanner = () => {
                             key={index}
                             onClick={() => {
                                 handleIconClick(index);
-                                setCounter(index)
+                                setCounter(index);
                             }}
                         />
                     );
