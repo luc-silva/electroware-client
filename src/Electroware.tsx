@@ -1,37 +1,37 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Header } from "./components/Header";
+import { Header } from "./components/Misc/Header/Header";
 import { useState } from "react";
 
 //pages
-import { Store } from "./pages/Store";
-import { Login } from "./pages/Login";
-import { Registration } from "./pages/Registration";
-import { Product } from "./pages/Product";
-import { Faq } from "./pages/Faq";
-import { SearchResults } from "./pages/SearchResults";
-import { NotFound } from "./pages/NotFound";
-import { ShoppingCart } from "./pages/ShoppingCart";
-import { UserProfile } from "./pages/UserProfile";
-import { Checkout } from "./pages/Checkout";
-import { CreateOffer } from "./pages/CreateOffer";
-import { AddFunds } from "./pages/AddFunds";
-import { Settings } from "./pages/Settings";
-import { Category } from "./pages/Category";
-import { Wishlist } from "./pages/Wishlist";
+import { Store } from "./pages/Store/Store";
+import { Login } from "./pages/Login/Login";
+import { Registration } from "./pages/Registration/Registration";
+import { Product } from "./pages/Product/Product";
+import { Faq } from "./pages/Faq/Faq";
+import { SearchResults } from "./pages/SearchResults/SearchResults";
+import { NotFound } from "./pages/NotFound/NotFound";
+import { ShoppingCart } from "./pages/Settings/ShoppingCart/ShoppingCart";
+import { UserProfile } from "./pages/UserProfile/UserProfile";
+import { Checkout } from "./pages/Checkout/Checkout";
+import { CreateOffer } from "./pages/CreateOffer/CreateOffer";
+import { AddFunds } from "./pages/AddFunds/AddFunds";
+import { Settings } from "./pages/Settings/Settings";
+import { Category } from "./pages/Category/Category";
+import { Wishlist } from "./pages/Wishlist/Wishlist";
 
 //
-import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy";
 import { Footer } from "./components/Misc/Footer";
-import { InfoToast } from "./components/InfoToast";
-import { CreateCollectionModal } from "./components/Modals/CreateCollectionModal";
+import { InfoToast } from "./components/Misc/InfoToast/InfoToast";
+import { CreateCollectionModal } from "./components/Modals/CreateCollectionModal/CreateCollectionModal";
 
 // subpages
-import { EditProfile } from "./components/Subpages/EditProfile";
+import { EditProfile } from "./components/Subpages/EditProfile/EditProfile";
 import { DeleteAccount } from "./components/Subpages/DeleteAccount";
 import { SettingsTransaction } from "./components/Subpages/SettingsTransaction";
-import { SettingsUserProducts } from "./components/Subpages/SettingsUserProducts";
-import { EditProduct } from "./components/Subpages/EditProduct";
-import { SettingsCredentials } from "./components/Subpages/SettingsCredentials";
+import { SettingsUserProducts } from "./components/Subpages/SettingsUserProducts/SettingsUserProducts";
+import { EditProduct } from "./components/Subpages/EditProduct/EditProduct";
+import { SettingsCredentials } from "./components/Subpages/SettingsCredentials/SettingsCredentials";
 import { ScrollToTop } from "./components/Misc/ScrollToTop";
 import { ContextWrapper } from "./ContextWrapper";
 
