@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ProductService from "../../services/ProductService";
-import ShoppingCartService from "../../services/ShoppingCartService";
 import { QuantityCounter } from "../Misc/QuantityCounter";
 import { ActionBtn } from "./ActionBtn";
 
 import styles from "./ProductBtnPanel.module.css";
 import { useToast } from "../../hooks/useToast";
+import { createCartInstance, removeProduct } from "../../service";
 
 export const ProductBtnPanel = ({
     user,
@@ -31,7 +30,7 @@ export const ProductBtnPanel = ({
             quantity: quantity,
         };
 
-        await ShoppingCartService.createCartInstance(data, user.token)
+        await createCartInstance(data, user.token)
             .then(() => {
                 navigate("/shopping-cart");
             })
@@ -40,8 +39,8 @@ export const ProductBtnPanel = ({
             });
     }
 
-    async function removeProduct() {
-        await ProductService.removeProduct(product._id, user.token).then(() => {
+    async function handleRemoveProduct() {
+        await removeProduct(product._id, user.token).then(() => {
             navigate("/");
         });
     }
@@ -68,7 +67,7 @@ export const ProductBtnPanel = ({
                     <div className={styles["panel-container"]}>
                         <ActionBtn
                             textValue="Remover anúncio"
-                            onClick={removeProduct}
+                            onClick={handleRemoveProduct}
                         />
                     </div>
                 ))) || (

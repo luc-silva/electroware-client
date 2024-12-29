@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import ProductService from "../../services/ProductService";
 import { ProductCard } from "../Cards/ProductCard";
-import styles from "./HomeRecentProducts.module.css"
+import styles from "./HomeRecentProducts.module.css";
+import { getRecentProducts } from "../../service";
 
 export const HomeRecentProducts = () => {
     const [recentProducts, setRecentProducts] = useState([]);
-    
+
     useEffect(() => {
-        ProductService.getRecentProducts().then((data) => {
-            setRecentProducts(data)
-        })
+        getRecentProducts().then((data) => {
+            setRecentProducts(data);
+        });
     }, []);
-    
+
     return (
         <section className={styles["recent-products"]}>
             <h2>Recém anunciados</h2>

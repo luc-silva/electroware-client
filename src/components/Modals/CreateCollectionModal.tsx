@@ -2,9 +2,6 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import { CloseBtn } from "../Buttons/CloseBtn";
 import { CollectionForm } from "../Forms/CollectionForm";
 
-import UserService from "../../services/UserService";
-import WishlistService from "../../services/WishlistService";
-
 import { CollectionCard } from "../Cards/CollectionCard";
 import { stopEventPropagation } from "../../utils/operations";
 import { ActionBtn } from "../Buttons/ActionBtn";
@@ -15,6 +12,7 @@ import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
 import { ModalContext } from "../../context/ModalContext";
 import { useModals } from "../../hooks/useModals";
+import { createWishlistInstance, getUserPublicCollections } from "../../service";
 
 export const CreateCollectionModal = () => {
     const [selectedCollectionId, setSelectedCollectionId] = useState("");
@@ -33,7 +31,7 @@ export const CreateCollectionModal = () => {
                 product: productId,
                 group: selectedCollectionId,
             };
-            await WishlistService.createWishlistInstance(data, user.token)
+            await createWishlistInstance(data, user.token)
                 .then(({ message }) => {
                     setToastMessage(message);
                     showCollectionModal(productId);
@@ -45,11 +43,9 @@ export const CreateCollectionModal = () => {
     }
 
     async function getUserCollections() {
-        await UserService.getUserCollections(user.id, user.token).then(
-            (data) => {
-                SetCollections(data);
-            }
-        );
+        await getUserPublicCollections(user.id, user.token).then((data) => {
+            SetCollections(data);
+        });
     }
     useEffect(() => {
         if (user.id) {

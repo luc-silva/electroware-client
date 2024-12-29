@@ -1,8 +1,7 @@
 import { useState } from "react";
-import UserService from "../../services/UserService";
 import styles from "./CustomFundsCard.module.css";
 import { NumberInput } from "inputify";
-
+import { addFunds } from "../../service";
 
 //refatorar
 
@@ -22,7 +21,7 @@ export const CustomFundsCard = ({
         }
     }
     async function addAmount(event: React.MouseEvent) {
-        await UserService.addFunds(amount, user.token).then(() => {
+        await addFunds(amount, user.token).then(() => {
             updateAccountDetails();
         });
     }

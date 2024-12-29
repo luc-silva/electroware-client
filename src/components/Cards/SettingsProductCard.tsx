@@ -2,9 +2,9 @@ import { UserProductCard } from "./UserProductCard";
 
 import { NotePencil, Trash } from "phosphor-react";
 import styles from "./SettingsProductCard.module.css";
-import ProductService from "../../services/ProductService";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../hooks/useToast";
+import { removeProduct } from "../../service";
 
 export const SettingsProductCard = ({
     id,
@@ -19,7 +19,7 @@ export const SettingsProductCard = ({
     const { setToastMessage } = useToast();
 
     async function deleteProduct() {
-        await ProductService.removeProduct(id, userToken).then(({ data }) => {
+        await removeProduct(id, userToken).then(({ data }) => {
             setToastMessage(data.message, "info");
             update();
         });

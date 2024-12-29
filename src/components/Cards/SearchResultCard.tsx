@@ -1,6 +1,4 @@
-import UserService from "../../services/UserService";
 import { useEffect, useState } from "react";
-import ProductService from "../../services/ProductService";
 import { Link } from "react-router-dom";
 
 import { productInitialState } from "../../constants/initialStates";
@@ -9,6 +7,7 @@ import { ImageBox } from "../Misc/ImageBox";
 
 import { CardPriceDisplay } from "../Displays/CardPriceDisplay";
 import styles from "./SearchResultCard.module.css";
+import { getProductDetails, getUserInfo } from "../../service";
 
 export const SearchResultItem = ({ productId }: { productId: string }) => {
     const [isLoading, toggleLoading] = useState(true);
@@ -17,7 +16,7 @@ export const SearchResultItem = ({ productId }: { productId: string }) => {
 
     useEffect(() => {
         if (productId) {
-            ProductService.getProductDetails(productId)
+            getProductDetails(productId)
                 .then((data) => {
                     setProductData(data);
                 })
@@ -28,11 +27,9 @@ export const SearchResultItem = ({ productId }: { productId: string }) => {
     }, [productId]);
     useEffect(() => {
         if (productData.product._id) {
-            UserService.getUserInfo(productData.product.owner).then(
-                ({ name }) => {
-                    setSeller(name);
-                }
-            );
+            getUserInfo(productData.product.owner).then(({ name }) => {
+                setSeller(name);
+            });
         }
     }, [productData.product._id, productData.product.owner]);
 

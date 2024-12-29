@@ -1,4 +1,3 @@
-import ProductService from "../services/ProductService";
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +7,7 @@ import { createrOfferFormInitialValue } from "../constants/initialStates";
 import styles from "./CreateOffer.module.css";
 import { ImageBox } from "../components/Misc/ImageBox";
 import { UserContext } from "../context/UserContext";
+import { createProduct } from "../service";
 
 export const CreateOffer = () => {
     const { user } = useContext(UserContext);
@@ -42,11 +42,9 @@ export const CreateOffer = () => {
             formData.append("imageField", productBlob);
             formData.append("product", JSON.stringify(form, null));
 
-            await ProductService.createProduct(formData, user.token).then(
-                (data) => {
-                    navigate(`/product/${data.productID}`);
-                }
-            );
+            await createProduct(formData, user.token).then((data) => {
+                navigate(`/product/${data.productID}`);
+            });
         }
     }
 

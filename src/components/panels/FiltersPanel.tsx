@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./FiltersPanel.module.css";
-import CategoryService from "../../services/CategoryService";
+import { getCategories } from "../../service";
 
 export const FiltersPanel = () => {
     const [categories, setCategories] = useState([] as Category[]);
     useEffect(() => {
-        CategoryService.getCategories().then(setCategories);
+        getCategories().then(setCategories);
     }, []);
 
     return (
@@ -34,9 +34,15 @@ export const FiltersPanel = () => {
                             })}
                         </select>
                     </div>
-                    <div className={styles["input-container"]}> 
+                    <div className={styles["input-container"]}>
                         <label htmlFor="price">Preço até:</label>
-                        <input type="range" name="price" min={3} max={9999} defaultValue={undefined} />
+                        <input
+                            type="range"
+                            name="price"
+                            min={3}
+                            max={9999}
+                            defaultValue={undefined}
+                        />
                     </div>
                     <div className={styles["input-container"]}>
                         <label htmlFor="rating">Avaliação:</label>

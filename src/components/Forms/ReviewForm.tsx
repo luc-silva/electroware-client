@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import ReviewService from "../../services/ReviewService";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 
 import styles from "./ReviewForm.module.css";
 import { TextareaInput } from "inputify";
+import { submitReview } from "../../service";
 
 export const ReviewForm = ({
     user,
@@ -37,7 +37,7 @@ export const ReviewForm = ({
             text: reviewForm.text,
             score: reviewForm.score,
         };
-        await ReviewService.submitReview(data, user.token).then(async () => {
+        await submitReview(data, user.token).then(async () => {
             await updateReviews();
         });
     }

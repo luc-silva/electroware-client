@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import styles from "./CredentialsPasswordForm.module.css";
-import UserService from "../../services/UserService";
 import { PasswordInput } from "inputify";
+import { updateUserPassword } from "../../service";
 
 export const CredentialsPasswordForm = ({
     user,
@@ -24,7 +24,7 @@ export const CredentialsPasswordForm = ({
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        await UserService.updateUserPassword(user.token, passwordForm)
+        await updateUserPassword(user.token, passwordForm)
             .then(({ data }) => {
                 showToast(data.message);
             })

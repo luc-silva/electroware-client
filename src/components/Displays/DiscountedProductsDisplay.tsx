@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import ProductService from "../../services/ProductService";
 import { ProductCard } from "../Cards/ProductCard";
 import styles from "./DiscountedProductsDisplay.module.css";
+import { getDiscountedProducts } from "../../service";
 
 export const DiscountedProductsDisplay = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        ProductService.getDiscountedProducts().then((data) => {
+        getDiscountedProducts().then((data) => {
             setProducts(data);
         });
     }, []);

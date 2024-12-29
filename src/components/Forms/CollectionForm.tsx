@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./CollectionForm.module.css";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import WishlistCollectionService from "../../services/WishlistCollectionService";
 import { Check } from "phosphor-react";
 import { TextInput } from "inputify";
 import { useToast } from "../../hooks/useToast";
+import { createCollection } from "../../service";
 
 export const CollectionForm = ({
     user,
@@ -19,7 +19,7 @@ export const CollectionForm = ({
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        WishlistCollectionService.createCollection(user.token, form)
+        createCollection(user.token, form)
             .then(({ message }) => {
                 setToastMessage(message);
                 updateCollections();

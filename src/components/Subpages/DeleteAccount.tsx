@@ -1,16 +1,16 @@
 import { Warning } from "phosphor-react";
-import UserService from "../../services/UserService";
 import { PrivacyCard } from "../Cards/PrivacyCard";
 
 import styles from "./DeleteAccount.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { deleteAccount } from "../../service";
 
 export const DeleteAccount = () => {
     const { user } = useContext(UserContext);
 
     async function handleDeleteAccountBtn() {
-        await UserService.deleteAccount(user.id, user.token);
+        await deleteAccount(user.id, user.token);
     }
 
     return (

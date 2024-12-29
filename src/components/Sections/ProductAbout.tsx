@@ -6,13 +6,12 @@ import { ImageBox } from "../Misc/ImageBox";
 import { CardPriceDisplay } from "../Displays/CardPriceDisplay";
 import { BookmarkBtn } from "../Buttons/BookmarkBtn";
 
-import CategoryService from "../../services/CategoryService";
-import UserService from "../../services/UserService";
 
 import styles from "./ProductAbout.module.css";
 import { useToast } from "../../hooks/useToast";
 import { ModalContext } from "../../context/ModalContext";
 import { useModals } from "../../hooks/useModals";
+import { getCategory, getUserInfo } from "../../service";
 
 export const ProductAbout = ({
     productDetails,
@@ -33,17 +32,13 @@ export const ProductAbout = ({
 
     useEffect(() => {
         if (productDetails.product.owner) {
-            UserService.getUserInfo(productDetails.product.owner).then(
-                (data) => {
-                    setOwner(data.name);
-                }
-            );
+            getUserInfo(productDetails.product.owner).then((data) => {
+                setOwner(data.name);
+            });
         }
-        CategoryService.getCategory(productDetails.product.category).then(
-            (data) => {
-                setCategory(data.name);
-            }
-        );
+        getCategory(productDetails.product.category).then((data) => {
+            setCategory(data.name);
+        });
     }, [productDetails]);
 
     return (

@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
-import CategoryService from "../../services/CategoryService";
 
 import { SubmitBtn } from "../Buttons/SubmitBtn";
 import { createrOfferFormInitialValue } from "../../constants/initialStates";
@@ -7,6 +6,7 @@ import { createrOfferFormInitialValue } from "../../constants/initialStates";
 import styles from "./ProductForm.module.css";
 import { NumberInput, TextInput, TextareaInput } from "inputify";
 import { SelectInput } from "../Inputs/SelectInput";
+import { getCategories } from "../../service";
 
 export const ProductForm = ({
     user,
@@ -25,7 +25,7 @@ export const ProductForm = ({
 }) => {
     const [categories, setCategories] = useState([{ name: "", _id: "" }]);
     useEffect(() => {
-        CategoryService.getCategories().then((data) => {
+         getCategories().then((data) => {
             setCategories(data);
         });
     }, []);

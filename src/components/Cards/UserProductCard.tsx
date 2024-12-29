@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductService from "../../services/ProductService";
-
 import { productInitialState } from "../../constants/initialStates";
 import { createImage } from "../../utils/operations";
 import { ImageBox } from "../Misc/ImageBox";
 import { CardPriceDisplay } from "../Displays/CardPriceDisplay";
 
 import styles from "./UserProductCard.module.css";
+import { getProductDetails } from "../../service";
 
 export const UserProductCard = ({ id }: { id: string }) => {
     const [productDetails, setProductDetails] = useState(productInitialState);
     const [isLoading, toggleLoading] = useState(true);
     useEffect(() => {
         if (id) {
-            ProductService.getProductDetails(id)
+            getProductDetails(id)
                 .then(setProductDetails)
                 .then(() => {
                     toggleLoading(false);

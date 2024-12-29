@@ -1,4 +1,3 @@
-import ProductService from "../services/ProductService";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { productPageInitialState } from "../constants/initialStates";
@@ -10,18 +9,21 @@ import styles from "./Product.module.css";
 import { RecentViewedProducts } from "../components/Displays/RecentViewedProducts";
 import { UserContext } from "../context/UserContext";
 import { useToast } from "../hooks/useToast";
+import { getProductDetails } from "../service";
 
 export const Product = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
     const { id } = useParams();
-    const [productDetails, setProductDetails] = useState(productPageInitialState);
+    const [productDetails, setProductDetails] = useState(
+        productPageInitialState
+    );
     const [infoStatus, toggleInfoStatus] = useState(true);
 
     useEffect(() => {
         if (id) {
-            ProductService.getProductDetails(id)
+            getProductDetails(id)
                 .then((data: any) => {
                     toggleInfoStatus(false);
                     setProductDetails(data);

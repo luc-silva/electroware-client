@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import ProductService from "../../services/ProductService";
 
 import { ReviewCard } from "../Cards/ReviewCard";
 import { ReviewForm } from "../Forms/ReviewForm";
@@ -7,6 +6,7 @@ import { checkForUser } from "../../utils/operations";
 
 import styles from "./ReviewsContainer.module.css";
 import { UserContext } from "../../context/UserContext";
+import { getProductReviews } from "../../service";
 
 export const ReviewsContainer = ({
     product,
@@ -16,12 +16,12 @@ export const ReviewsContainer = ({
     updateScore: Function;
 }) => {
     const { setUser, user } = useContext(UserContext);
-    
+
     const [reviews, setReviews] = useState([{ _id: "", author: "" }]);
     const [userHasNotReviewed, toggleUserHasNotReviewed] = useState(false);
 
     async function updateReviews() {
-        ProductService.getProductReviews(product._id)
+        getProductReviews(product._id)
             .then(setReviews)
             .then(() => {
                 updateScore();

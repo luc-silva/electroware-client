@@ -1,14 +1,14 @@
-import CategoryService from "../../services/CategoryService";
 import { useEffect, useState } from "react";
 import { SearchCategoryCard } from "../Cards/SearchCategoryCard";
 
 import styles from "./CategoriesPanel.module.css";
+import { getCategories } from "../../service";
 
 export const CategoriesPanel = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        CategoryService.getCategories().then((data) => {
+        getCategories().then((data) => {
             setCategories(data);
         });
     }, []);

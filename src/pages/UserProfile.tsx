@@ -6,8 +6,6 @@ import {
 } from "../constants/initialStates";
 
 //
-import UserService from "../services/UserService";
-import ImageService from "../services/ImageService";
 import { createImage } from "../utils/operations";
 import { UserProducts } from "../components/Sections/UserProducts";
 import { ProfileDetails } from "../components/Misc/ProfileDetails";
@@ -15,6 +13,7 @@ import { ImageBox } from "../components/Misc/ImageBox";
 
 //
 import styles from "./UserProfile.module.css";
+import { getUserImage, getUserInfo, getUserProducts, getUserProductsReceivedReviews } from "../service";
 
 export const UserProfile = () => {
     const { id } = useParams();
@@ -30,13 +29,13 @@ export const UserProfile = () => {
 
     useEffect(() => {
         if (id) {
-            UserService.getUserInfo(id).then((data) => {
+            getUserInfo(id).then((data) => {
                 setProfileData((prev) => ({ ...prev, user: data }));
             });
-            UserService.getUserProducts(id).then((data) => {
+            getUserProducts(id).then((data) => {
                 setProfileData((prev) => ({ ...prev, products: data }));
             });
-            UserService.getUserProductsReceivedReviews(id).then((data) => {
+            getUserProductsReceivedReviews(id).then((data) => {
                 setProfileData((prev) => ({
                     ...prev,
                     prodreviewsScoreucts: data,
@@ -47,7 +46,7 @@ export const UserProfile = () => {
 
     useEffect(() => {
         if (id) {
-            ImageService.getUserImage(id).then((data) => {
+            getUserImage(id).then((data) => {
                 setUserImage(data.data);
             });
         }

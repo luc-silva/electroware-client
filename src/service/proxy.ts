@@ -1,0 +1,9 @@
+export const categoryUrl = "http://localhost:6060/api/category/";
+export const imageUrl = "http://localhost:6060/api/image/";
+export const productUrl = "http://localhost:6060/api/product/";
+export const reviewUrl = "http://localhost:6060/api/review/";
+export const shoppingCartUrl = "http://localhost:6060/api/shoppingcart";
+export const transactionUrl = "http://localhost:6060/api/transaction";
+export const userUrl = "http://localhost:6060/api/user/";
+export const collectionUrl = "http://localhost:6060/api/collection/";
+export const wishlistUrl = "http://localhost:6060/api/wishlist/";

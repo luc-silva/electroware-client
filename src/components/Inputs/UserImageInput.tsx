@@ -2,12 +2,12 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { imageInitialValue } from "../../constants/initialStates";
 
 //components & utils
-import ImageService from "../../services/ImageService";
 import { createImage } from "../../utils/operations";
 import { ImageBox } from "../Misc/ImageBox";
 
 //style
 import styles from "./UserImageInput.module.css";
+import { getProductImage, getUserImage, uploadImage } from "../../service";
 
 export const UserImageInput = ({
     user,
@@ -23,14 +23,15 @@ export const UserImageInput = ({
 
     useEffect(() => {
         if (inputType === "productImage" && productId) {
-            ImageService.getProductImage(productId).then(({ data }) => {
-                setImage(createImage(data));
-            })
-            .then(() => {
-                toggleImageLoading(false);
-            });
+            getProductImage(productId)
+                .then(({ data }) => {
+                    setImage(createImage(data));
+                })
+                .then(() => {
+                    toggleImageLoading(false);
+                });
         } else {
-            ImageService.getUserImage(user.id)
+            getUserImage(user.id)
                 .then(({ data }) => {
                     setImage(createImage(data));
                 })
@@ -47,7 +48,7 @@ export const UserImageInput = ({
         if (event.target && files && files[0] instanceof File) {
             formData.append("imageField", files[0]);
             formData.append("imageType", inputType);
-            await ImageService.uploadImage(formData, user.token);
+            await uploadImage(formData, user.token);
         }
     }
 

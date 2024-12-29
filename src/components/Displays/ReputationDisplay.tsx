@@ -9,7 +9,7 @@ export const ReputationDisplay = ({ reviews }: { reviews: Review[] }) => {
             <div>
                 <strong>{getAverage(reviews)}</strong>
                 <div>
-                    <StarsContainer size={20} stars={getAverage(reviews)} />
+                    <StarsContainer size={20} score={getAverage(reviews)} />
                 </div>
             </div>
         </div>

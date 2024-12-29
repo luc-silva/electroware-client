@@ -1,7 +1,3 @@
-//services
-import ShoppingCartService from "../services/ShoppingCartService";
-import TransactionService from "../services/TransactionService";
-
 //components
 import { SubmitBtn } from "../components/Buttons/SubmitBtn";
 
@@ -11,6 +7,7 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Checkout.module.css";
 import { UserContext } from "../context/UserContext";
+import { createTransaction, getCartInstances } from "../service";
 
 export const Checkout = () => {
     const [items, setItems] = useState([]);
@@ -21,7 +18,7 @@ export const Checkout = () => {
         if (!user.logged) {
             navigate("/login");
         }
-        ShoppingCartService.getCartInstances(user.token).then((data) => {
+        getCartInstances(user.token).then((data) => {
             setItems(data);
         });
     }, [user]);
@@ -38,10 +35,7 @@ export const Checkout = () => {
         setPaymentMethod(event.target.value);
     }
     async function handleCheckout() {
-        TransactionService.createTransaction(
-            { paymentMethod },
-            user.token
-        ).then(() => {
+        createTransaction({ paymentMethod }, user.token).then(() => {
             navigate("/settings");
         });
     }

@@ -7,14 +7,13 @@ import {
     reviewsInitialState,
 } from "../../constants/initialStates";
 
-import ImageService from "../../services/ImageService";
-import ReviewService from "../../services/ReviewService";
 import { createImage } from "../../utils/operations";
 import { ImageBox } from "../Misc/ImageBox";
 import { StarsContainer } from "../Containers/StarsContainer";
 
 import styles from "./ReviewCard.module.css";
 import picture from "../../assets/images/missing-profile-picture.jpg";
+import { deleteReview, getReview, getUserImage } from "../../service";
 
 export const ReviewCard = ({
     reviewId,
@@ -31,12 +30,12 @@ export const ReviewCard = ({
 
     useEffect(() => {
         if (reviewId) {
-            ReviewService.getReview(reviewId).then(setCardInfo);
+            getReview(reviewId).then(setCardInfo);
         }
     }, [reviewId]);
     useEffect(() => {
         if (cardInfo.author._id) {
-            ImageService.getUserImage(cardInfo.author._id)
+            getUserImage(cardInfo.author._id)
                 .then(({ data }) => {
                     setUserImage(data);
                 })
@@ -50,7 +49,7 @@ export const ReviewCard = ({
     }, [cardInfo.author._id]);
 
     async function handleDelete() {
-        ReviewService.deleteReview(cardInfo._id, user.token).then(() => {
+        deleteReview(cardInfo._id, user.token).then(() => {
             updateReviews();
         });
     }
@@ -97,7 +96,7 @@ export const ReviewCard = ({
                         cardInfo.text || <em>Nenhum detalhe provido</em>}
                 </div>
                 <div className={styles["review-panel"]}>
-                    <StarsContainer stars={cardInfo.score} size={20} />
+                    <StarsContainer score={cardInfo.score} size={20} />
                     {user && user.id === cardInfo.author._id && (
                         <button onClick={handleDelete}>
                             <Trash size={20} />

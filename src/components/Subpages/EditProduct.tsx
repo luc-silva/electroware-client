@@ -1,4 +1,3 @@
-import ProductService from "../../services/ProductService";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createrOfferFormInitialValue } from "../../constants/initialStates";
@@ -10,6 +9,7 @@ import styles from "./EditProduct.module.css";
 import { PromoBox } from "../Misc/PromoBox";
 import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
+import { getProductDetails, updateProduct } from "../../service";
 
 export const EditProduct = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const EditProduct = () => {
         event.preventDefault();
 
         if (id) {
-            ProductService.updateProduct(form, user.token, id).then((data) => {
+            updateProduct(form, user.token, id).then((data) => {
                 setToastMessage(data.message, "info");
 
                 navigate(`/product/${id}`);
@@ -34,7 +34,7 @@ export const EditProduct = () => {
 
     useEffect(() => {
         if (id) {
-            ProductService.getProductDetails(id).then(({ product, image }) => {
+            getProductDetails(id).then(({ product, image }) => {
                 setForm(product);
             });
         }

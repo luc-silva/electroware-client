@@ -1,4 +1,3 @@
-import ShoppingCartService from "../services/ShoppingCartService";
 import { getTotalValue } from "../utils/operations";
 
 import { useContext, useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ShoppingCart.module.css";
 import { ShoppingCartItemsDisplay } from "../components/Displays/ShoppingCartItemsDisplay";
 import { UserContext } from "../context/UserContext";
+import { getCartInstances } from "../service";
 
 export const ShoppingCart = () => {
     const { user } = useContext(UserContext);
@@ -18,7 +18,7 @@ export const ShoppingCart = () => {
     }
 
     async function updateCart() {
-        ShoppingCartService.getCartInstances(user.token).then((data) => {
+        getCartInstances(user.token).then((data) => {
             setItems(data);
         });
     }

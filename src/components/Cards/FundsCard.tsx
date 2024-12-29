@@ -1,4 +1,4 @@
-import UserService from "../../services/UserService";
+import { addFunds } from "../../service";
 import styles from "./FundsCard.module.css";
 
 //refatorar
@@ -13,7 +13,7 @@ export const FundsCard = ({
     updateAccountDetails: Function;
 }) => {
     async function addAmount(event: React.MouseEvent) {
-        await UserService.addFunds(amount, user.token).then(() => {
+        await addFunds(amount, user.token).then(() => {
             updateAccountDetails();
         });
     }

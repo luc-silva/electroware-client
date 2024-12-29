@@ -1,11 +1,11 @@
-import ProductService from "../services/ProductService";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { SearchResultItem } from "../components/Cards/SearchResultCard"; 
+import { SearchResultItem } from "../components/Cards/SearchResultCard";
 
 import styles from "./SearchResults.module.css";
 import { SearchSidePanel } from "../components/panels/SearchSidePanel";
+import { searchProduct } from "../service";
 
 export const SearchResults = () => {
     const { search } = useParams();
@@ -13,7 +13,7 @@ export const SearchResults = () => {
 
     useEffect(() => {
         if (search) {
-            ProductService.searchProduct(search).then((data) => {
+            searchProduct(search).then((data) => {
                 setSearchResults(data);
             });
         }

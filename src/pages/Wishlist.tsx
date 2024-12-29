@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import UserService from "../services/UserService";
 import styles from "./Wishlist.module.css";
 import { CollectionContainer } from "../components/Containers/CollectionContainer";
 import { UserContext } from "../context/UserContext";
+import { getUserCollections } from "../service";
 
 export const Wishlist = () => {
     const { user } = useContext(UserContext);
@@ -13,7 +13,7 @@ export const Wishlist = () => {
     const navigate = useNavigate();
 
     async function updateCollections() {
-        UserService.getUserCollections(user.id, user.token).then((data) => {
+        getUserCollections(user.id, user.token).then((data) => {
             setCollections(data);
         });
     }

@@ -1,4 +1,3 @@
-import UserService from "../../services/UserService";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registrationFormInitialValues } from "../../constants/initialStates";
@@ -8,6 +7,7 @@ import { SubmitBtn } from "../Buttons/SubmitBtn";
 import styles from "./RegistrationForm.module.css";
 import { PasswordInput, TextInput } from "inputify";
 import { useToast } from "../../hooks/useToast";
+import { registerUser } from "../../service";
 
 export const RegistrationForm = () => {
     const [form, setForm] = useState(registrationFormInitialValues);
@@ -36,7 +36,7 @@ export const RegistrationForm = () => {
             },
         };
 
-        await UserService.registerUser(data)
+        await registerUser(data)
             .then(() => {
                 navigate("/login");
             })

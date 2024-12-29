@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import UserService from "../services/UserService";
 import styles from "./AddFunds.module.css";
 import { FundsCard } from "../components/Cards/FundsCard";
 import { CustomFundsCard } from "../components/Cards/CustomFundsCard";
 import { UserContext } from "../context/UserContext";
+import { getUserPrivateInfo } from "../service";
 
 export const AddFunds = () => {
     const navigate = useNavigate();
@@ -19,13 +19,11 @@ export const AddFunds = () => {
     }, []);
 
     async function updateAccountDetails() {
-        await UserService.getUserPrivateInfo(user.id, user.token).then(
-            (data) => {
-                setUser(() => {
-                    return { ...user, funds: data.funds };
-                });
-            }
-        );
+        await getUserPrivateInfo(user.id, user.token).then((data) => {
+            setUser(() => {
+                return { ...user, funds: data.funds };
+            });
+        });
     }
 
     return (

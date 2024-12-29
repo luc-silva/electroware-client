@@ -1,4 +1,3 @@
-import WishlistCollectionService from "../../services/WishlistCollectionService";
 import { useEffect, useState } from "react";
 
 import { CollectionProductCard } from "../Cards/CollectionProductCard";
@@ -6,6 +5,11 @@ import { VisibilityBtn } from "../Buttons/VisibilityBtn";
 import { DeletebBtn } from "../Buttons/DeleteBtn";
 import styles from "./CollectionContainer.module.css";
 import { useToast } from "../../hooks/useToast";
+import {
+    deleteCollection,
+    getCollectionProducts,
+    updateCollection,
+} from "../../service";
 
 export const CollectionContainer = ({
     data,
@@ -19,16 +23,14 @@ export const CollectionContainer = ({
     const [items, setItems] = useState([]);
     const { setToastMessage } = useToast();
 
-    async function updateCollection() {
-        await WishlistCollectionService.getCollectionProducts(data._id).then(
-            (data) => {
-                setItems(data);
-            }
-        );
+    async function handleUpdateCollection() {
+        await getCollectionProducts(data._id).then((data) => {
+            setItems(data);
+        });
     }
 
     async function changeVisibility() {
-        await WishlistCollectionService.updateCollection(user.token, data._id, {
+        await updateCollection(user.token, data._id, {
             ...data,
             privated: !data.privated,
         }).then((data) => {
@@ -37,7 +39,7 @@ export const CollectionContainer = ({
         });
     }
     async function deletecCollection() {
-        await WishlistCollectionService.deleteCollection(user.token, data._id)
+        await deleteCollection(user.token, data._id)
             .then((data) => {
                 updateCollections();
                 setToastMessage(data.message);
@@ -49,7 +51,7 @@ export const CollectionContainer = ({
 
     useEffect(() => {
         if (data._id) {
-            updateCollection();
+            handleUpdateCollection();
         }
     }, [data._id]);
     return (

@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SubmitBtn } from "../Buttons/SubmitBtn";
-import UserService from "../../services/UserService";
 import styles from "./CredentialsEmailForm.module.css";
 import { TextInput } from "inputify";
+import { updateUserEmail } from "../../service";
 
 export const CredentialsEmailForm = ({
     user,
@@ -11,11 +11,11 @@ export const CredentialsEmailForm = ({
     user: UserSession;
     showToast: Function;
 }) => {
-    const  [emailForm, setEmailForm] = useState({
+    const [emailForm, setEmailForm] = useState({
         email: "",
     });
     function handleEmailChange(event: ChangeEvent<HTMLInputElement>) {
-        const  target = event.target;
+        const target = event.target;
         if (target) {
             setEmailForm({ ...emailForm, [target.name]: target.value });
         }
@@ -23,7 +23,7 @@ export const CredentialsEmailForm = ({
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        await UserService.updateUserEmail(user.token, emailForm)
+        await updateUserEmail(user.token, emailForm)
             .then(({ data }) => {
                 showToast(data.message);
             })

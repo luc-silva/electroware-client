@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { profileSettingsFormInitalState } from "../../constants/initialStates";
 import { AxiosResponse } from "axios";
-import UserService from "../../services/UserService";
 
 //components & utils
 import { SubmitBtn } from "../Buttons/SubmitBtn";
@@ -12,6 +11,7 @@ import styles from "./ProfileSettingsForm.module.css";
 import { TextInput, TextareaInput } from "inputify";
 import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
+import { getUserInfo, updateAccountDetails } from "../../service";
 
 export const ProfileSettingsForm = () => {
     const [form, setForm] = useState(profileSettingsFormInitalState);
@@ -20,7 +20,7 @@ export const ProfileSettingsForm = () => {
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        await UserService.updateAccountDetails(user.id, user.token, form).then(
+        await updateAccountDetails(user.id, user.token, form).then(
             ({ data }: AxiosResponse) => {
                 setToastMessage(data.message, "info");
             }
@@ -52,7 +52,7 @@ export const ProfileSettingsForm = () => {
     }
 
     useEffect(() => {
-        UserService.getUserInfo(user.id).then(setForm);
+        getUserInfo(user.id).then(setForm);
     }, [user.id]);
     return (
         <form

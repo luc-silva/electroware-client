@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductCard } from "../components/Cards/ProductCard";
 
-import CategoryService from "../services/CategoryService";
 import styles from "./Category.module.css";
+import { getCategory, getCategoryProducts } from "../service";
 
 export const Category = () => {
     const { id } = useParams();
@@ -12,10 +12,10 @@ export const Category = () => {
 
     useEffect(() => {
         if (id) {
-            CategoryService.getCategoryProducts(id).then((data) => {
+            getCategoryProducts(id).then((data) => {
                 setProducts(data);
             });
-            CategoryService.getCategory(id).then((data) => {
+            getCategory(id).then((data) => {
                 setCategory(data.name);
             });
         }

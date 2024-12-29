@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 import { productCardInitialState } from "../../constants/initialStates";
 
 //components & utils
-import ProductService from "../../services/ProductService";
 import { createImage } from "../../utils/operations";
 import { CardInfo } from "../Misc/CardInfo";
 import { ImageBox } from "../Misc/ImageBox";
 
 //style
 import styles from "./ProductCard.module.css";
+import { getProductDetails } from "../../service";
 
 export const ProductCard = ({ id }: { id: string }) => {
     const [productData, setProductData] = useState(productCardInitialState);
-    const [cardStatus, setCardStatus] = useState({ loading: true, error: false });
+    const [cardStatus, setCardStatus] = useState({
+        loading: true,
+        error: false,
+    });
     useEffect(() => {
-        ProductService.getProductDetails(id)
+        getProductDetails(id)
             .then((data: any) => {
                 setProductData(data);
             })
@@ -35,7 +38,10 @@ export const ProductCard = ({ id }: { id: string }) => {
                     imgSrc={createImage(productData.image.data.data)}
                 />
             </div>
-            <CardInfo product={productData.product as ProductDetails} isLoading={cardStatus.loading} />
+            <CardInfo
+                product={productData.product as ProductDetails}
+                isLoading={cardStatus.loading}
+            />
         </Link>
     );
 };

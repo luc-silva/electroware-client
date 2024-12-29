@@ -1,4 +1,3 @@
-import UserService from "../../services/UserService";
 import { ChangeEvent, Dispatch, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginFormInitialValue } from "../../constants/initialStates";
@@ -8,6 +7,7 @@ import { PasswordInput, TextInput } from "inputify";
 import styles from "./LoginForm.module.css";
 import { UserContext } from "../../context/UserContext";
 import { useToast } from "../../hooks/useToast";
+import { logInUser } from "../../service";
 
 export const LoginForm = () => {
     const { user, setUser } = useContext(UserContext);
@@ -28,7 +28,7 @@ export const LoginForm = () => {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        UserService.logInUser(form)
+        logInUser(form)
             .then(setCurrentUser)
             .then(() => {
                 navigate("/");

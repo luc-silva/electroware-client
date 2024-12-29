@@ -1,4 +1,3 @@
-import ShoppingCartService from "../../services/ShoppingCartService";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { createImage } from "../../utils/operations";
 import { cardInitialState } from "../../constants/initialStates";
@@ -9,6 +8,7 @@ import { ImageBox } from "../Misc/ImageBox";
 
 import styles from "./ShoppingCartCard.module.css";
 import { UserContext } from "../../context/UserContext";
+import { deleteCartInstance, getSingleInstance } from "../../service";
 
 //rename to ShoppingCartCard
 export const ProductCardSmall = ({
@@ -26,10 +26,7 @@ export const ProductCardSmall = ({
     const userToken = useMemo(() => user.token, [user]);
 
     async function removeItem() {
-        await ShoppingCartService.deleteCartInstance(
-            instanceID,
-            userToken
-        ).then(() => {
+        await deleteCartInstance(instanceID, userToken).then(() => {
             updateCart();
         });
     }
@@ -39,7 +36,7 @@ export const ProductCardSmall = ({
     }
 
     useEffect(() => {
-        ShoppingCartService.getSingleInstance(instanceID, user.token)
+        getSingleInstance(instanceID, user.token)
             .then(setInstanceData)
             .then(() => {
                 toggleLoading(false);

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import ProductService from "../../services/ProductService";
 import styles from "./ProductReviews.module.css";
 import { ReviewsContainer } from "../Misc/ReviewsContainer";
 import { productRatingInitialState } from "../../constants/initialStates";
 import { ScoreDisplay } from "../Displays/ScoreDisplay";
+import { getProductScore } from "../../service";
 
 export const ProductReviews = ({ product }: { product: ProductDetails }) => {
     const [data, setData] = useState(productRatingInitialState);
-    
+
     function updateProductScore() {
-        ProductService.getProductScore(product._id).then((data) => {
+        getProductScore(product._id).then((data) => {
             setData(data);
         });
     }

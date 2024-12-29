@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import CategoryService from "../../services/CategoryService";
 import { CategoryCard } from "../Cards/CategoryCard";
 
 import styles from "./CategoriesDisplay.module.css";
+import { getCategories } from "../../service";
 
 export const CategoriesDisplay = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        CategoryService.getCategories().then(setCategories);
+        getCategories().then(setCategories);
     }, []);
     return (
         <section className={styles["categories-display"]}>
