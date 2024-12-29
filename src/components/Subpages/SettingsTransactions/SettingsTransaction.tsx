@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { TransactionCard } from "../Cards/TransactionCard/TransactionCard";
-import { NothingAvailableDialog } from "../Misc/NothingAvailableDialog/NothingAvailableDialog";
 import styles from "./SettingsTransaction.module.css";
-import { UserContext } from "../../context/UserContext";
-import { getUserTransactions } from "../../service";
+import { getUserTransactions } from "../../../service";
+import { UserContext } from "../../../context/UserContext";
+import { TransactionCard } from "../../Cards/TransactionCard/TransactionCard";
+import { NothingAvailableDialog } from "../../Misc/NothingAvailableDialog/NothingAvailableDialog";
 
 export const SettingsTransaction = () => {
     const [userTransactions, setUserTransactions] = useState([]);

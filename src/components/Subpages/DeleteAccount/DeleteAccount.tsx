@@ -1,10 +1,10 @@
 import { Warning } from "phosphor-react";
-import { PrivacyCard } from "../Cards/PrivacyCard/PrivacyCard";
 
 import styles from "./DeleteAccount.module.css";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
-import { deleteAccount } from "../../service";
+import { UserContext } from "../../../context/UserContext";
+import { deleteAccount } from "../../../service";
+import { PrivacyCard } from "../../Cards/PrivacyCard/PrivacyCard";
 
 export const DeleteAccount = () => {
     const { user } = useContext(UserContext);

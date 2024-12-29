@@ -1,15 +1,14 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createrOfferFormInitialValue } from "../../../constants/initialStates";
-import { UserImageInput } from "../Inputs/UserImageInput";
-
-import { ProductForm } from "../Forms/ProductForm";
 
 import styles from "./EditProduct.module.css";
 import { PromoBox } from "../../Misc/PromoBox/PromoBox";
 import { UserContext } from "../../../context/UserContext";
 import { useToast } from "../../../hooks/useToast";
 import { getProductDetails, updateProduct } from "../../../service";
+import { UserImageInput } from "../../Inputs/UserImageInput/UserImageInput";
+import { ProductForm } from "../../Forms/ProductsForm/ProductForm";
 
 export const EditProduct = () => {
     const navigate = useNavigate();

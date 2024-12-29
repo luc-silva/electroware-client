@@ -1,6 +1,5 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { CloseBtn } from "../../Buttons/CloseButton/CloseBtn";
-import { CollectionForm } from "../Forms/CollectionForm";
 
 import { CollectionCard } from "../../Cards/CollectionCard/CollectionCard";
 import { stopEventPropagation } from "../../../utils/operations";
@@ -13,6 +12,7 @@ import { useToast } from "../../../hooks/useToast";
 import { ModalContext } from "../../../context/ModalContext";
 import { useModals } from "../../../hooks/useModals";
 import { createWishlistInstance, getUserPublicCollections } from "../../../service";
+import { CollectionForm } from "../../Forms/CollectionForm/CollectionForm";
 
 export const CreateCollectionModal = () => {
     const [selectedCollectionId, setSelectedCollectionId] = useState("");

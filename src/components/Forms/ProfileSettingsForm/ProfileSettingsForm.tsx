@@ -1,17 +1,13 @@
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
-import { profileSettingsFormInitalState } from "../../constants/initialStates";
 import { AxiosResponse } from "axios";
-
-//components & utils
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
-import { UserImageInput } from "../Inputs/UserImageInput";
-
-//style
 import styles from "./ProfileSettingsForm.module.css";
 import { TextInput, TextareaInput } from "inputify";
-import { UserContext } from "../../context/UserContext";
-import { useToast } from "../../hooks/useToast";
-import { getUserInfo, updateAccountDetails } from "../../service";
+import { profileSettingsFormInitalState } from "../../../constants/initialStates";
+import { UserContext } from "../../../context/UserContext";
+import { useToast } from "../../../hooks/useToast";
+import { getUserInfo, updateAccountDetails } from "../../../service";
+import { UserImageInput } from "../../Inputs/UserImageInput/UserImageInput";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
 
 export const ProfileSettingsForm = () => {
     const [form, setForm] = useState(profileSettingsFormInitalState);

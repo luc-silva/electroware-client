@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CategoryCard } from "../Cards/CategoryCard/CategoryCard";
 
 import styles from "./CategoriesDisplay.module.css";
-import { getCategories } from "../../service";
+import { getCategories } from "../../../service";
+import { CategoryCard } from "../../Cards/CategoryCard/CategoryCard";
 
 export const CategoriesDisplay = () => {
     const [categories, setCategories] = useState([]);

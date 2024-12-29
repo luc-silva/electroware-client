@@ -1,12 +1,12 @@
 import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
 
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
-import { createrOfferFormInitialValue } from "../../constants/initialStates";
 
 import styles from "./ProductForm.module.css";
 import { NumberInput, TextInput, TextareaInput } from "inputify";
-import { SelectInput } from "../Inputs/SelectInput";
-import { getCategories } from "../../service";
+import { createrOfferFormInitialValue } from "../../../constants/initialStates";
+import { getCategories } from "../../../service";
+import { SelectInput } from "../../Inputs/SelectInput/SelectInput";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
 
 export const ProductForm = ({
     user,

@@ -1,12 +1,12 @@
-import { getTotalValue } from "../../../utils/operations";
 
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./ShoppingCart.module.css";
-import { ShoppingCartItemsDisplay } from "../components/Displays/ShoppingCartItemsDisplay";
-import { UserContext } from "../../../context/UserContext";
-import { getCartInstances } from "../../../service";
+import { UserContext } from "../../context/UserContext";
+import { getCartInstances } from "../../service";
+import { ShoppingCartItemsDisplay } from "../../components/Displays/ShoppingCartItems/ShoppingCartItemsDisplay";
+import { getTotalValue } from "../../utils/operations";
 
 export const ShoppingCart = () => {
     const { user } = useContext(UserContext);

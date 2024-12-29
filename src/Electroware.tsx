@@ -10,7 +10,6 @@ import { Product } from "./pages/Product/Product";
 import { Faq } from "./pages/Faq/Faq";
 import { SearchResults } from "./pages/SearchResults/SearchResults";
 import { NotFound } from "./pages/NotFound/NotFound";
-import { ShoppingCart } from "./pages/Settings/ShoppingCart/ShoppingCart";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { CreateOffer } from "./pages/CreateOffer/CreateOffer";
@@ -19,21 +18,20 @@ import { Settings } from "./pages/Settings/Settings";
 import { Category } from "./pages/Category/Category";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 
-//
 import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy";
-import { Footer } from "./components/Misc/Footer";
 import { InfoToast } from "./components/Misc/InfoToast/InfoToast";
-import { CreateCollectionModal } from "./components/Modals/CreateCollectionModal/CreateCollectionModal";
 
-// subpages
 import { EditProfile } from "./components/Subpages/EditProfile/EditProfile";
-import { DeleteAccount } from "./components/Subpages/DeleteAccount";
-import { SettingsTransaction } from "./components/Subpages/SettingsTransaction";
 import { SettingsUserProducts } from "./components/Subpages/SettingsUserProducts/SettingsUserProducts";
 import { EditProduct } from "./components/Subpages/EditProduct/EditProduct";
 import { SettingsCredentials } from "./components/Subpages/SettingsCredentials/SettingsCredentials";
 import { ScrollToTop } from "./components/Misc/ScrollToTop";
 import { ContextWrapper } from "./ContextWrapper";
+import { CreateCollectionModal } from "./components/Misc/CreateCollectionModal/CreateCollectionModal";
+import { SettingsTransaction } from "./components/Subpages/SettingsTransactions/SettingsTransaction";
+import { DeleteAccount } from "./components/Subpages/DeleteAccount/DeleteAccount";
+import { Footer } from "./components/Misc/Footer/Footer";
+import { ShoppingCart } from "phosphor-react";
 
 function Electroware() {
     //refatorar

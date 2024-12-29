@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import styles from "./Footer.module.css";
-import { WebsiteLogo } from "./WebsiteLogo";
+import { WebsiteLogo } from "../WebsiteLogo/WebsiteLogo";
 
 export const Footer = () => {
     return (

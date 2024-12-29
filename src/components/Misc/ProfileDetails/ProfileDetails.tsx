@@ -1,5 +1,5 @@
-import { ReputationDisplay } from "../Displays/ReputationDisplay/ReputationDisplay";
 
+import { ReputationDisplay } from "../../Displays/ReputationDisplay/ReputationDisplay";
 import styles from "./ProfileDetails.module.css";
 
 export const ProfileDetails = ({

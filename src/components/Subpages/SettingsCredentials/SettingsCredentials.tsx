@@ -1,10 +1,9 @@
-import { CredentialsPasswordForm } from "../Forms/CredintialsPasswordForm";
-import { CredentialsEmailForm } from "../Forms/CredentialsEmailForm";
-
 import styles from "./SettingsCredentials.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 import { useToast } from "../../../hooks/useToast";
+import { CredentialsPasswordForm } from "../../Forms/CredentialsPasswordForm/CredintialsPasswordForm";
+import { CredentialsEmailForm } from "../../Forms/CredentialsEmailForm/CredentialsEmailForm";
 
 export const SettingsCredentials = () => {
     const { user } = useContext(UserContext);

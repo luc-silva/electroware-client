@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
 import styles from "./CredentialsPasswordForm.module.css";
 import { PasswordInput } from "inputify";
-import { updateUserPassword } from "../../service";
+import { updateUserPassword } from "../../../service";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
 
 export const CredentialsPasswordForm = ({
     user,

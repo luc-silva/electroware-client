@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ProductForm } from "../components/Forms/ProductForm";
 import { createrOfferFormInitialValue } from "../../constants/initialStates";
 
 import styles from "./CreateOffer.module.css";
 import { ImageBox } from "../../components/Misc/ImageBox/ImageBox";
 import { UserContext } from "../../context/UserContext";
 import { createProduct } from "../../service";
+import { ProductForm } from "../../components/Forms/ProductsForm/ProductForm";
 
 export const CreateOffer = () => {
     const { user } = useContext(UserContext);

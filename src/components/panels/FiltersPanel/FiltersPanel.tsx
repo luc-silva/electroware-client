@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./FiltersPanel.module.css";
-import { getCategories } from "../../service";
+import { getCategories } from "../../../service";
 
 export const FiltersPanel = () => {
     const [categories, setCategories] = useState([] as Category[]);

@@ -8,12 +8,12 @@ import {
 //
 import { createImage } from "../../utils/operations";
 import { UserProducts } from "../../components/Sections/UserProducts/UserProducts";
-import { ProfileDetails } from "../components/Misc/ProfileDetails";
 import { ImageBox } from "../../components/Misc/ImageBox/ImageBox";
 
 //
 import styles from "./UserProfile.module.css";
 import { getUserImage, getUserInfo, getUserProducts, getUserProductsReceivedReviews } from "../../service";
+import { ProfileDetails } from "../../components/Misc/ProfileDetails/ProfileDetails";
 
 export const UserProfile = () => {
     const { id } = useParams();

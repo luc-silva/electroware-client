@@ -1,13 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { imageInitialValue } from "../../constants/initialStates";
 
-//components & utils
-import { createImage } from "../../utils/operations";
-import { ImageBox } from "../Misc/ImageBox";
-
-//style
 import styles from "./UserImageInput.module.css";
-import { getProductImage, getUserImage, uploadImage } from "../../service";
+import { imageInitialValue } from "../../../constants/initialStates";
+import { getProductImage, getUserImage, uploadImage } from "../../../service";
+import { createImage } from "../../../utils/operations";
+import { ImageBox } from "../../Misc/ImageBox/ImageBox";
 
 export const UserImageInput = ({
     user,

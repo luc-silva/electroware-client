@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 import { Circle } from "phosphor-react";
-import banner1 from "../../assets/images/electroware-banner-1.jpg";
-import banner2 from "../../assets/images/electroware-banner-2.jpg";
-import banner3 from "../../assets/images/electroware-banner-3.jpg";
 import styles from "./HomeBanner.module.css";
+
+const banner1 = `${process.env.PUBLIC_URL}/images/electroware-banner-1.jpg` 
+const banner2 = `${process.env.PUBLIC_URL}/images/electroware-banner-2.jpg` 
+const banner3 = `${process.env.PUBLIC_URL}/images/electroware-banner-3.jpg` 
 
 export const HomeBanner = () => {
     const images = [banner1, banner2, banner3];

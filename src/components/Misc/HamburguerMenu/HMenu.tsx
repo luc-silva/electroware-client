@@ -3,11 +3,11 @@ import styles from "./HMenu.module.css";
 import { X } from "phosphor-react";
 
 import { HMenuNavigation } from "../HamburguerMenuNavigation/HMenuNavigation";
-import { HMenuUserDetails } from "../HMenuUserDetails";
 import { PageIcons } from "../PageIcons/PageIcons";
 import { SearchForm } from "../../Forms/SearchForm/SearchForm";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
+import { HMenuUserDetails } from "../HamburguerMenuUserDetails/HMenuUserDetails";
 
 export const HMenu = ({
     isMenuActive,

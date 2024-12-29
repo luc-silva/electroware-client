@@ -1,5 +1,5 @@
-import { CategoriesPanel } from "./CategoriesPanel";
-import { FiltersPanel } from "./FiltersPanel";
+import { CategoriesPanel } from "../CategoriesPanel/CategoriesPanel";
+import { FiltersPanel } from "../FiltersPanel/FiltersPanel";
 import styles from "./SearchSidePanel.module.css";
 
 export const SearchSidePanel = () => {

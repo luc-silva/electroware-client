@@ -1,10 +1,10 @@
 import { HomeRecentProducts } from "../../components/Sections/HomeRecentProducts/HomeRecentProducts";
 import { HomeBanner } from "../../components/Sections/HomeBanner/HomeBanner";
-import { CategoriesDisplay } from "../components/Sections/CategoriesDisplay";
 
 import { Truck, Cube, Gauge, Wallet } from "phosphor-react";
 import styles from "./Store.module.css";
 import { DiscountedProductsDisplay } from "../../components/Displays/DiscountedProductsDipslay/DiscountedProductsDisplay";
+import { CategoriesDisplay } from "../../components/Sections/CategoriesDisplay/CategoriesDisplay";
 
 export const Store = () => {
     return (

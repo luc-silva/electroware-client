@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { SearchCategoryCard } from "../Cards/SearchCategoryCard/SearchCategoryCard";
 
 import styles from "./CategoriesPanel.module.css";
-import { getCategories } from "../../service";
+import { getCategories } from "../../../service";
+import { SearchCategoryCard } from "../../Cards/SearchCategoryCard/SearchCategoryCard";
 
 export const CategoriesPanel = () => {
     const [categories, setCategories] = useState([]);

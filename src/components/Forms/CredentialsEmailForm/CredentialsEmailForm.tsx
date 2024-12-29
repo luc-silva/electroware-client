@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
 import styles from "./CredentialsEmailForm.module.css";
 import { TextInput } from "inputify";
-import { updateUserEmail } from "../../service";
+import { updateUserEmail } from "../../../service";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
 
 export const CredentialsEmailForm = ({
     user,

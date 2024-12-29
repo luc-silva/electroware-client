@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./CollectionForm.module.css";
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
 import { Check } from "phosphor-react";
 import { TextInput } from "inputify";
-import { useToast } from "../../hooks/useToast";
-import { createCollection } from "../../service";
+import { createCollection } from "../../../service";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
+import { useToast } from "../../../hooks/useToast";
 
 export const CollectionForm = ({
     user,

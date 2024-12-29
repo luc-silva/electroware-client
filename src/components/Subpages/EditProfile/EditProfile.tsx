@@ -1,4 +1,4 @@
-import { ProfileSettingsForm } from "../Forms/ProfileSettingsForm";
+import { ProfileSettingsForm } from "../../Forms/ProfileSettingsForm/ProfileSettingsForm";
 import styles from "./EditProfile.module.css";
 
 export const EditProfile = () => {

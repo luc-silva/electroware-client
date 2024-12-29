@@ -1,13 +1,13 @@
 import { ChangeEvent, Dispatch, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginFormInitialValue } from "../../constants/initialStates";
-import { SubmitBtn } from "../Buttons/SubmitButton/SubmitBtn";
 import { PasswordInput, TextInput } from "inputify";
 
 import styles from "./LoginForm.module.css";
-import { UserContext } from "../../context/UserContext";
-import { useToast } from "../../hooks/useToast";
-import { logInUser } from "../../service";
+import { UserContext } from "../../../context/UserContext";
+import { loginFormInitialValue } from "../../../constants/initialStates";
+import { useToast } from "../../../hooks/useToast";
+import { logInUser } from "../../../service";
+import { SubmitBtn } from "../../Buttons/SubmitButton/SubmitBtn";
 
 export const LoginForm = () => {
     const { user, setUser } = useContext(UserContext);

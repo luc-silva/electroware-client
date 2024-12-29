@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { imageInitialValue } from "../../constants/initialStates";
-import { createImage } from "../../utils/operations";
 import styles from "./HMenuUserDetails.module.css";
-import { ImageBox } from "./ImageBox/ImageBox";
-import { getUserImage } from "../../service";
+import { imageInitialValue } from "../../../constants/initialStates";
+import { getUserImage } from "../../../service";
+import { ImageBox } from "../ImageBox/ImageBox";
+import { createImage } from "../../../utils/operations";
 
 export const HMenuUserDetails = ({ user }: { user: UserSession }) => {
     const [userImage, setUserImage] = useState(imageInitialValue);
