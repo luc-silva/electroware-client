@@ -1,4 +1,3 @@
-
 interface ProductDetails {
     _id: string;
     category: string;
@@ -10,4 +9,5 @@ interface ProductDetails {
     quantity: number;
     discount: number;
     on_sale: boolean;
+    seller: User;
 }

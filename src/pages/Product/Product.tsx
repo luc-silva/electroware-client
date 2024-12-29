@@ -5,11 +5,10 @@ import { productPageInitialState } from "../../constants/initialStates";
 import { ProductAbout } from "../../components/Sections/ProductAbout/ProductAbout";
 import { ProductReviews } from "../../components/Sections/ProductReviews/ProductReviews";
 
-import styles from "./Product.module.css";
 import { RecentViewedProducts } from "../../components/Displays/RecentViewedProducts/RecentViewedProducts";
 import { UserContext } from "../../context/UserContext";
-import { useToast } from "../../hooks/useToast";
 import { getProductDetails } from "../../service";
+import styles from "./Product.module.css";
 
 export const Product = () => {
     const navigate = useNavigate();

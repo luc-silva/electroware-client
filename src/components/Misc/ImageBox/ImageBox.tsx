@@ -10,6 +10,7 @@ export const ImageBox = ({
     alt?: string;
 }) => {
     
+    //adicionar placeholder
     return (
         <div className={styles["image-container"]}>
             {(isLoading && <div className={styles["loading-thumb"]} />) ||
